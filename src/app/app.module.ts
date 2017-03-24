@@ -23,7 +23,7 @@ import { ResetComponent } from './Components/reset/reset.component';
     HttpModule,
     routing
   ],
-  providers: [],
+  providers: [ appRoutingProviders ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

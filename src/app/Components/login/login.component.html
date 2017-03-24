@@ -1,7 +1,65 @@
-<p>
-  User:
-  <input type="text" name="username" id="username" ><br><br>
-  Password:
-  <input type="password" name="password" id="password" ><br>
-  <button>Login</button><a routerLink="/reset"><button> Reset Password</button></a>
-</p>
+<html>
+
+
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header"><a href="#" class="navbar-brand navbar-link">NominaUN </a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation" class="active"><a href="#">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="login-dark">
+        <form method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="glyphicon glyphicon-user"></i></div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" placeholder="Password" class="form-control" />
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+            </div><a href="#" class="forgot">Forgot your email or password?</a></form>
+    </div>
+     <div class="container" id="resumen">
+        <h1 class="text-center">NominaUN </h1>
+        <p class="text-center">Es una aplicación para administrar de forma fácil e intuitiva la nómina de una empresa. Cuenta con 2 modullos, en el módulo empleador se administra todo el sistema (registro de empleados, fondos, liquidaciones, reportes y demás procesos operativos);
+            en el módulo del empleado se permitirá al usuario consultar sus pagos y registrar sus incapacidades. </p>
+    </div>
+    <div class="container caracteristicas">
+        <h1 class="text-center">Caracteristicas </h1></div>
+    <div>
+        <div class="container caracteristicas">
+            <div class="row">
+                <div class="col-md-4">
+                    <h2 class="text-center"><i class="glyphicon glyphicon-cog"></i></h2>
+                    <h2 class="text-center">Todo en Uno</h2>
+                    <p class="text-center">Todas las herramientas para administrar la nomina en una sola aplicación</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-center"><i class="glyphicon glyphicon-search"></i></h2>
+                    <h2 class="text-center">Consultas </h2>
+                    <p class="text-center">Empleados con acceso a consultar sus pagos y registro de eventualidades.</p>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="text-center"><i class="glyphicon glyphicon-ok"></i></h2>
+                    <h2 class="text-center">Estadisticas </h2>
+                    <p class="text-center">Acceso a estadisticas graficas que le permiten un analisis mas detallado de la nomina.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
