@@ -2,7 +2,7 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {LoginComponent} from './Components/login/login.component';
+import {LoginComponent} from './Components/home/home.component';
 import {AboutusComponent} from './Components/aboutus/aboutus.component';
 
 import {ResetComponent} from './Components/reset/reset.component';

@@ -6,16 +6,19 @@ import { HttpModule } from '@angular/http';
 import { routing, appRoutingProviders } from './app.routing'
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './Components/login/login.component';
+import { LoginComponent } from './Components/home/home.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ResetComponent } from './Components/reset/reset.component';
+import { BarComponent } from './Components/bar/bar.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     AboutusComponent,
-    ResetComponent
+    ResetComponent,
+    BarComponent
   ],
   imports: [
     BrowserModule,
