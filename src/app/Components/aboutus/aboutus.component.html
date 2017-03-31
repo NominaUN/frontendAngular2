@@ -2,7 +2,7 @@
 
 <body>
     <div class="container-fluid" id="about">
-        <h1 class="text-center">About </h1>
+        <h1 class="text-center">Aboutss </h1>
         <p>NominaUN es una aplicaciÃ³n de adminitstraciÃ³n de nomina desarrollada por estudiantes de la Universidad Nacional de Colombia como proyecto de la asignatura IngenierrÃ­a de software II. La aplicaciÃ³n tiene dos mÃ³dulos: uno para acceso al empleador
             y otro para acceso a los empleados. En el mÃ³dulo del empleador se administra todo el sistema (registro de empleados, fondos, liquidaciones, reportes y demÃ¡s procesos operativos); en el mÃ³dulo del empleado se permitirÃ¡ al usuario consultar
             sus pagos y registrar sus incapacidades.</p>
@@ -69,8 +69,24 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <div class="contact-clean">
+        <form method="post">
+            <h2 class="text-center">Contact us</h2>
+            <div class="form-group has-success has-feedback">
+                <input class="form-control" type="text" name="name" placeholder="Name"><i class="form-control-feedback glyphicon glyphicon-ok" aria-hidden="true"></i></div>
+            <div class="form-group has-error has-feedback">
+                <input class="form-control" type="email" name="email" placeholder="Email"><i class="form-control-feedback glyphicon glyphicon-remove" aria-hidden="true"></i>
+                <p class="help-block">Please enter a correct email address.</p>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" rows="14" name="message" placeholder="Message"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit">send </button>
+            </div>
+        </form>
+    </div>
+
 </body>
 
 
