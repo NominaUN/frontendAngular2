@@ -10,6 +10,11 @@ import { LoginComponent } from './Components/home/home.component';
 import { AboutusComponent } from './Components/aboutus/aboutus.component';
 import { ResetComponent } from './Components/reset/reset.component';
 import { BarComponent } from './Components/bar/bar.component';
+import { EmployeesComponent } from './Components/employees/employees.component';
+import { NewsComponent } from './Components/news/news.component';
+import { LiquidationsComponent } from './Components/liquidations/liquidations.component';
+import { StatisticsComponent } from './Components/statistics/statistics.component';
+import { ParametersComponent } from './Components/parameters/parameters.component';
 
 
 @NgModule({
@@ -18,7 +23,12 @@ import { BarComponent } from './Components/bar/bar.component';
     LoginComponent,
     AboutusComponent,
     ResetComponent,
-    BarComponent
+    BarComponent,
+    EmployeesComponent,
+    NewsComponent,
+    LiquidationsComponent,
+    StatisticsComponent,
+    ParametersComponent
   ],
   imports: [
     BrowserModule,

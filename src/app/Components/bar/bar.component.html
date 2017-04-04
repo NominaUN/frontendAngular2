@@ -7,8 +7,16 @@
                 <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
             <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar">
+                    <li role="presentation"><a [routerLink]="['/']">Ingreso</a></li>
+                    <li role="presentation"><a [routerLink]="['/employees']">Empleados</a></li>
+                    <li role="presentation"><a [routerLink]="['/news']">Novedades</a></li>
+                    <li role="presentation"><a [routerLink]="['/liquidations']">Liquidaciónes</a></li>
+                    <li role="presentation"><a [routerLink]="['/statistics']">Estadísticas</a></li>
+                    <li role="presentation"><a [routerLink]="['/parameters']">Parameters</a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li role="presentation" class="active"><a [routerLink]="['/aboutus']">About Us</a></li>
+                    <li role="presentation"><a [routerLink]="['/aboutus']">About Us</a></li>
                 </ul>
             </div>
         </div>
