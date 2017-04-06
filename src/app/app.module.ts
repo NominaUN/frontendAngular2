@@ -15,6 +15,8 @@ import { NewsComponent } from './Components/news/news.component';
 import { LiquidationsComponent } from './Components/liquidations/liquidations.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { ParametersComponent } from './Components/parameters/parameters.component';
+import { EmployeesService } from './Services/employees.service';
+
 
 
 @NgModule({
@@ -36,7 +38,7 @@ import { ParametersComponent } from './Components/parameters/parameters.componen
     HttpModule,
     routing
   ],
-  providers: [ appRoutingProviders ],
+  providers: [ appRoutingProviders, EmployeesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
