@@ -1,0 +1,30 @@
+[
+	{
+		"novelty_type": "Inactividad",
+		"category": "Devengado",
+		"novelty_value": 0,
+		"period": 1,
+		"applied": 0,
+		"description": "Enfermedad General",
+
+	    "percentage1": 100,
+	    "percentage2": 66.67,
+	    "percentage3": 50,
+	    "employee_id": 1,
+	    "payday_detail_id": 1
+	},
+	{
+	    "novelty_type": "Otros",
+	    "category": "Devengado",
+
+	    "novelty_value": 100000,
+	    "period": 1,
+	    "applied": 1,
+	    "description": "Bonificacion",
+	    "percentage1": 0,
+	    "percentage2": 0,
+	    "percentage3": 0,
+	    "employee_id": 3,
+	    "payday_detail_id": 3
+	}
+]

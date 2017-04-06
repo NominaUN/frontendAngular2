@@ -1,3 +1,16 @@
-<p>
-  news works!
-</p>
+<h1> news works! </h1>
+<ul>
+	<li *ngFor="let novelty of novelties">
+		<b>novelty_type:</b> {{novelty.novelty_type}} <br>
+		<b>category:</b> {{novelty.category}} <br>
+		<b>novelty_value:</b> {{novelty.novelty_value}} <br>
+		<b>period:</b> {{novelty.period}} <br>
+		<b>applied:</b> {{novelty.applied}} <br>
+		<b>description:</b> {{novelty.description}} <br>
+		<b>percentage1:</b> {{novelty.percentage1}} <br>
+		<b>percentage2:</b> {{novelty.percentage2}} <br>
+		<b>percentage3:</b> {{novelty.percentage3}} <br>
+		<b>employee_id:</b> {{novelty.employee_id}} <br>
+		<b>payday_detail_id:</b> {{novelty.payday_detail_id}} <br>
+	</li>
+</ul>

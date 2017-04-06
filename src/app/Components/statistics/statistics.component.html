@@ -1,3 +1,7 @@
-<p>
-  statistics works!
-</p>
+<h1> statistics works! </h1>
+<ul> 
+	<li *ngFor="let statistic of statistics">
+		<b>name:</b> {{statistic.name}} <br>
+		<b>description:</b> {{statistic.description}}
+	</li>
+</ul>
