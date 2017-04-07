@@ -1,13 +1,172 @@
-<p>
-  employees works!
 
-</p>
- <ul>  
+<body>
 
+  <h3 align="center">Seleccionar un empleado para ver detalles</h3>
+
+
+    <div class="container">
+        <div class="page-header">
+            <h3> </h3></div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Nombre </th>
+                        <th>Cedula </th>
+                        <th>Salario </th>
+                        <th>Cargo </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let employee of employees.employees"
+                    [class.selected]="employee === selectedEmployee"
+                    (click)="onSelect(employee)">
+                        <td>{{employee.first_name}}</td>
+                        <td>{{employee.document_number}}</td>
+                        <td>${{employee.salary}}</td>
+                        <td>{{employee.position_id}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+<div *ngIf="selectedEmployee">
+
+  
+ 
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+        <div class="panel panel-default">
+        <div class="panel panel-primary">
+        
+            <h3 class="text-center">Información Personal</h3>
+        
+        <div class="panel-body">   
+        
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> Nombres: </span>
+                            <h4 align="center">{{selectedEmployee.first_name+" "+selectedEmployee.other_name}}</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span> Apellidos: </span>
+                            <h4 align="center">{{selectedEmployee.last_name+" "+selectedEmployee.second_surname}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-barcode"></span> Cedula: </span>
+                            <h4 align="center">{{selectedEmployee.document_number}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> Fecha Nacimiento: </span>
+                            <h4 align="center">{{selectedEmployee.birthdate}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-home"></span> Dirección: </span>
+                            <h4 align="center">{{selectedEmployee.address}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span> Email: </span>
+                            <h4 align="center">{{selectedEmployee.email}}</h4>
+                        </div>
+                    </div>
+                              
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="col-md-6">
+        <div class="panel panel-default">
+        <div class="panel panel-primary">
+        
+            <h3 class="text-center">Información Laboral</h3>
+        
+        <div class="panel-body">   
+        
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span> Fecha Vinculación: </span>
+                            <h4 align="center">{{selectedEmployee.admission_date}}</h4>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span> Salario: </span>
+                            <h4 align="center">${{selectedEmployee.salary}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-road"></span> Subsidio Transporte: </span>
+                            <h4 align="center">{{selectedEmployee.transport_aid}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span> Salario Integral </span>
+                            <h4 align="center">{{selectedEmployee.integral_salary}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-cog"></span> Area: </span>
+                            <h4 align="center">{{selectedEmployee.area_id}}</h4>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-briefcase"></span> Cargo: </span>
+                            <h4 align="center">{{selectedEmployee.position_id}}</h4>
+                        </div>
+                    </div>
+                              
+      
+      </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+</div>
+
+</div>
+
+
+</body>
+
+
+<!--
     <li *ngFor="let employee of employees.employees">
       {{employee.id}}-{{ employee.first_name }} {{employee.last_name}}---{{employee.email}},
       </li> 
-     
+    --> 
      
     
   </ul>
