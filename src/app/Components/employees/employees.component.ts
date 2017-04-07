@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 import { Observable } from 'rxjs/Rx';
 
@@ -10,16 +10,15 @@ import { Observable } from 'rxjs/Rx';
 })
 export class EmployeesComponent implements OnInit {
 
-  //employees=[{"name": 'Diego'}];
-
-  employees = []
+  employees=[];
 
   constructor(private employeeService: EmployeesService) { }
-
+ 
   ngOnInit() {
-
-   this.employeeService.getEmployees().subscribe(resEmployeeData => this.employees = resEmployeeData);
+   this.employeeService.getEmployees().subscribe(
+     (resEmployeeData => this.employees = resEmployeeData));
 
   }
-
+  
 }
+

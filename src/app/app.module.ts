@@ -16,6 +16,8 @@ import { LiquidationsComponent } from './Components/liquidations/liquidations.co
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { ParametersComponent } from './Components/parameters/parameters.component';
 import { EmployeesService } from './Services/employees/employees.service';
+import { LiquidationsService } from './Services/liquidations/liquidations.service';
+import { ParametersService } from './Services/parameters/parameters.service';
 
 
 
@@ -38,7 +40,7 @@ import { EmployeesService } from './Services/employees/employees.service';
     HttpModule,
     routing
   ],
-  providers: [ appRoutingProviders, EmployeesService],
+  providers: [ appRoutingProviders, EmployeesService,LiquidationsService, ParametersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

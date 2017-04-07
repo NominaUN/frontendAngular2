@@ -1,3 +1,14 @@
 <p>
   liquidations works!
 </p>
+
+
+ <ul>  
+
+    <li *ngFor="let liquidation of liquidations.payday_details">
+      {{liquidation.id}} Dias Trabajados{{ liquidation.worked_days }} Salario Base {{ liquidation.base_value}},
+      </li> 
+     
+     
+    
+  </ul>
