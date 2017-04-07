@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 import { Observable } from 'rxjs/Rx';
-
+import { Employee } from './employee.component';
+import { employees } from './mock-employees';
 
 @Component({
   selector: 'app-employees',
@@ -12,14 +13,19 @@ export class EmployeesComponent implements OnInit {
 
   //employees=[{"name": 'Diego'}];
 
-  employees = []
+  //employees = []
+  employees = employees;
 
   constructor(private employeeService: EmployeesService) { }
 
+/*
   ngOnInit() {
 
    this.employeeService.getEmployees().subscribe(resEmployeeData => this.employees = resEmployeeData);
 
   }
+*/
+
+ngOnInit() {}
 
 }

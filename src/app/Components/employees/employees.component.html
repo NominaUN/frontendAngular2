@@ -1,9 +1,3 @@
-<p>
-  employees works!
-
-</p>
-
-
 
 <body>
     <div class="container">
@@ -20,11 +14,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
-                        <td>Cell</td>
+                    <tr *ngFor="let employee of employees">
+                        <td>{{employee.first_name}}</td>
+                        <td>{{employee.document_number}}</td>
+                        <td>{{employee.salary}}</td>
+                        <td>{{employee.position_id}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -34,8 +28,4 @@
 </body>
 
 
-
-  <ul *ngFor="let employee of employees">  
-    <li>{{employee.name}}</li>
-  </ul>
 
