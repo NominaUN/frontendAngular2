@@ -16,6 +16,11 @@ export class EmployeesComponent implements OnInit {
   //employees = []
   employees = employees;
 
+  selectedEmployee: Employee;
+  onSelect(employee: Employee): void {
+    this.selectedEmployee = employee;
+  }
+
   constructor(private employeeService: EmployeesService) { }
 
 /*

@@ -44,3 +44,10 @@ html {
   -moz-box-sizing:border-box;
   box-sizing:border-box;
 }
+
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
