@@ -15,7 +15,7 @@ import { NewsComponent } from './Components/news/news.component';
 import { LiquidationsComponent } from './Components/liquidations/liquidations.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { ParametersComponent } from './Components/parameters/parameters.component';
-import { EmployeesService } from './Services/employees.service';
+import { EmployeesService } from './Services/employees/employees.service';
 
 
 
