@@ -10,7 +10,6 @@ export class EmployeesService {
 
 
   
-  test = [{"name":"diego"}];
 
   constructor(private http: Http) { 
 
