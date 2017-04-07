@@ -51,3 +51,50 @@ tr:hover td {
   border-top: 1px solid #22262e;
   border-bottom: 1px solid #22262e;
 }
+
+
+
+
+
+.form-signin {
+    max-width: 280px;
+    padding: 15px;
+    margin:100px;
+    margin-top:20px;
+    border: #22262e;
+  }
+.panel-default {
+opacity: 0.8;
+/*margin-top:30px;*/
+}
+.input-group-addon
+{
+    background-color: #474c5b;
+    border-color: #22262e;
+    color: rgb(255, 255, 255);
+}
+.form-control:focus
+{
+    background-color: #474c5b;
+    border-color: #22262e;
+    color: rgb(255, 255, 255);
+}
+
+h4 {
+      position: relative;
+      left: 0;
+      background-color: #EEE;
+      margin: .5em;
+      padding: .3em 0;
+      height: 1.6em;
+      border-radius: 4px;
+}
+
+.form-group {
+ 
+      position: relative;
+      left: 0;
+      background-color: #EEE;
+      
+      border-radius: 4px;
+}
