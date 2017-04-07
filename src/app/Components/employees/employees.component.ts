@@ -8,14 +8,9 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
-
-
+  
   employees=[];
-
-
   constructor(private employeeService: EmployeesService) { }
-
-
   ngOnInit() {
    this.employeeService.getEmployees().subscribe(
      (resEmployeeData => this.employees = resEmployeeData));
