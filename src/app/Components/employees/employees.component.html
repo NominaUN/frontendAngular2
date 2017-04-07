@@ -1,6 +1,8 @@
 
 <body>
 
+  <h3 align="center">Seleccionar un empleado para ver detalles</h3>
+
 
     <div class="container">
         <div class="page-header">
@@ -21,7 +23,7 @@
                     (click)="onSelect(employee)">
                         <td>{{employee.first_name}}</td>
                         <td>{{employee.document_number}}</td>
-                        <td>{{employee.salary}}</td>
+                        <td>${{employee.salary}}</td>
                         <td>{{employee.position_id}}</td>
                     </tr>
                 </tbody>
@@ -111,7 +113,7 @@
                     <div class="form-group">
                         <div class="input-group">
                             <span class="input-group-addon"><span class="glyphicon glyphicon-usd"></span> Salario: </span>
-                            <h4 align="center">{{selectedEmployee.salary}}</h4>
+                            <h4 align="center">${{selectedEmployee.salary}}</h4>
                         </div>
                     </div>
 
