@@ -1,14 +1,9 @@
 <p>
-  liquidations works!
+    liquidations works!
 </p>
-
-
- <ul>  
-
+<pre>{{ liquidations | json }}</pre>
+<ul>
     <li *ngFor="let liquidation of liquidations.payday_details">
-      {{liquidation.id}} Dias Trabajados{{ liquidation.worked_days }} Salario Base {{ liquidation.base_value}},
-      </li> 
-     
-     
-    
-  </ul>
+        {{liquidation.id}} Dias Trabajados{{ liquidation.worked_days }} Salario Base {{ liquidation.base_value}},
+    </li>
+</ul>

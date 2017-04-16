@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
+import { StatisticsService } from  '../../Services/statistics/statistics.service';
 
 @Component({
   selector: 'app-statistics',
@@ -9,12 +9,12 @@ import { Http } from '@angular/http';
 export class StatisticsComponent implements OnInit {
   statistics;
   
-  constructor(private http: Http) {
-    http.get('/src/app/jsons/statistics.json')
-        .subscribe(res => this.statistics = res.json());
-  }
+  constructor(private statisticsService: StatisticsService) {}
 
   ngOnInit() {
+     this.statisticsService.getStatistics().subscribe(
+     (resStatisticsData => this.statistics = resStatisticsData)
+     );
   }
 
 }

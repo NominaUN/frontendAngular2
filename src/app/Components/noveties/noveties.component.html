@@ -1,6 +1,7 @@
 <h1> news works! </h1>
+{{ noveties | json }}
 <ul>
-	<li *ngFor="let novelty of novelties">
+	<li *ngFor="let novelty of noveties">
 		<b>novelty_type:</b> {{novelty.novelty_type}} <br>
 		<b>category:</b> {{novelty.category}} <br>
 		<b>novelty_value:</b> {{novelty.novelty_value}} <br>
