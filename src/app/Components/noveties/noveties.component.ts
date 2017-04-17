@@ -9,7 +9,7 @@ import { NovetiesService } from  '../../Services/noveties/noveties.service';
 })
 export class NovetiesComponent implements OnInit {
 
- noveties=[{'asd':'asd'}];
+ noveties=[];
 
   constructor(private novetiesService: NovetiesService) {
   }
