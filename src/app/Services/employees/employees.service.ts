@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class EmployeesService {
 
-  private url : string = "http://localhost:3000/employees.json";
+  private url : string = "http://localhost:3000/api/v1/employees.json";
 
   constructor(private http: Http) { }
 

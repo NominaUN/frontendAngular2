@@ -18,6 +18,13 @@ import { StatisticsComponent } from './Components/statistics/statistics.componen
 import { ParametersComponent } from './Components/parameters/parameters.component';
 
 
+
+
+
+
+
+
+
 const routes: Routes= [
     { path:'', component: LoginComponent },
     { path:'aboutus', component: AboutusComponent},
