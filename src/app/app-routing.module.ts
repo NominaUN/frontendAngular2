@@ -15,15 +15,11 @@ import { NovetiesComponent } from './Components/noveties/noveties.component';
 import { LiquidationsComponent } from './Components/liquidations/liquidations.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { ParametersComponent } from './Components/parameters/parameters.component';
-<<<<<<< HEAD
 import { AreasComponent } from './Components/areas/areas.component';
 import { ConceptsComponent } from './Components/concepts/concepts.component';
 import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
-=======
-
->>>>>>> 008041e878d875724ee71221534dad2c61de61f3
 
 const routes: Routes= [
     { path:'', component: LoginComponent },
