@@ -17,6 +17,10 @@ export class EmployeesComponent implements OnInit {
 
   }
 
+  onSelect(employee:any):void {
+  	console.log(employee);
+  }
+
   
 
 }

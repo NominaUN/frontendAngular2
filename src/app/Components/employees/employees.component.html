@@ -1,12 +1,11 @@
 
 <body>
 
-  <h3 align="center">Seleccionar un empleado para ver detalles</h3>
+  <h3 align="center">Empleados</h3>
 
 
     <div class="container">
-        <div class="page-header">
-            <h3> </h3></div>
+        <div class="page-header"> <h3>Seleccionar un empleado para ver detalles</h3></div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -18,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let employee of employees.data"
+                    <tr *ngFor="let employee of employees.employees"
                     [class.selected]="employee === selectedEmployee"
                     (click)="onSelect(employee)">
                         <td>{{employee.first_name}}</td>

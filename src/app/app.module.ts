@@ -16,11 +16,14 @@ import { PositionsService } from  './Services/positions/positions.service';
 
 import { RoutingComponent, AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EmployeeDetailsComponent } from './Components/employee-details/employee-details.component';
 
 @NgModule({
   declarations: [
+<<<<<<< HEAD
     AppComponent, 
-	RoutingComponent 
+	RoutingComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
