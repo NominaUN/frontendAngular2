@@ -1,9 +1,7 @@
-
-import {ModuleWithProviders} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import { ModuleWithProviders } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { NgModule } from '@angular/core';
-
 
 ///Componentes///
 import { AppComponent } from './app.component';
@@ -16,14 +14,11 @@ import { NovetiesComponent } from './Components/noveties/noveties.component';
 import { LiquidationsComponent } from './Components/liquidations/liquidations.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
 import { ParametersComponent } from './Components/parameters/parameters.component';
-
-
-
-
-
-
-
-
+import { AreasComponent } from './Components/areas/areas.component';
+import { ConceptsComponent } from './Components/concepts/concepts.component';
+import { FondsComponent } from './Components/fonds/fonds.component';
+import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
+import { PositionsComponent } from './Components/positions/positions.component';
 
 const routes: Routes= [
     { path:'', component: LoginComponent },
@@ -33,7 +28,12 @@ const routes: Routes= [
     { path:'noveties', component: NovetiesComponent },
     { path:'liquidations', component: LiquidationsComponent },
     { path:'statistics', component: StatisticsComponent },
-    { path:'parameters', component: ParametersComponent }
+    { path:'parameters', component: ParametersComponent },
+    { path:'areas', component: AreasComponent },
+    { path:'concepts', component: ConceptsComponent },
+    { path:'fonds', component: FondsComponent },
+    { path:'general-parameters', component: GeneralParametersComponent },
+    { path:'positions', component: PositionsComponent }
 ];
 
 @NgModule({
@@ -43,7 +43,7 @@ const routes: Routes= [
 
 export class AppRoutingModule {}
 
-export const routingComponent = [    
+export const RoutingComponent = [    
     
     LoginComponent,
     AboutusComponent,
@@ -53,4 +53,11 @@ export const routingComponent = [
     NovetiesComponent,
     LiquidationsComponent,
     StatisticsComponent,
-    ParametersComponent]
+    ParametersComponent,
+	AreasComponent,
+	ConceptsComponent,
+	FondsComponent,
+	GeneralParametersComponent,
+	PositionsComponent
+
+]
