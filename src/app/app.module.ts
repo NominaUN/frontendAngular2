@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { EmployeesService } from './Services/employees/employees.service';
 import { LiquidationsService } from './Services/liquidations/liquidations.service';
 import { ParametersService } from './Services/parameters/parameters.service';
-import { NovetiesService } from  './Services/noveties/noveties.service';
+import { NoveltiesService } from  './Services/novelties/novelties.service';
 import { StatisticsService } from  './Services/statistics/statistics.service';
 import { AreasService } from './Services/areas/areas.service';
 import { ConceptsService } from './Services/concepts/concepts.service';
@@ -34,7 +34,7 @@ import { EmployeeDetailsComponent } from './Components/employee-details/employee
 	EmployeesService,
 	LiquidationsService,
 	ParametersService,
-	NovetiesService,
+	NoveltiesService,
 	StatisticsService,
 	AreasService,
 	ConceptsService,
