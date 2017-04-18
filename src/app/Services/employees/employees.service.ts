@@ -13,5 +13,13 @@ export class EmployeesService {
           return this.http.get(this.url).map((response:Response) => response.json());
         }
 
+    getEmployeeById(id:number){
+    	return this.http.get(this.url).map(
+    		(response:Response) => {
+    			let employees = response.json();
+    			return employees.employees.find( (employee) => +employee.id == id  )
+    	});
+      }
+
 
 }

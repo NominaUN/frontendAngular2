@@ -11,11 +11,14 @@ import { StatisticsService } from  './Services/statistics/statistics.service';
 
 import { routingComponent, AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { EmployeeDetailsComponent } from './Components/employee-details/employee-details.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent, routingComponent
+    AppComponent,
+    routingComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
