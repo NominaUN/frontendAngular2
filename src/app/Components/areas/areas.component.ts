@@ -20,6 +20,10 @@ export class AreasComponent implements OnInit {
 
     
   }
+  
+  onSelect(area:any):void {
+  	console.log(area);
+  }
 
 
 }

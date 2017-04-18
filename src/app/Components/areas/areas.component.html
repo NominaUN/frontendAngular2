@@ -1,8 +1,29 @@
-<p>
-  areas works!
-</p>
-<ul>
-	<li *ngFor="let area of areas.data">
-		{{area.area_name}} <br>
-	</li>
-</ul>
+<body>
+<h1>Areas de la Empresa</h1>
+<form>
+     <div class="form-group">
+         <label for="inputAreaName">Nombre del Area:</label>
+         <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí">
+     </div>
+     <button type="submit" class="btn btn-primary">Crear</button>
+	 <button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
+<div class="container">
+	<div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
+	<div id="areaTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nombre del Area</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let area of areas.data" [class.selected]="area === selectedArea" (click)="onSelect(area)">
+					<td>{{area.area_name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div *ngIf="selectedArea">
