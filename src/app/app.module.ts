@@ -20,7 +20,6 @@ import { EmployeeDetailsComponent } from './Components/employee-details/employee
 
 @NgModule({
   declarations: [
-<<<<<<< HEAD
     AppComponent, 
 	RoutingComponent,
     EmployeeDetailsComponent
