@@ -1,19 +1,27 @@
 <!-- <h1>NOMINA UN</h1> <a [routerLink]="['/aboutus']">AboutUs</a> -->
 
 <body>
- <nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" id="header">
         <div class="container-fluid">
-            <div class="navbar-header"><a [routerLink]="['']" class="navbar-brand navbar-link">NominaUN </a>
-                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            <div class="navbar-header"><a [routerLink]="['']" class="navbar-brand navbar-link">NominaUN</a>
+                <button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
             </div>
-            <div class="collapse navbar-collapse" id="navcol-1">
+            <div class="collapse navbar-collapse" id="menu">
                 <ul class="nav navbar-nav navbar">
-                    <li role="presentation"><a [routerLink]="['/']">Ingreso</a></li>
+					<li role="presentation"><a [routerLink]="['']">Inicio</a></li>
+					<li role="presentation"><a [routerLink]="['/parameters']">Parámetros</a>
+						<ul>
+							<li role="presentation"><a [routerLink]="['/general-parameters']">Parámetros Generales</a></li>
+							<li role="presentation"><a [routerLink]="['/areas']">Areas</a></li>
+							<li role="presentation"><a [routerLink]="['/positions']">Cargos</a></li>
+							<li role="presentation"><a [routerLink]="['/fonds']">Fondos</a></li>
+							<li role="presentation"><a [routerLink]="['/concepts']">Conceptos</a></li>
+						</ul>
+					</li>
                     <li role="presentation"><a [routerLink]="['/employees']">Empleados</a></li>
-                    <li role="presentation"><a [routerLink]="['/noveties']">Novedades</a></li>
-                    <li role="presentation"><a [routerLink]="['/liquidations']">Liquidaciónes</a></li>
+                    <li role="presentation"><a [routerLink]="['/novelties']">Novedades</a></li>
+                    <li role="presentation"><a [routerLink]="['/liquidations']">Liquidaciones</a></li>
                     <li role="presentation"><a [routerLink]="['/statistics']">Estadísticas</a></li>
-                    <li role="presentation"><a [routerLink]="['/parameters']">Parameters</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li role="presentation"><a [routerLink]="['/aboutus']">About Us</a></li>

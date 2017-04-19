@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NovetiesComponent } from './noveties.component';
+import { GeneralParametersComponent } from './general-parameters.component';
 
-describe('NovetiesComponent', () => {
-  let component: NovetiesComponent;
-  let fixture: ComponentFixture<NovetiesComponent>;
+describe('GeneralParametersComponent', () => {
+  let component: GeneralParametersComponent;
+  let fixture: ComponentFixture<GeneralParametersComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NovetiesComponent ]
+      declarations: [ GeneralParametersComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NovetiesComponent);
+    fixture = TestBed.createComponent(GeneralParametersComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
