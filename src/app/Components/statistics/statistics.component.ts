@@ -7,7 +7,8 @@ import { StatisticsService } from  '../../Services/statistics/statistics.service
   styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
-  statistics;
+	
+  statistics=[];
   
   constructor(private statisticsService: StatisticsService) {}
 

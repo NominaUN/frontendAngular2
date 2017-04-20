@@ -1,17 +1,62 @@
-<h1> novelties works! </h1>
-{{ novelties | json }}
-<ul>
-	<li *ngFor="let novelty of novelties.data">
-		<b>novelty_type:</b> {{novelty.novelty_type}} <br>
-		<b>category:</b> {{novelty.category}} <br>
-		<b>novelty_value:</b> {{novelty.novelty_value}} <br>
-		<b>period:</b> {{novelty.period}} <br>
-		<b>applied:</b> {{novelty.applied}} <br>
-		<b>description:</b> {{novelty.description}} <br>
-		<b>percentage1:</b> {{novelty.percentage1}} <br>
-		<b>percentage2:</b> {{novelty.percentage2}} <br>
-		<b>percentage3:</b> {{novelty.percentage3}} <br>
-		<b>employee_id:</b> {{novelty.employee_id}} <br>
-		<b>payday_detail_id:</b> {{novelty.payday_detail_id}} <br>
-	</li>
-</ul>
+<h1>Novedades de la Empresa</h1>
+<div class="container" id="noveltyHeader">
+	<form>
+		<div class="form-group">
+			<br>
+			<label for="inputType">Tipo de novedad:</label>
+			<select id="typeNovelty">
+ 				<option>Devengado</option>
+				<option>Deducción</option>
+			</select><br>
+			<label for="inputCategory">Categoria de novedad:</label>
+			<select id="categoryNovelty">
+ 				<option>Vacaciones</option>
+				<option>Inactividad</option>
+				<option>Hora Extra</option>
+				<option>Otros</option>
+			</select><br>
+			<label for="inputValue">Valor:</label>
+			<input id="valueNovelty" type="number" class="form-control" placeholder="Ingrese el valor aquí"><br>
+			<label for="inputPeriod">Cuántas veces:</label>
+			<input id="periodNovelty" type="number" class="form-control"><br>
+			<label for="inputApplied">Aplicadas:</label>
+			<input id="appliedNovelty" type="number" class="form-control"><br>
+			<label for="inputDesc">Razón Social del fondo:</label>
+			<input id="descNoveltyFond" type="text" class="form-control" placeholder="Para que es"><br>
+			<label for="inputEmployee">Empleado:</label>
+			<select id="employeeNovelty">
+ 				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+				<option>5</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Crear</button>
+		<button type="submit" class="btn btn-danger">Eliminar</button>
+	</form>
+</div>
+<div class="page-header"> <h3>Seleccionar una novedad para ver detalles</h3></div>
+<div class="container" id="noveltyFooter">
+	<div id="noveltyTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Tipo</th>
+					<th>Categoria</th>
+					<th>Valor</th>
+					<th>Empleado</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let novelty of novelties.data" [class.selected]="novelty === selectedNovelty" (click)="onSelect(novelty)">
+					<td>{{novelty.novelty_type}}</td>
+					<td>{{novelty.category}}</td>
+					<td>{{novelty.novelty_value}}</td>
+					<td>{{novelty.employee.first_name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div *ngIf="selectedNovelty">
