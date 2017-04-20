@@ -1,3 +1,29 @@
-<p>
-  positions works!
-</p>
+<body>
+<h1>Cargos de la Empresa</h1>
+<form>
+     <div class="form-group">
+         <label for="inputPositionName">Nombre del Cargo:</label>
+         <input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí">
+     </div>
+     <button type="submit" class="btn btn-primary">Crear</button>
+	 <button type="submit" class="btn btn-danger">Eliminar</button>
+</form>
+<div class="container">
+	<div class="page-header"> <h3>Seleccionar un cargo para ver detalles</h3></div>
+	<div id="positionTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nombre del Cargo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let position of positions.data" [class.selected]="position === selectedPositions" (click)="onSelect(position)">
+					<td>{{position.position_name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div *ngIf="selectedArea">
