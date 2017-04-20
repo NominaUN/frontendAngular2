@@ -20,6 +20,7 @@ import { ConceptsComponent } from './Components/concepts/concepts.component';
 import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
+import { NotfoundComponent } from './Components/notfound/notfound.component';
 
 const routes: Routes= [
     { path:'', component: LoginComponent },
@@ -35,7 +36,8 @@ const routes: Routes= [
     { path:'concepts', component: ConceptsComponent },
     { path:'fonds', component: FondsComponent },
     { path:'general-parameters', component: GeneralParametersComponent },
-    { path:'positions', component: PositionsComponent }
+    { path:'positions', component: PositionsComponent },
+    { path: '**', component: NotfoundComponent}
 ];
 
 @NgModule({
@@ -60,6 +62,7 @@ export const RoutingComponent = [
 	ConceptsComponent,
 	FondsComponent,
 	GeneralParametersComponent,
-	PositionsComponent
+	PositionsComponent,
+    NotfoundComponent
 
 ]
