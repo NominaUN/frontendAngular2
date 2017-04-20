@@ -1,6 +1,7 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 import { Observable } from 'rxjs/Rx';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employees',
@@ -10,7 +11,11 @@ import { Observable } from 'rxjs/Rx';
 export class EmployeesComponent implements OnInit {
   
   employees=[];
-  constructor(private employeeService: EmployeesService) { }
+  constructor(
+    private employeeService: EmployeesService,
+    private router: Router
+  ) { }
+
   ngOnInit() {
    this.employeeService.getEmployees().subscribe(
      (resEmployeeData => this.employees = resEmployeeData));
@@ -18,10 +23,10 @@ export class EmployeesComponent implements OnInit {
   }
 
   onSelect(employee:any):void {
-  	console.log(employee);
+    let link = ['/employee', employee.id];
+    this.router.navigate(link);
   }
 
-  
 
 }
 
