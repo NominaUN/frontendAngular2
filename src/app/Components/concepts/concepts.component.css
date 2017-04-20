@@ -12,11 +12,11 @@ body {
   background-color:#ffffff;
 }
 
-#conceptGroup {
-    border: 15px;
+#conceptHeader {
+    border: 5px solid;
 }
 
-#conceptTable {
+#conceptFooter {
      overflow:scroll;
      height:300px;
      width:100%;

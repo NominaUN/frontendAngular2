@@ -1,3 +1,28 @@
-<p>
-  general-parameters works!
-</p>
+<h1>Parámetros Generales de la Empresa</h1>
+<div class="container" id="general">
+	<form>
+		<div class="form-group">
+			<br>
+			<label for="inputRound">Redondeo:</label>
+			<select id="roundGeneral" value={{general.round_type}}>
+ 				<option>Unidades</option>
+				<option>Decenas</option>
+				<option>Centenas</option>
+				<option>Miles</option>
+			</select><br>
+			<label for="inputLaboral">Días Laborales:</label>
+			<input id="laboralGeneral" type="number" class="form-control" value={{general.laboral_days}}><br>
+			<label for="inputPayday">Tipo de Liquidación:</label>
+			<select id="roundGeneral" value={{general.payday}}>
+ 				<option>Quincenal</option>
+				<option>Mensual</option>
+			</select><br>
+			<label for="inputIntegral">Tipo del fondo:</label>
+			<select id="integralGeneral" value={{general.integral_base}}>
+ 				<option>70%</option>
+				<option>1.3</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Guardar</button>
+	</form>
+</div>

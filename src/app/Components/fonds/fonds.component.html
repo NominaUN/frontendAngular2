@@ -1,3 +1,52 @@
-<p>
-  fonds works!
-</p>
+<h1>Fondos de la Empresa</h1>
+<div class="container" id="fondHeader">
+	<form>
+		<div class="form-group">
+			<br>
+			<label for="inputFondDocType">Tipo Documento del fondo:</label>
+			<select id="docTypeFond">
+ 				<option>C.C.</option>
+				<option>C.E.</option>
+				<option>NIT.</option>
+			</select><br>
+			<label for="inputFondDocNumber">Número Documento del fondo:</label>
+			<input id="docNumberFond" type="number" class="form-control" placeholder="Ingrese el documento del fondo aquí"><br>
+			<label for="inputFondName">Razón Social del fondo:</label>
+			<input id="nameFond" type="text" class="form-control" placeholder="Ingrese el nombre del fondo aquí"><br>
+			<label for="inputFondType">Tipo del fondo:</label>
+			<select id="typeFond">
+ 				<option>Aseguradora de Riesgos Laborales</option>
+				<option>Caja de Compensación</option>
+				<option>Entidad Promotora de Salud</option>
+				<option>Fondo de Cesantías</option>
+				<option>Fondo de Pensiones</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Crear</button>
+		<button type="submit" class="btn btn-danger">Eliminar</button>
+	</form>
+</div>
+<div class="page-header"> <h3>Seleccionar un fondo para ver detalles</h3></div>
+<div class="container" id="fondFooter">
+	<div id="fondTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Tipo Doc.</th>
+					<th>Número Doc.</th>
+					<th>Razón Social</th>
+					<th>Tipo</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let fond of fonds.data" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
+					<td>{{fond.document_type}}</td>
+					<td>{{fond.document_number}}</td>
+					<td>{{fond.business_name}}</td>
+					<td>{{fond.fond_type}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div *ngIf="selectedFond">

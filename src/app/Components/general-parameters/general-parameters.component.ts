@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneralParametersService } from  '../../Services/general-parameters/general-parameters.service';
 
 @Component({
   selector: 'app-general-parameters',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GeneralParametersComponent implements OnInit {
 
-  constructor() { }
+  generals=[];
+
+  constructor(private generalService: GeneralParametersService) {
+  }
 
   ngOnInit() {
+     this.generalService.getGenerals().subscribe(
+     (resGeneralData => this.generals = resGeneralData)
+     );
+
+    
+  }
+  
+  onSelect(general:any):void {
+  	console.log(general);
   }
 
 }

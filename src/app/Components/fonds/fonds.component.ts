@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FondsService } from  '../../Services/fonds/fonds.service';
 
 @Component({
   selector: 'app-fonds',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FondsComponent implements OnInit {
 
-  constructor() { }
+  fonds=[];
+
+  constructor(private fondService: FondsService) {
+  }
 
   ngOnInit() {
+     this.fondService.getFonds().subscribe(
+     (resFondData => this.fonds = resFondData)
+     );
+
+    
+  }
+  
+  onSelect(fond:any):void {
+  	console.log(fond);
   }
 
 }
