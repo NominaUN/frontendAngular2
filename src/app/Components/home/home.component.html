@@ -19,17 +19,19 @@
     </nav>
 
     <div class="login-dark">
-        <form method="post">
+        <form #signInForm="ngForm" (ngSubmit)="onSubmit()">
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="glyphicon glyphicon-user"></i></div>
             <div class="form-group">
-                <input type="email" name="email" placeholder="Email" class="form-control" />
+                <input type="email" name="email" placeholder="Email" class="form-control" required
+					[(ngModel)]="signInData.email"/>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Password" class="form-control" />
+                <input type="password" name="password" placeholder="Password" class="form-control" required [(ngModel)]="signInData.password"
+					name="password"/>
             </div>
             <div class="form-group">
-                <button class="btn btn-primary btn-block" type="submit">Log In</button>
+                <button class="btn btn-primary btn-block" type="submit" [disabled]="!signInForm.form.valid">Log In</button>
             </div><a [routerLink]="['/reset']" class="forgot">Forgot your email or password?</a></form>
     </div>
      <div class="container" id="resumen">

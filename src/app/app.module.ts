@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { Angular2TokenService, A2tUiModule } from 'angular2-token';
+
+
 import { EmployeesService } from './Services/employees/employees.service';
 import { LiquidationsService } from './Services/liquidations/liquidations.service';
 import { ParametersService } from './Services/parameters/parameters.service';
@@ -40,7 +43,9 @@ import { EmployeeDetailsComponent } from './Components/employee-details/employee
   	ConceptsService,
   	FondsService,
   	GeneralParametersService,
-  	PositionsService
+  	PositionsService, 
+    Angular2TokenService, 
+    A2tUiModule
   ],
   bootstrap: [AppComponent]
 })
