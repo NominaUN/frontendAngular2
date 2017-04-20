@@ -34,7 +34,7 @@ export class AreasComponent implements OnInit {
 	if (value === "setArea") {
 		var nombre = (<HTMLInputElement>document.getElementById("nameArea")).value;
 		this.areaService.setAreas(nombre);
+		location.reload();
 	}
-	this.loadAreas();
   }
 }
