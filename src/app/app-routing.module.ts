@@ -1,5 +1,7 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { Angular2TokenService, A2tUiModule } from 'angular2-token';
+
 
 import { NgModule } from '@angular/core';
 

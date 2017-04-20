@@ -16,6 +16,10 @@ import { ConceptsService } from './Services/concepts/concepts.service';
 import { FondsService } from './Services/fonds/fonds.service';
 import { GeneralParametersService } from  './Services/general-parameters/general-parameters.service';
 import { PositionsService } from  './Services/positions/positions.service';
+import { AuthService } from  './Services/authentication/auth.service';
+
+
+
 
 import { RoutingComponent, AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +35,8 @@ import { EmployeeDetailsComponent } from './Components/employee-details/employee
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    A2tUiModule
   ],
   providers: [ 
   	EmployeesService,
@@ -44,8 +49,8 @@ import { EmployeeDetailsComponent } from './Components/employee-details/employee
   	FondsService,
   	GeneralParametersService,
   	PositionsService, 
-    Angular2TokenService, 
-    A2tUiModule
+    Angular2TokenService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
