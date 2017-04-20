@@ -16,8 +16,9 @@ export class EmployeesService {
     getEmployeeById(id:number){
     	return this.http.get(this.url).map(
     		(response:Response) => {
-    			let employees = response.json();
-    			return employees.employees.find( (employee) => +employee.id == id  )
+    			let employees = response.json().data;
+          console.log(employees);
+    			return employees.find( (employee) => +employee.id == id  )
     	});
       }
 

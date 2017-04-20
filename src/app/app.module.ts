@@ -31,16 +31,16 @@ import { EmployeeDetailsComponent } from './Components/employee-details/employee
     AppRoutingModule
   ],
   providers: [ 
-	EmployeesService,
-	LiquidationsService,
-	ParametersService,
-	NoveltiesService,
-	StatisticsService,
-	AreasService,
-	ConceptsService,
-	FondsService,
-	GeneralParametersService,
-	PositionsService
+  	EmployeesService,
+  	LiquidationsService,
+  	ParametersService,
+  	NoveltiesService,
+  	StatisticsService,
+  	AreasService,
+  	ConceptsService,
+  	FondsService,
+  	GeneralParametersService,
+  	PositionsService
   ],
   bootstrap: [AppComponent]
 })
