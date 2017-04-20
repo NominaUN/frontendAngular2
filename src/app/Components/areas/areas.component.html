@@ -5,8 +5,8 @@
          <label for="inputAreaName">Nombre del Area:</label>
          <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí">
      </div>
-     <button type="submit" class="btn btn-primary">Crear</button>
-	 <button type="submit" class="btn btn-danger">Eliminar</button>
+     <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setArea">Guardar</button>
+	 <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button>
 </form>
 <div class="container">
 	<div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
