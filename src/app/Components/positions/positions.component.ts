@@ -12,17 +12,30 @@ export class PositionsComponent implements OnInit {
 
   constructor(private positionService: PositionsService) {
   }
-
+  
+  loadPositions(){
+	this.positionService.getPositions().subscribe(
+		(resPositionData => this.positions = resPositionData)
+    );
+  }
+  
   ngOnInit() {
-     this.positionService.getPositions().subscribe(
-     (resPositionData => this.positions = resPositionData)
-     );
-
-    
+    this.loadPositions();   
   }
   
   onSelect(position:any):void {
   	console.log(position);
   }
+
+  onClick(event){
+	var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+	if (value === "setPosition") {
+		var nombre = (<HTMLInputElement>document.getElementById("namePosition")).value;
+		this.positionService.setPositions(nombre);
+		location.reload();
+	}
+  }   
 
 }

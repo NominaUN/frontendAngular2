@@ -8,8 +8,8 @@
 			<label for="inputConceptCategory">Categoria del Concepto:</label>
 			<input id="categoryConcept" type="text" class="form-control" placeholder="Ingrese la categoría del concepto aquí"><br>
 		</div>
-		<button type="submit" class="btn btn-primary">Crear</button>
-		<button type="submit" class="btn btn-danger">Eliminar</button>
+		<button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setConcept">Guardar</button>
+		<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteConcept">Eliminar</button>
 	</form>
 </div>
 <div class="page-header"> <h3>Seleccionar un concepto para ver detalles</h3></div>

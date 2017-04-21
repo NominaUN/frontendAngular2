@@ -12,17 +12,33 @@ export class FondsComponent implements OnInit {
 
   constructor(private fondService: FondsService) {
   }
-
+  
+  loadFonds(){
+	this.fondService.getFonds().subscribe(
+		(resFondData => this.fonds = resFondData)
+    );
+  }
+  
   ngOnInit() {
-     this.fondService.getFonds().subscribe(
-     (resFondData => this.fonds = resFondData)
-     );
-
-    
+    this.loadFonds();   
   }
   
   onSelect(fond:any):void {
   	console.log(fond);
+  }
+
+  onClick(event){
+	var target = event.target || event.srcElement || event.currentTarget;
+    var idAttr = target.attributes.id;
+    var value = idAttr.nodeValue;
+	if (value === "setFond") {
+		var tipodoc = "NIT.";
+		var numero = (<HTMLInputElement>document.getElementById("docNumberFond")).value;
+		var nombre = (<HTMLInputElement>document.getElementById("nameFond")).value;
+		var category = (<HTMLInputElement>document.getElementById("typeFond")).value;
+		this.fondService.setFonds(tipodoc, numero, nombre, category);
+		location.reload();
+	}
   }
 
 }

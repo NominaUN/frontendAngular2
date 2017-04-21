@@ -3,12 +3,6 @@
 	<form>
 		<div class="form-group">
 			<br>
-			<label for="inputFondDocType">Tipo Documento del fondo:</label>
-			<select id="docTypeFond">
- 				<option>C.C.</option>
-				<option>C.E.</option>
-				<option>NIT.</option>
-			</select><br>
 			<label for="inputFondDocNumber">Número Documento del fondo:</label>
 			<input id="docNumberFond" type="number" class="form-control" placeholder="Ingrese el documento del fondo aquí"><br>
 			<label for="inputFondName">Razón Social del fondo:</label>
@@ -22,8 +16,8 @@
 				<option>Fondo de Pensiones</option>
 			</select>
 		</div>
-		<button type="submit" class="btn btn-primary">Crear</button>
-		<button type="submit" class="btn btn-danger">Eliminar</button>
+		<button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setFond">Guardar</button>
+		<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteFond">Eliminar</button>
 	</form>
 </div>
 <div class="page-header"> <h3>Seleccionar un fondo para ver detalles</h3></div>
