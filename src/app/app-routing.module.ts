@@ -13,6 +13,7 @@ import { ResetComponent } from './Components/reset/reset.component';
 import { BarComponent } from './Components/bar/bar.component';
 import { EmployeesComponent } from './Components/employees/employees.component';
 import { EmployeeDetailsComponent } from './Components/employee-details/employee-details.component';
+import { EmployeeNewComponent } from './Components/employee-details/employee-new.component';
 import { NoveltiesComponent } from './Components/novelties/novelties.component';
 import { LiquidationsComponent } from './Components/liquidations/liquidations.component';
 import { StatisticsComponent } from './Components/statistics/statistics.component';
@@ -30,6 +31,7 @@ const routes: Routes= [
     { path:'reset', component: ResetComponent },
     { path:'employees', component: EmployeesComponent },
     { path:'employee/:id', component: EmployeeDetailsComponent },
+    { path:'employeenew', component: EmployeeNewComponent },
     { path:'novelties', component: NoveltiesComponent },
     { path:'liquidations', component: LiquidationsComponent },
     { path:'statistics', component: StatisticsComponent },

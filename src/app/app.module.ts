@@ -18,18 +18,18 @@ import { GeneralParametersService } from  './Services/general-parameters/general
 import { PositionsService } from  './Services/positions/positions.service';
 import { AuthService } from  './Services/authentication/auth.service';
 
-
-
-
 import { RoutingComponent, AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { EmployeeDetailsComponent } from './Components/employee-details/employee-details.component';
+import { EmployeeNewComponent } from './Components/employee-details/employee-new.component';
+
 
 @NgModule({
   declarations: [
     AppComponent, 
-	RoutingComponent,
-    EmployeeDetailsComponent
+	  RoutingComponent,
+    EmployeeDetailsComponent,
+    EmployeeNewComponent
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,13 @@
 
 
     <div class="container">
-        <div class="page-header"> <h3>Seleccionar un empleado para ver detalles</h3></div>
+        <div class="page-header">
+            <h3>Seleccionar un empleado para ver detalles</h3>
+            <div>
+                <button type="button" class="btn btn-primary" (click)="createEmployee()">Crear</button>
+                <button type="button" class="btn btn-danger" disabled="disabled">Eliminar</button>
+            </div>
+        </div>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>

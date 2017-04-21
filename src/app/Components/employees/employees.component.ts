@@ -27,6 +27,12 @@ export class EmployeesComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  createEmployee(){
+    let link = ['/employeenew'];
+    this.router.navigate(link);
+
+  }
+
 
 }
 

@@ -31,12 +31,12 @@ export class ConceptsComponent implements OnInit {
 	var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     var value = idAttr.nodeValue;
-	if (value === "setConcept") {
-		var nombre = (<HTMLInputElement>document.getElementById("nameConcept")).value;
-		var category = (<HTMLInputElement>document.getElementById("categoryConcept")).value;
-		this.conceptService.setConcepts(nombre, category);
-		location.reload();
-	}
+  	if (value === "setConcept") {
+  		var nombre = (<HTMLInputElement>document.getElementById("nameConcept")).value;
+  		var category = (<HTMLInputElement>document.getElementById("categoryConcept")).value;
+  		this.conceptService.setConcepts(nombre, category);
+  		location.reload();
+  	}
   }
 
 }
