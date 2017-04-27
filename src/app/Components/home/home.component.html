@@ -7,7 +7,7 @@
  <!--<p><b>Signed In?</b> {{_tokenService.currentUserData != null}} </p>-->
 
    
-  
+
     <div class="login-dark">
         <form #signInForm="ngForm" (ngSubmit)="onSubmit()">
             
@@ -23,19 +23,25 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" [disabled]="!signInForm.form.valid">Log In</button>
-                <button class="btn btn-primary" (click)="signUp()">Sign Up</button>
+                <button class="btn btn-primary btn-block" (click)="signUp()">Sign Up</button>
 
             </div><a [routerLink]="['/reset']" class="forgot">Forgot your email or password?</a></form>
     </div>
-     <div class="container" id="resumen">
+
+
+    <div class="container-fluid" id="descripcion">
         <h1 class="text-center">NominaUN </h1>
-        <p class="text-center">Es una aplicación para administrar de forma fácil e intuitiva la nómina de una empresa. Cuenta con 2 modullos, en el módulo empleador se administra todo el sistema (registro de empleados, fondos, liquidaciones, reportes y demás procesos operativos);
+        <p class="text-center">Es una aplicación para administrar de forma fácil e intuitiva la nómina de una empresa. Cuenta con 2 modulos, en el módulo empleador se administra todo el sistema (registro de empleados, fondos, liquidaciones, reportes y demás procesos operativos);
             en el módulo del empleado se permitirá al usuario consultar sus pagos y registrar sus incapacidades. </p>
     </div>
-    <div class="container caracteristicas">
-        <h1 class="text-center">Caracteristicas </h1></div>
+
+
+    <div class="container-fluid" id="caracteristicas">
+        <h1 class="text-center">Caracteristicas </h1>
+    </div>
+
     <div>
-        <div class="container caracteristicas">
+        <div class="container-fluid" id="caracteristicas">
             <div class="row">
                 <div class="col-md-4">
                     <h2 class="text-center"><i class="glyphicon glyphicon-cog"></i></h2>
