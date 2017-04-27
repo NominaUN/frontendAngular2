@@ -24,11 +24,13 @@ import { AppComponent } from './app.component';
 
 
 /////PORFAVOR NO AGREGAR COMPONENTES EN ESTA PARTE
-/////AGREGARLOS EN EL app-routing.module.ts
+
 @NgModule({
     declarations: [
         AppComponent,
         RoutingComponent
+/////AGREGARLOS EN EL app-routing.module.ts
+
     ],
     imports: [
         BrowserModule,

@@ -23,8 +23,10 @@ export class AreasComponent implements OnInit {
     }
 
     ngOnInit() {
-        let timer = Observable.timer(0, 5000);
-        timer.subscribe(() => this.loadAreas());
+
+        this.loadAreas();
+    //    let timer = Observable.timer(0, 5000);
+    //    timer.subscribe(() => this.loadAreas());
     }
 
     onSelect(area: any): void {
@@ -35,24 +37,11 @@ export class AreasComponent implements OnInit {
         this.areaService.setAreas(area)
             .subscribe(
             data => console.log('Success uploading the area', data),
-            error => console.error(`Error: ${error}`));
+            error => console.error(`Error: ${error}`), ()=>this.loadAreas());
 
 
     }
 
 
 
-
-    /*
-    onClick(event){
-      var target = event.target || event.srcElement || event.currentTarget;
-      var idAttr = target.attributes.id;
-      var value = idAttr.nodeValue;
-      if (value === "setArea") {
-          var nombre = (<HTMLInputElement>document.getElementById("nameArea")).value;
-          this.areaService.setAreas(nombre);
-          location.reload();
-      }
-    }
-      */
 }
