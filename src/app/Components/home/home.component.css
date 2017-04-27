@@ -16,6 +16,31 @@ html {
   box-sizing:border-box;
 }
 
+#descripcion {
+  background: #9ea9bc;
+  color: #fff;
+
+}
+
+p{
+  font-size: 20px;
+  text-align: center;
+}
+
+#caracteristicas {
+  background: #4e596b;
+  color: #ebeef4;
+
+}
+
+
+.row, .col-md-4{
+  border-top: 1px solid white;
+  
+}
+
+
+
 
 
 body {
