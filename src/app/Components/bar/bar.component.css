@@ -1,6 +1,5 @@
 #header {
-	background-color:#000;
-	font-family:Arial, Helvetica, sans-serif;
+	
 	margin:auto;
 	width:100%;
 }
@@ -14,8 +13,8 @@ ul, ol {
 }
 
 .nav li a {
-	background-color:#000;
-	color:#fff;
+	
+	
 	display:block;
 	padding-left:-20px;
 	padding-right:-20px;
