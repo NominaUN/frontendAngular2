@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Angular2TokenService, SignInData } from 'angular2-token';
 import {environment} from "../../../environments/environment";
 import {Router} from "@angular/router";
@@ -9,7 +9,7 @@ import {Router} from "@angular/router";
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class LoginComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
 
       signInData: SignInData = <SignInData>{};
