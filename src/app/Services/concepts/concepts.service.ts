@@ -1,23 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Concept } from '../../Models/concept'
+import { Observable } from 'rxjs/Rx' 
 
 @Injectable()
 export class ConceptsService {
 
   private urlget : string = "http://localhost:3000/api/v1/concepts.json";
   private urlpost : string = "http://localhost:3000/api/v1/concepts"
+  headers: Headers;
+  options: RequestOptions;
+
 	
-    constructor(private http: Http) { }
-	getConcepts(){
-	    return this.http.get(this.urlget).map((response:Response) => response.json());
+    constructor(private http: Http) { 
+		this.headers = new Headers({ 'Content-Type': 'application/json' });
+        this.options = new RequestOptions({ headers: this.headers });
+
 	}
-	setConcepts(name: string, category: string){
-		let headers = new Headers({ 'Content-Type': 'application/json' });
-		let options = new RequestOptions({ headers: headers });
-		let body = JSON.stringify({concept_name: name, category: category});
-	    
-		return this.http.post(this.urlpost, body, options).map(response => response.json()).subscribe(
-           data => console.log('Success uploading the concept', data),
-           error => console.error(`Error: ${error}`));
+	getConcepts(): Observable<Concept[]> {
+	    return this.http.get(this.urlget).map((response:Response) => <Concept[]>response.json().data);
+	}
+	setConcepts(concept : Concept){
+        return this.http.post(this.urlpost, JSON.stringify(concept), this.options).map(response => response.json())
+
 	}
 }

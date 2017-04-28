@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PositionsService } from  '../../Services/positions/positions.service';
+import { Position } from '../../Models/position'
+
 
 @Component({
   selector: 'app-positions',
@@ -8,34 +10,32 @@ import { PositionsService } from  '../../Services/positions/positions.service';
 })
 export class PositionsComponent implements OnInit {
 
-  positions=[];
+  positions: Position[];
+  position = new Position;
 
-  constructor(private positionService: PositionsService) {
-  }
+  constructor(private positionService: PositionsService) {}
   
-  loadPositions(){
+  getPositions(){
 	this.positionService.getPositions().subscribe(
 		(resPositionData => this.positions = resPositionData)
     );
   }
   
   ngOnInit() {
-    this.loadPositions();   
+    this.getPositions();   
+    console.log(this.positions);
   }
   
   onSelect(position:any):void {
   	console.log(position);
   }
 
-  onClick(event){
-	var target = event.target || event.srcElement || event.currentTarget;
-    var idAttr = target.attributes.id;
-    var value = idAttr.nodeValue;
-	if (value === "setPosition") {
-		var nombre = (<HTMLInputElement>document.getElementById("namePosition")).value;
-		this.positionService.setPositions(nombre);
-		location.reload();
-	}
+  createPositions(position: Position){
+        this.positionService.setPositions(position)
+            .subscribe(
+            data => console.log('Success uploading the area', data),
+            error => console.error(`Error: ${error}`), ()=>this.getPositions());
+	
   }   
 
 }

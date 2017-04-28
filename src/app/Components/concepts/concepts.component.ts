@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConceptsService } from  '../../Services/concepts/concepts.service';
+import { Concept } from '../../Models/concept'
+
 
 @Component({
   selector: 'app-concepts',
@@ -8,7 +10,8 @@ import { ConceptsService } from  '../../Services/concepts/concepts.service';
 })
 export class ConceptsComponent implements OnInit {
 
-  concepts=[];
+  concepts: Concept[];
+  concept = new Concept;
 
   constructor(private conceptService: ConceptsService) {
   }
@@ -27,16 +30,15 @@ export class ConceptsComponent implements OnInit {
   	console.log(concept);
   }
 
-  onClick(event){
-	var target = event.target || event.srcElement || event.currentTarget;
-    var idAttr = target.attributes.id;
-    var value = idAttr.nodeValue;
-  	if (value === "setConcept") {
-  		var nombre = (<HTMLInputElement>document.getElementById("nameConcept")).value;
-  		var category = (<HTMLInputElement>document.getElementById("categoryConcept")).value;
-  		this.conceptService.setConcepts(nombre, category);
-  		location.reload();
+  createArea(concept : Concept){
+
+  		this.conceptService.setConcepts(concept).subscribe(
+            data => console.log('Success uploading the area', data),
+            error => console.error(`Error: ${error}`), ()=>this.loadConcepts());
+
+
+
   	}
-  }
+  
 
 }
