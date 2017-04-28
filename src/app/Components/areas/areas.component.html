@@ -1,4 +1,6 @@
 ﻿<body>
+<!--
+
   <h1>Areas de la Empresa</h1>
   <form (ngSubmit)="createArea(area)" #postForm='ngForm'>
 
@@ -9,6 +11,9 @@
     </div>
 
     <button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
+     </form>
+-->
+
     <!-- <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button
       -->
     <!--
@@ -19,7 +24,44 @@
      <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setArea">Guardar</button>
      <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button>
          -->
+<br>
+<legend>Areas de la Empresa</legend>
 
+<form (ngSubmit)="createArea(area)" #postForm='ngForm'>
+
+<div class="container" id="general">
+	<div class="row">
+		<form class="form-horizontal">
+<fieldset>
+
+<br>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputAreaName">Nombre del Area</label>  
+  <div class="col-md-4">
+  <input id="nameArea" placeholder="Ingrese el nombre del area aquí" class="form-control input-md" required="" type="text" #area_name='ngModel'
+             [(ngModel)]='area.area_name' name="nameArea">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
+  </div>
+</div>
+
+</fieldset>
+
+		</form>
+	</div>
+</div>
+
+</form>
+
+<!--
   </form>
     <div class="container">
       <div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
@@ -40,3 +82,7 @@
     </div>
 
     <div *ngIf="selectedArea">
+-->
+
+
+</body>
