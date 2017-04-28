@@ -1,21 +1,49 @@
-<h1>Conceptos de la Empresa</h1>
-<div class="container" id="conceptHeader">
-	<form>
-		<div class="form-group">
-			<br>
-			<label for="inputConceptName">Nombre del Concepto:</label>
-			<input id="nameConcept" type="text" class="form-control" placeholder="Ingrese el nombre del concepto aquí"><br>
-			<label for="inputConceptCategory">Categoria del Concepto:</label>
-			<input id="categoryConcept" type="text" class="form-control" placeholder="Ingrese la categoría del concepto aquí"><br>
-		</div>
-		<button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setConcept">Guardar</button>
-		<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteConcept">Eliminar</button>
-	</form>
-	
+<br>
 
+<legend>Fondos de la Empresa</legend>
 
+<div class="container" id="general">
+	<div class="row">
+		<form class="form-horizontal">
+<fieldset>
+
+<br>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputConceptName">Nombre del Concepto</label>  
+  <div class="col-md-4">
+  <input id="nameConcept" type="text" class="form-control input-md" placeholder="Ingrese el nombre del concepto aquí">
+  </div>
 </div>
-<div class="page-header"> <h3>Seleccionar un concepto para ver detalles</h3></div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputConceptCategory">Categoria del Concepto</label>  
+  <div class="col-md-4">
+  <input id="categoryConcept" type="text" class="form-control input-md" placeholder="Ingrese la categoría del concepto aquí">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
+	<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteFond">Eliminar</button>
+  </div>
+</div>
+
+
+
+</fieldset>
+
+		</form>
+	</div>
+</div>
+
+
+<br>
+<legend>Lista de conceptos actuales</legend>
+
 <div class="container" id="conceptFooter">
 	<div id="conceptTable" class="table-responsive">
 		<table class="table table-striped">
@@ -35,3 +63,20 @@
 	</div>
 </div>
 <div *ngIf="selectedConcept">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	

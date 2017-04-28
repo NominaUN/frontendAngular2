@@ -12,6 +12,11 @@ body {
   background-color:#ffffff;
 }
 
+#general {
+    border: 1px solid #e9e6e8;
+    box-shadow: 5px 5px 2px grey;
+}
+
 #positionTable {
      overflow:scroll;
      height:300px;
