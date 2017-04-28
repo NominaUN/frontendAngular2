@@ -13,9 +13,9 @@
 
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="declineType">Redondeo</label>
+  <label class="col-md-4 control-label" for="inputRound">Redondeo</label>
   <div class="col-md-6">
-    <select id="redondeo" name="redondeo" class="form-control">
+    <select id="roundGeneral" class="form-control">
       <option value="Unidades">Unidades</option>
       <option value="Decenas">Decenas</option>
 	  <option value="Centenas">Centenas</option>
@@ -26,17 +26,17 @@
 
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="requestName">Dias Laborales</label>  
+  <label class="col-md-4 control-label" for="inputLaboral">Dias Laborales</label>  
   <div class="col-md-4">
-  <input id="diasLaborales" name="diasLaborales" placeholder="Numero de dias laborales" class="form-control input-md" required="" type="number">
+  <input id="laboralGeneral" placeholder="Numero de dias laborales" class="form-control input-md" required="" type="number">
     
   </div>
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="declineType">Tipo de Liquidación</label>
+  <label class="col-md-4 control-label" for="inputPayday">Tipo de Liquidación</label>
   <div class="col-md-6">
-    <select id="liquidación" name="liquidación" class="form-control">
+    <select id="paydayGeneral" class="form-control">
       <option value="Quincenal">Quincenal</option>
       <option value="Mensual">Mensual</option>
 	</select>
@@ -44,9 +44,9 @@
 </div>
 
 <div class="form-group">
-  <label class="col-md-4 control-label" for="declineType">Base para Salario Integral</label>
+  <label class="col-md-4 control-label" for="inputIntegral">Base para Salario Integral</label>
   <div class="col-md-6">
-    <select id="liquidación" name="liquidación" class="form-control">
+    <select id="integralGeneral" class="form-control">
       <option value="70%">70%</option>
       <option value="1.3">1.3</option>
 	</select>
@@ -57,7 +57,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="submit"></label>
   <div class="col-md-4">
-    <button id="submit" name="submit" class="btn btn-default">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
   </div>
 </div>
 
