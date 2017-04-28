@@ -1,6 +1,8 @@
 div#about.container-fluid {
   background:#474c5b;
+  background-image: url('../../../assets/fondos/2.jpg');
   color:white;
+  background-attachment: fixed;
 }
 
 div#team.container-fluid {
@@ -155,6 +157,8 @@ div.container-fluid.contact {
 
 div.contact-clean {
   background:rgb(61,63,68);
+  background-image: url('../../../assets/fondos/2.jpg');
+  background-attachment: fixed;
 }
 
 .contact-clean {

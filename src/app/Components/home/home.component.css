@@ -17,7 +17,7 @@ html {
 }
 
 #descripcion {
-  background: #9ea9bc;
+  background: rgba(30,40,51,0.88);
   color: #fff;
 
 }
@@ -56,8 +56,10 @@ body {
 .login-dark {
   height:600px;
   background:#fbfeff;
-  background-size:cover;
+  
   position:relative;
+  background-image: url('../../../assets/fondos/1.jpg');
+  background-attachment: fixed;
 }
 
 .login-dark form {
@@ -212,17 +214,13 @@ body {
   box-sizing:border-box;
 }
 
-div.container.caracteristicas {
-  background:rgb(74,83,93);
-  color:rgb(198,210,207);
-}
 
 body {
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size:14px;
   line-height:1.42857143;
   color:#333;
-  background-color:#fff;
+  
 }
 
 html {
