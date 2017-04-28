@@ -61,28 +61,34 @@
 
 </form>
 
-<!--
-  </form>
-    <div class="container">
-      <div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
-      <div id="areaTable" class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Nombre del Area</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
+
+<br>
+<legend>Lista de Areas Actuales</legend>
+
+
+<div class="container" id="fondFooter">
+	<div id="fondTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nombre del Area</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
               <td>{{area.area_name}}</td>
             </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+			</tbody>
+		</table>
+	</div>
+</div>
 
+
+
+<!--
+  
     <div *ngIf="selectedArea">
--->
 
+-->
 
 </body>
