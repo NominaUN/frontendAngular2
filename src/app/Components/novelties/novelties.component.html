@@ -1,42 +1,98 @@
-<h1>Novedades de la Empresa</h1>
-<div class="container" id="noveltyHeader">
-	<form>
-		<div class="form-group">
-			<br>
-			<label for="inputType">Tipo de novedad:</label>
-			<select id="typeNovelty">
- 				<option>Devengado</option>
-				<option>Deducción</option>
-			</select><br>
-			<label for="inputCategory">Categoria de novedad:</label>
-			<select id="categoryNovelty">
- 				<option>Vacaciones</option>
-				<option>Inactividad</option>
-				<option>Hora Extra</option>
-				<option>Otros</option>
-			</select><br>
-			<label for="inputValue">Valor:</label>
-			<input id="valueNovelty" type="number" class="form-control" placeholder="Ingrese el valor aquí"><br>
-			<label for="inputPeriod">Cuántas veces:</label>
-			<input id="periodNovelty" type="number" class="form-control"><br>
-			<label for="inputApplied">Aplicadas:</label>
-			<input id="appliedNovelty" type="number" class="form-control"><br>
-			<label for="inputDesc">Razón Social del fondo:</label>
-			<input id="descNoveltyFond" type="text" class="form-control" placeholder="Para que es"><br>
-			<label for="inputEmployee">Empleado:</label>
-			<select id="employeeNovelty">
- 				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-			</select>
-		</div>
-		<button type="submit" class="btn btn-primary">Crear</button>
-		<button type="submit" class="btn btn-danger">Eliminar</button>
-	</form>
+
+<br>
+
+<legend>Novedades de la Empresa</legend>
+
+<div class="container" id="general">
+	<div class="row">
+		<form class="form-horizontal">
+<fieldset>
+
+<br>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputType">Tipo de novedad</label>
+  <div class="col-md-6">
+    <select id="typeNovelty" class="form-control">
+      <option>Devengado</option>
+	  <option>Deducción</option>
+	</select>
+  </div>
 </div>
-<div class="page-header"> <h3>Seleccionar una novedad para ver detalles</h3></div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputCategory">Categoria de novedad</label>
+  <div class="col-md-6">
+    <select id="categoryNovelty" class="form-control">
+      <option>Vacaciones</option>
+      <option>Inactividad</option>
+	  <option>Hora Extra</option>
+	  <option>Otros</option>
+	</select>
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputValue">Valor</label>  
+  <div class="col-md-4">
+  <input id="valueNovelty" type="number" class="form-control input-md" placeholder="Ingrese el valor aquí">  
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputPeriod">Cuántas veces</label>  
+  <div class="col-md-4">
+  <input id="periodNovelty" type="number" class="form-control  input-md" placeholder="Ingrese la cantidad">  
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputApplied">Aplicadas</label>  
+  <div class="col-md-4">
+  <input id="appliedNovelty" type="number" class="form-control input-md" placeholder="Ingrese la cantidad">
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputDesc">Razón Social del fondo</label>  
+  <div class="col-md-4">
+  <input id="descNoveltyFond" type="text" class="form-control  input-md" placeholder="Para que es">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputEmployee">Empleado</label>
+  <div class="col-md-6">
+    <select id="employeeNovelty" class="form-control">
+      <option>1</option>
+      <option>2</option>
+	  <option>3</option>
+	  <option>4</option>
+	  <option>5</option>
+	</select>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
+	<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteFond">Eliminar</button>
+  </div>
+</div>
+
+
+</fieldset>
+
+		</form>
+	</div>
+</div>
+
+
+<br>
+<legend>Lista de Novedades</legend>
 <div class="container" id="noveltyFooter">
 	<div id="noveltyTable" class="table-responsive">
 		<table class="table table-striped">
