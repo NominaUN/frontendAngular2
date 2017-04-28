@@ -17,18 +17,21 @@ html {
 }
 
 #descripcion {
-  background: rgba(30,40,51,0.88);
+  background-color: rgba(30,40,51,0.8);
   color: #fff;
+  margin-bottom: 10px;
 
 }
 
 p{
   font-size: 20px;
   text-align: center;
+  margin-bottom: 50px;
+  
 }
 
 #caracteristicas {
-  background: #4e596b;
+  background: rgba(38, 41, 55, 0.8);
   color: #ebeef4;
 
 }
@@ -49,17 +52,18 @@ body {
   line-height:1.42857143;
   color:#333;
   background-color:#fff;
+  background-image: url('../../../assets/fondos/1.jpg');
+  background-attachment: fixed;
 }
 
 
 
 .login-dark {
   height:600px;
-  background:#fbfeff;
+  background:transparent;
   
   position:relative;
-  background-image: url('../../../assets/fondos/1.jpg');
-  background-attachment: fixed;
+  
 }
 
 .login-dark form {
