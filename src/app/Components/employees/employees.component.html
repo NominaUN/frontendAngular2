@@ -22,12 +22,19 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let employee of employees.data"
-                    [class.selected]="employee === selectedEmployee"
-                    (click)="onSelect(employee)">
+                    [class.selected]="employee === selectedEmployee" >
                         <td>{{employee.first_name}}</td>
                         <td>{{employee.document_number}}</td>
                         <td>${{employee.salary}}</td>
                         <td>{{employee.position.position_name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-default btn-sm" (click)="deleteEmployee(employee.id)" >
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" class="btn btn-default btn-sm" (click)="onSelect(employee)" >
+                                <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

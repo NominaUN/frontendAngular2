@@ -19,7 +19,6 @@ export class EmployeesComponent implements OnInit {
   ngOnInit() {
    this.employeeService.getEmployees().subscribe(
      (resEmployeeData => this.employees = resEmployeeData));
-
   }
 
   onSelect(employee:any):void {
@@ -27,12 +26,14 @@ export class EmployeesComponent implements OnInit {
     this.router.navigate(link);
   }
 
+  deleteEmployee(id:number):void{
+     console.log(this.employeeService.delEmployee(id));
+  }
+
   createEmployee(){
     let link = ['/employeenew'];
     this.router.navigate(link);
-
   }
-
 
 }
 

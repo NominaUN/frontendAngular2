@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 export class EmployeesService {
 
   private url : string = "http://localhost:3000/api/v1/employees.json";
+  private urlDelte : string = "http://localhost:3000/api/v1/employees/";
 
   constructor(private http: Http) { }
 
@@ -22,5 +23,12 @@ export class EmployeesService {
     	});
       }
 
+    // To DO: comprove in real url and method
+	delEmployee(id: number){
+        return this.http.delete(this.urlDelte + id).map((response:Response) => response.json()).subscribe(
+           data => console.log('Delete', data),
+           error => console.error(`Error: ${error}`)
+        );
+	}
 
 }
