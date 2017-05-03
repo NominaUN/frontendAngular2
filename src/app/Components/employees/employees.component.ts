@@ -12,13 +12,14 @@ export class EmployeesComponent implements OnInit {
   
   employees=[];
   constructor(
-    private employeeService: EmployeesService,
+    private employeesService: EmployeesService,
     private router: Router
   ) { }
 
   ngOnInit() {
-   this.employeeService.getEmployees().subscribe(
-     (resEmployeeData => this.employees = resEmployeeData));
+    this.employeesService.getEmployees().subscribe(
+     (resEmployeeData => this.employees = resEmployeeData)
+    );
   }
 
   onSelect(employee:any):void {
@@ -27,12 +28,22 @@ export class EmployeesComponent implements OnInit {
   }
 
   deleteEmployee(id:number):void{
-     console.log(this.employeeService.delEmployee(id));
+    this.employeesService.delEmployee(id)
+    .subscribe(
+      data => {
+        console.log('Success deleted the employee', data);
+        this.employeesService.getEmployees().subscribe(
+         (resEmployeeData => this.employees = resEmployeeData)
+        );
+      },
+      error => console.error(`Error: ${error}`)
+      )
   }
 
   createEmployee(){
     let link = ['/employeenew'];
     this.router.navigate(link);
+
   }
 
 }

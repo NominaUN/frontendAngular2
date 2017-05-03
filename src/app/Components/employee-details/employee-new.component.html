@@ -1,157 +1,141 @@
 
-  <h3 align="center">Descripción de suario</h3>
+<h3 align="center">Nuevo de suario</h3>
 
-  <div class="row">
-  	<div class="col-md-10 col-md-offset-2">
-  		<div class="row">
-  			<div class="col-md-4">
-                <form class="form-horizontal" (ngSubmit)="createEmployee(employee)" #postForm='ngForm'>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Nombre:</label>
-  						<div class="col-sm-8">
-							<input type="text" class="form-control" 
-                                [(ngModel)]="employee.first_name"
-                                #first_name="ngModel"
-                                [ngModelOptions]="{standalone: true}"
-                                >
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Apellido:</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.last_name" [ngModelOptions]="{standalone: true}" >
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">C.C.</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.document_number" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Dirección:</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.address" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Telefono:</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.phones" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Email:</label>
-  						<div class="col-sm-8">
-  							<input type="email" class="form-control" [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Cargo:</label>
-  						<div class="col-sm-8">
-  							<select class="form-control">
-  								<option>opcion 1</option>
-  							</select>
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Área:</label>
-  						<div class="col-sm-8">
-                            <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
-  								<option value="1">opcion 1</option>
-  							</select>
-                        </div>
-                    </div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Salario:</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.salary" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Cesantias:</label>
-  						<div class="col-sm-8">
-  							<select class="form-control" >
-  								<option>opcion 1</option>
-  							</select>
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Caja de compensación:</label>
-  						<div class="col-sm-8">
-  							<select class="form-control" >
-  								<option>opcion 1</option>
-  							</select>
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Salud:</label>
-  						<div class="col-sm-8">
-  							<select class="form-control">
-  								<option>opcion 1</option>
-  							</select>
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Position:</label>
-  						<div class="col-sm-8">
-                            <select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
-  								<option value="1">opcion 1</option>
-  							</select>
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Lugar de nacimiento:</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.birthplace" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Fecha de cumpleaños:</label>
-  						<div class="col-sm-8">
-  							<input type="date" class="form-control" [(ngModel)]="employee.birthdate" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Fecha de contratación:</label>
-  						<div class="col-sm-8">
-  							<input type="date" class="form-control" [(ngModel)]="employee.admission_date" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Fecha final de liquidación:</label>
-  						<div class="col-sm-8">
-  							<input type="date" class="form-control" [(ngModel)]="employee.retirement_date" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Tipo de contrato:</label>
-  						<div class="col-sm-8">
-  							<input type="text" class="form-control" [(ngModel)]="employee.first_name" [ngModelOptions]="{standalone: true}">
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<label class="col-sm-4 control-label">Tipo de contrato:</label>
-  						<div class="col-sm-8">
-  							<label class="radio-inline">
-							  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-							</label>
-							<label class="radio-inline">
-							  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" > 3
-							</label>
-  						</div>
-  					</div>
-  					<div class="form-group">
-  						<div class="col-sm-offset-2 col-sm-10">
-  							<button type="submit" class="btn btn-default">Guardar cambios</button>
-  						</div>
-  					</div>
-  				</form>
-  			</div>
-  			<div class="col-md-4 col-md-offset-2">
-  				<img src="http://lorempixel.com/400/400/" alt="">
-
-  			</div>
-  		</div>
-  	</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-2">
+    <div class="row">
+      <div class="col-md-5">
+        <form class="form-horizontal" (ngSubmit)="createEmployee(employee)" #postForm='ngForm'>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">C.C.</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" [(ngModel)]="employee.document_number" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Tipo de documento:</label>
+            <div class="col-sm-8">
+              <select class="form-control" [(ngModel)]="employee.document_type" [ngModelOptions]="{standalone: true}">
+                <option>CC</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Nombre:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.first_name" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Segundo nombre:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.other_name" [ngModelOptions]="{standalone: true}" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Apellido:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.last_name" [ngModelOptions]="{standalone: true}" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Segundo apellido:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.second_surname" [ngModelOptions]="{standalone: true}" >
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Fecha de cumpleaños:</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" [(ngModel)]="employee.birthdate" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Lugar de nacimiento:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.birthplace" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Dirección:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.address" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Telefono:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.phones" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Email:</label>
+            <div class="col-sm-8">
+              <input type="email" required="required" class="form-control" [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Fecha de contratación:</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" [(ngModel)]="employee.admission_date" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Fecha final de liquidación:</label>
+            <div class="col-sm-8">
+              <input type="date" class="form-control" [(ngModel)]="employee.retirement_date" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Salario:</label>
+            <div class="col-sm-8">
+              <input type="number" class="form-control" [(ngModel)]="employee.salary" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">transport_aid:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.transport_aid" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Salario integral:</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" [(ngModel)]="employee.integral_salary" [ngModelOptions]="{standalone: true}">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Área:</label>
+            <div class="col-sm-8">
+              <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
+                <option value="1">Government</option>
+                <option value="2">Legal</option>
+                <option value="3">Design</option>
+                <option value="4">Hospitality</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-4 control-label">Cargo:</label>
+            <div class="col-sm-8">
+              <select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
+                <option value="1">International Administrator</option>
+                <option value="2">Marketing Engineer</option>
+                <option value="3">Consulting Architect</option>
+                <option value="4">Customer Accounting Agent</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary pull-right">Guardar cambios</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-2 col-md-offset-1">
+        <img src="http://lorempixel.com/200/200/" alt="">
+      </div>
+    </div>
   </div>
+</div>
