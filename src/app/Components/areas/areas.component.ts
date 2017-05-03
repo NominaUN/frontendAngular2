@@ -39,9 +39,5 @@ export class AreasComponent implements OnInit {
             data => console.log('Success uploading the area', data),
             error => console.error(`Error: ${error}`), ()=>this.loadAreas());
 
-
     }
-
-
-
 }

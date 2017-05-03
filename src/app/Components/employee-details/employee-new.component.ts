@@ -11,7 +11,7 @@ import { Employee } from '../../Models/resEmployeeData.model'
 
 @Component({
 	selector: 'app-employee-new',
-	templateUrl: './employee-details.component.html',
+	templateUrl: './employee-new.component.html',
 	styleUrls: ['./employee-details.component.css']
 })
 export class EmployeeNewComponent implements OnInit {
@@ -24,5 +24,13 @@ export class EmployeeNewComponent implements OnInit {
 
 	ngOnInit():void {
 	}
+
+    createEmployee(employee: Employee) {
+        this.employeesService.setEmployee(employee)
+            .subscribe(
+            data => console.log('Success uploading the employee', data),
+            error => console.error(`Error: ${error}`)
+          )
+    }
 
 }
