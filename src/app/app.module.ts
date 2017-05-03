@@ -20,6 +20,10 @@ import { AuthService } from './Services/authentication/auth.service';
 
 import { RoutingComponent, AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BannerComponent } from './Components/banner/banner.component';
+
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import { ModalDemoComponent } from './Components/modal-demo/modal-demo.component';
 
 
 
@@ -28,7 +32,9 @@ import { AppComponent } from './app.component';
 @NgModule({
     declarations: [
         AppComponent,
-        RoutingComponent
+        RoutingComponent,
+        BannerComponent,
+        ModalDemoComponent
 /////AGREGARLOS EN EL app-routing.module.ts
 
     ],
@@ -37,7 +43,8 @@ import { AppComponent } from './app.component';
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        A2tUiModule
+        A2tUiModule,
+        Ng2Bs3ModalModule
     ],
     providers: [
         EmployeesService,

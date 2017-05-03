@@ -1,42 +1,97 @@
 ﻿<body>
-  <h1>Areas de la Empresa</h1>
-  <form (ngSubmit)="createArea(area)" #postForm='ngForm'>
 
-    <div class="form-group">
-      <label for="inputAreaName">Nombre del Area:</label>
-      <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
+
+
+
+
+<br>
+<legend>Areas de la Empresa</legend>
+<br>
+
+
+<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
+        (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
+        <form (ngSubmit)="createArea(area)" #postForm='ngForm'>
+        
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">Ingrese el nombre del Area</h4>
+            </modal-header>
+            <modal-body>
+                <div class="form-group">
+                    <label for="firstName">Nombre</label>
+                    <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
              [(ngModel)]='area.area_name' name="nameArea">
-    </div>
+                </div>
+               
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()" (click)="validationModal.close()">Guardar</button>
+ 
+                
+            </modal-footer>
+        </form>
+    </modal>
 
-    <button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
-    <!-- <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button
-      -->
-    <!--
-     <div class="form-group">
-         <label for="inputAreaName">Nombre del Area:</label>
-         <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí">
-     </div>
-     <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setArea">Guardar</button>
-     <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button>
-         -->
 
-  </form>
+
+<div>
+    
     <div class="container">
-      <div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
-      <div id="areaTable" class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Nombre del Area</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
-              <td>{{area.area_name}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+        <div class="row">
+           <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title">Areas</h3></div>
+                            <div class="col col-xs-6 text-right">
+                                <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table  class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                    <th><em class="fa fa-cog"></em></th>
+                                    <th class="hidden-xs">ID</th>
+                                    <th>Name</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    
+                                  <tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
+              
+                           
 
-    <div *ngIf="selectedArea">
+                                    <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+                                    <td class="hidden-xs">{{area.id}}</td>
+                                    <td>{{area.area_name}}</td>
+                                    
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Lista de las areas guardadas actualmente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div *ngIf="selectedArea"></div>
+
+
+
+
+
+</body>

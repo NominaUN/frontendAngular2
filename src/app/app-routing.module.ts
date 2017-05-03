@@ -24,6 +24,7 @@ import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
+import { ModalDemoComponent } from './Components/modal-demo/modal-demo.component';
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -41,6 +42,7 @@ const routes: Routes = [
     { path: 'fonds', component: FondsComponent },
     { path: 'general-parameters', component: GeneralParametersComponent },
     { path: 'positions', component: PositionsComponent },
+    { path: 'modal', component: ModalDemoComponent },
     { path: '**', component: NotfoundComponent }
 ];
 
@@ -69,6 +71,7 @@ export const RoutingComponent = [
     PositionsComponent,
     NotfoundComponent,
     EmployeeDetailsComponent,
-    EmployeeNewComponent
+    EmployeeNewComponent,
+    ModalDemoComponent
 
 ]
