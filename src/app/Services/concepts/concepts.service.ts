@@ -6,8 +6,14 @@ import { Observable } from 'rxjs/Rx'
 @Injectable()
 export class ConceptsService {
 
-  private urlget : string = "http://localhost:3000/api/v1/concepts.json";
-  private urlpost : string = "http://localhost:3000/api/v1/concepts"
+  //private urlget : string = "http://localhost:3000/api/v1/concepts.json";
+  //private urlpost : string = "http://localhost:3000/api/v1/concepts"
+ 
+  private urlget : string = "https://hidden-shore-15479.herokuapp.com/api/v1/concepts.json";
+  private urlpost : string = "https://hidden-shore-15479.herokuapp.com/api/v1/concepts"
+ 
+ 
+ 
   headers: Headers;
   options: RequestOptions;
 

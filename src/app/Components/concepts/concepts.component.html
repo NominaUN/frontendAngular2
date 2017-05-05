@@ -1,5 +1,43 @@
+<br>
 
+<legend>Conceptos de la Empresa</legend>
 
+<br>
+
+<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
+        (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
+        <form (ngSubmit)="createConcept(concept)" #postForm='ngForm'>
+        
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">Ingrese el nombre del Area</h4>
+            </modal-header>
+            <modal-body>
+                <div class="form-group">
+                    <label for="Name">Nombre</label>
+                    <input id="nameConcept" type="text" class="form-control" placeholder="Ingrese el nombre del concepto aquí" #concept_name='ngModel'
+             [(ngModel)]='concept.concept_name' name="nameConcept">
+                </div>
+
+                 <div class="form-group">
+                    <label for="CategoryName">Categoria</label>
+                    <input id="categoryName" type="text" class="form-control" placeholder="Ingrese la categoria aquí" #category_name='ngModel'
+             [(ngModel)]='concept.category_name' name="nameCategory">
+                </div>
+
+                 <div class="form-group">
+                    <label for="Payday">Detalles</label>
+                    <input id="payday" type="text" class="form-control" placeholder="Ingrese los detalles aquí" #payday_details='ngModel'
+             [(ngModel)]='concept.payday_details' name="payday">
+                </div>
+               
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="setArea" (click)="loadConcepts()" (click)="validationModal.close()">Guardar</button>
+                
+            </modal-footer>
+        </form>
+    </modal>
 
 
 <div>
@@ -13,7 +51,7 @@
                             <div class="col col-xs-6">
                                 <h3 class="panel-title">Panel Heading</h3></div>
                             <div class="col col-xs-6 text-right">
-                                <button type="button" class="btn btn-sm btn-primary btn-create">Create New</button>
+                                <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
                             </div>
                         </div>
                     </div>
@@ -23,16 +61,17 @@
                                 <tr>
                                     <th><em class="fa fa-cog"></em></th>
                                     <th class="hidden-xs">ID</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
+                                    <th>Nombre</th>
+                                    <th>Categoria</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let concept of concepts.data" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
+
                                     <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
-                                    <td class="hidden-xs">1</td>
-                                    <td>John Doe</td>
-                                    <td>johndoe@example.com</td>
+                                    <td class="hidden-xs">{{concept.id}}</td>
+                                    <td>{{concept.concept_name}}</td>
+					                <td>{{concept.category}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -45,10 +84,12 @@
     </div>
 </div>
 
+<div *ngIf="selectedConcept">
 
+<!--
 <br>
 
-<legend>Fondos de la Empresa</legend>
+<legend>Conceptos de la Empresa</legend>
 
 <div class="container" id="general">
 	<div class="row">
@@ -113,7 +154,7 @@
 <div *ngIf="selectedConcept">
 
 
-
+-->
 
 
 

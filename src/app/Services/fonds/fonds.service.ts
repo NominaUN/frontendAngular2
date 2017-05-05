@@ -4,8 +4,11 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 @Injectable()
 export class FondsService {
 
-	private urlget : string = "http://localhost:3000/api/v1/fonds.json";
-	private urlpost : string = "http://localhost:3000/api/v1/fonds";
+	//private urlget : string = "http://localhost:3000/api/v1/fonds.json";
+	//private urlpost : string = "http://localhost:3000/api/v1/fonds";
+
+	private urlget : string = "https://hidden-shore-15479.herokuapp.com/api/v1/fonds.json";
+	private urlpost : string = "https://hidden-shore-15479.herokuapp.com/api/v1/fonds";
 	
     constructor(private http: Http) { }
 	getFonds(){

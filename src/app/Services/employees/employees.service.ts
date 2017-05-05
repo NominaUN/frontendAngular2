@@ -8,8 +8,13 @@ import { Employee } from '../../Models/resEmployeeData.model'
 @Injectable()
 export class EmployeesService {
 
-  private url : string = "http://localhost:3000/api/v1/employees.json";
-  private urlpost : string = "http://localhost:3000/api/v1/employees/";
+  //private url : string = "http://localhost:3000/api/v1/employees.json";
+  //private urlpost : string = "http://localhost:3000/api/v1/employees/";
+
+  private url : string = "https://hidden-shore-15479.herokuapp.com/v1/employees.json";
+  private urlpost : string = "https://hidden-shore-15479.herokuapp.com/api/v1/employees/";
+
+
   headers: Headers;
   options: RequestOptions;
 

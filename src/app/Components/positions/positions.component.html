@@ -1,64 +1,98 @@
-<body>
 
-	<br>
+
+<body>
 <legend>Cargos de la Empresa</legend>
 
-<form (ngSubmit)="createArea(area)" #postForm='ngForm'>
 
-<div class="container" id="general">
-	<div class="row">
-		<form class="form-horizontal">
-<fieldset>
+<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
+        (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
+        <form (ngSubmit)="createPositions(position)" #postForm='ngForm'>
+        
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">Ingrese el nombre del Cargo</h4>
+            </modal-header>
+            <modal-body>
+                <div class="form-group">
+      				<label for="inputPositionName">Nombre del Cargo:</label>
+      				<input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
+           		 		  [(ngModel)]='position.position_name' name="namePosition">
+    			</div>
+               
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="setArea" (click)="validationModal.close()">Guardar</button>
+                
+            </modal-footer>
+        </form>
+    </modal>
 
-<br>
 
+<!-- 
+<form (ngSubmit)="createPositions(position)" #postForm='ngForm'>
 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputPositionName">Nombre del Cargo</label>  
-  <div class="col-md-4">
-  <input id="namePosition" type="text" class="form-control input-md" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
+    <div class="form-group">
+      <label for="inputPositionName">Nombre del Cargo:</label>
+      <input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
              [(ngModel)]='position.position_name' name="namePosition">
-    
-  </div>
-</div>
+    </div>
 
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
-  </div>
-</div>
-
-</fieldset>
-
-		</form>
-	</div>
-</div>
-
+    <button type="submit" class="btn btn-primary" id="setArea" >Guardar</button>
 </form>
+-->
 
 
 
-<div class="container">
-	<div class="page-header"> <h3>Lista de Cargos</h3></div>
-	<div id="positionTable" class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre del Cargo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let position of positions" [class.selected]="position === selectedPositions" (click)="onSelect(position)">
-					<td>{{position.position_name}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+
+<div>
+    
+    <div class="container">
+        <div class="row">
+           <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title">Cargos</h3></div>
+                            <div class="col col-xs-6 text-right">
+                                <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table  class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                    <th><em class="fa fa-cog"></em></th>
+                                    <th class="hidden-xs">ID</th>
+                                    <th>Name</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    
+                                  <tr *ngFor="let position of positions" [class.selected]="position === selectedPositions" (click)="onSelect(position)">
+              
+                           
+
+                                    <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+                                    <td class="hidden-xs">{{position.id}}</td>
+                                    <td>{{position.position_name}}</td>
+                                    
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Lista de las Cargos guardados actualmente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div *ngIf="selectedPosition">
-
-
-
+<div *ngIf="selectedPosition"></div>
 

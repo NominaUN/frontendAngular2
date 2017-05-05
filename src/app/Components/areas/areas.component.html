@@ -9,6 +9,8 @@
 <br>
 
 
+
+
 <modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
         (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
         <form (ngSubmit)="createArea(area)" #postForm='ngForm'>
@@ -57,7 +59,7 @@
                                 <tr>
                                     <th><em class="fa fa-cog"></em></th>
                                     <th class="hidden-xs">ID</th>
-                                    <th>Name</th>
+                                    <th>Nombre</th>
                                     
                                 </tr>
                             </thead>
