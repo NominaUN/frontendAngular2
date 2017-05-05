@@ -21,6 +21,7 @@ import { FondsService } from './Services/fonds/fonds.service';
 import { GeneralParametersService } from './Services/general-parameters/general-parameters.service';
 import { PositionsService } from './Services/positions/positions.service';
 import { AuthService } from './Services/authentication/auth.service';
+import { LoggedInGuard } from './Services/authentication/logged-in-guard.service';
 
 
 //COMPONENTES
@@ -56,7 +57,8 @@ import { AppComponent } from './app.component';
         GeneralParametersService,
         PositionsService,
         Angular2TokenService,
-        AuthService
+        AuthService,
+        LoggedInGuard
     ],
     bootstrap: [AppComponent]
 })
