@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LiquidationsService } from  '../../Services/liquidations/liquidations.service';
+import { PaydayMaster } from '../../Models/payday_master';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
@@ -9,15 +10,32 @@ import { Observable } from 'rxjs/Rx';
 })
 export class LiquidationsComponent implements OnInit {
 
-    liquidations=[];
+  liquidations: PaydayMaster[];
+  liquidation = new PaydayMaster;
 
   constructor(private liquidationsService: LiquidationsService) { }
- 
-  ngOnInit() {
-     this.liquidationsService.getLiquidations().subscribe(
-     (resLiquidationData => this.liquidations = resLiquidationData));
+   
+    loadLiquidations() {
+        this.liquidationsService.getLiquidations().subscribe((resLiquidationData => this.liquidations = resLiquidationData));
+    }
 
-    
-  }
+    ngOnInit() {
+
+        this.loadLiquidations();
+    //    let timer = Observable.timer(0, 5000);
+    //    timer.subscribe(() => this.loadAreas());
+    }
+
+    onSelect(liquidation: any): void {
+        console.log(liquidation);
+    }
+
+    createPaydayMaster(liquidation: PaydayMaster) {
+        this.liquidationsService.setLiquidations(liquidation)
+            .subscribe(
+            data => console.log('Success uploading the liquidation', data),
+            error => console.error(`Error: ${error}`), ()=>this.loadLiquidations());
+
+    }
 
 }

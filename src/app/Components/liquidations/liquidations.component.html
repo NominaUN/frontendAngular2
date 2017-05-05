@@ -1,26 +1,20 @@
 <h1>Liquidaciones de la Empresa</h1>
 <div class="container" id="masterHeader">
-	<form>
+	<form (ngSubmit)="createPaydayMaster(liquidation)" #postForm='ngForm'>
 		<div class="form-group">
 			<br>
 			<label for="inputType">Tipo de liquidación:</label>
-			<select id="typeMaster">
+			<select id="typeMaster" [(ngModel)]="liquidation.payday_type" [ngModelOptions]="{standalone: true}">
  				<option>Nómina</option>
 				<option>Prima</option>
 				<option>Cesantías</option>
 				<option>Intereses de Cesantias</option>
 			</select><br>
-			<label for="inputArea">Area:</label>
-			<select id="areaMaster">
- 				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-			</select><br>
 			<label for="inputDate">Fecha:</label>
-			<input id="dateMaster" type="datetime-local" class="form-control"><br>
+			<input id="dateMaster" type="datetime-local" class="form-control" [(ngModel)]="liquidation.payday_date" [ngModelOptions]="{standalone: true}"><br>
+			<input id="descMaster" type="text" class="form-control hidden" value="0" [(ngModel)]="liquidation.description" [ngModelOptions]="{standalone: true}"><br>
 		</div>
-		<button type="submit" class="btn btn-primary">Liquidar</button>
+		<button type="submit" class="btn btn-primary" id="setLiquidation" (click)="loadLiquidations()">Liquidar</button>
 	</form>
 </div>
 <div class="page-header"> <h3>Ver liquidaciones recientes</h3></div>
@@ -34,7 +28,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let liquidation of liquidations.data" [class.selected]="liquidation === selectedLiquidation" (click)="onSelect(liquidation)">
+				<tr *ngFor="let liquidation of liquidations" [class.selected]="liquidation === selectedLiquidation" (click)="onSelect(liquidation)">
 					<td>{{liquidation.payday_type}}</td>
 					<td>{{liquidation.payday_date}}</td>
 				</tr>
