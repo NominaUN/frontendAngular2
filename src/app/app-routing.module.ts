@@ -24,6 +24,9 @@ import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
+import { AuthLinksComponent } from './Components/authentication/auth-links.component';
+
+
 
 const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -69,6 +72,7 @@ export const RoutingComponent = [
     PositionsComponent,
     NotfoundComponent,
     EmployeeDetailsComponent,
-    EmployeeNewComponent
+    EmployeeNewComponent,
+    AuthLinksComponent
 
 ]

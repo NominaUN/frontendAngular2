@@ -1,6 +1,6 @@
 <!-- <h1>NOMINA UN</h1> <a [routerLink]="['/aboutus']">AboutUs</a> -->
 
-<body>
+<body routerLinkActive="active" *ngIf=" isLoggedIn()">
 	<nav class="navbar navbar-inverse navbar-fixed-top" id="header">
         <div class="container-fluid">
             <div class="navbar-header"><a [routerLink]="['']" class="navbar-brand navbar-link">NominaUN</a>
@@ -27,6 +27,7 @@
                     <li role="presentation"><a [routerLink]="['/statistics']">Estadísticas</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                        <li role="presentation"><a (click)="logOut()" >Log Out</a></li> 
                  <!--   <li role="presentation"><a [routerLink]="['/aboutus']">About Us</a></li> -->
                 </ul>
             </div>
