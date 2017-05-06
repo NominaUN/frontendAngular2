@@ -1,11 +1,15 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
+﻿
+//MODULOS
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {  A2tUiModule } from 'angular2-token';
+import { AppRoutingModule } from './app-routing.module';
 
-import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 
-
+//SERVICIOS
+import { Angular2TokenService } from 'angular2-token';
 import { EmployeesService } from './Services/employees/employees.service';
 import { LiquidationsService } from './Services/liquidations/liquidations.service';
 import { ParametersService } from './Services/parameters/parameters.service';
@@ -17,8 +21,11 @@ import { FondsService } from './Services/fonds/fonds.service';
 import { GeneralParametersService } from './Services/general-parameters/general-parameters.service';
 import { PositionsService } from './Services/positions/positions.service';
 import { AuthService } from './Services/authentication/auth.service';
+import { LoggedInGuard } from './Services/authentication/logged-in-guard.service';
 
-import { RoutingComponent, AppRoutingModule } from './app-routing.module';
+
+//COMPONENTES
+import { RoutingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
@@ -30,7 +37,6 @@ import { AppComponent } from './app.component';
         AppComponent,
         RoutingComponent
 /////AGREGARLOS EN EL app-routing.module.ts
-
     ],
     imports: [
         BrowserModule,
@@ -51,7 +57,8 @@ import { AppComponent } from './app.component';
         GeneralParametersService,
         PositionsService,
         Angular2TokenService,
-        AuthService
+        AuthService,
+        LoggedInGuard
     ],
     bootstrap: [AppComponent]
 })

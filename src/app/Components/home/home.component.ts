@@ -1,7 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Angular2TokenService, SignInData } from 'angular2-token';
 import {environment} from "../../../environments/environment";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
+import  { AuthService } from '../../Services/authentication/auth.service';
 
 
 @Component({
@@ -11,15 +12,27 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
+        submitted: boolean;
 
       signInData: SignInData = <SignInData>{};
       output: any;
 
-     constructor(private _tokenService: Angular2TokenService, private router:Router) {
+     constructor(
+                private _tokenService: Angular2TokenService, 
+                private router:Router,
+                    private authService: AuthService) {
             this._tokenService.init(environment.token_auth_config)
      }
+    
+
+
+
 
   ngOnInit() {}
+
+
+
+  
 
       onSubmit() {
 
@@ -40,8 +53,7 @@ export class HomeComponent implements OnInit {
         );
     }
 
-      signUp(){
-        this.output = null;
+     signUp(){
 
         this._tokenService.registerAccount({
         email:                'admin@admin.com',
@@ -52,10 +64,15 @@ export class HomeComponent implements OnInit {
           error =>    console.log(error));
       }
 
+    
+      isLoggedIn(): boolean {
+          return this._tokenService.userSignedIn();
+         }
 
-      isLogged(){
-        return this._tokenService.currentUserData !=null;
+      logOut(): void {
+          this._tokenService.signOut();
+          this.router.navigate(['/']);
       }
 
-
+      
 }

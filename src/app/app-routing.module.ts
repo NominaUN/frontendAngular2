@@ -25,22 +25,50 @@ import { GeneralParametersComponent } from './Components/general-parameters/gene
 import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
 
+
+///SECURITY SERV
+import { LoggedInGuard } from './Services/authentication/logged-in-guard.service';
+
+
+
+
 const routes: Routes = [
     { path: '', component: HomeComponent },
+    
     { path: 'aboutus', component: AboutusComponent },
     { path: 'reset', component: ResetComponent },
-    { path: 'employees', component: EmployeesComponent },
+    { path: 'employees', component: EmployeesComponent,
+      canActivate: [LoggedInGuard]
+    },
     { path: 'employee/:id', component: EmployeeDetailsComponent },
     { path: 'employeenew', component: EmployeeNewComponent },
-    { path: 'novelties', component: NoveltiesComponent },
-    { path: 'liquidations', component: LiquidationsComponent },
-    { path: 'statistics', component: StatisticsComponent },
-    { path: 'parameters', component: ParametersComponent },
-    { path: 'areas', component: AreasComponent },
-    { path: 'concepts', component: ConceptsComponent },
-    { path: 'fonds', component: FondsComponent },
-    { path: 'general-parameters', component: GeneralParametersComponent },
-    { path: 'positions', component: PositionsComponent },
+    { path: 'novelties', component: NoveltiesComponent,
+         canActivate: [LoggedInGuard]
+    },
+    { path: 'liquidations', component: LiquidationsComponent,
+        canActivate: [LoggedInGuard],
+    },
+    { path: 'statistics', component: StatisticsComponent,
+        canActivate: [LoggedInGuard],
+    },
+    { path: 'parameters', component: ParametersComponent,
+        canActivate: [LoggedInGuard],
+    },
+    { path: 'areas', component: AreasComponent,
+        canActivate: [LoggedInGuard],
+    },
+    { path: 'concepts', component: ConceptsComponent,
+             canActivate: [LoggedInGuard],
+    },
+    { path: 'fonds', component: FondsComponent,
+             canActivate: [LoggedInGuard],
+    },
+    { path: 'general-parameters', component: GeneralParametersComponent,
+             canActivate: [LoggedInGuard],
+    },
+    { path: 'positions', component: PositionsComponent,
+             canActivate: [LoggedInGuard],
+    },
     { path: '**', component: NotfoundComponent }
 ];
 

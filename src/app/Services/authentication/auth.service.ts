@@ -1,48 +1,64 @@
 import { Injectable } from '@angular/core';
-import {Angular2TokenService} from "angular2-token";
-import {Subject, Observable} from "rxjs";
-import {Response} from "@angular/http";
+import { Router }     from '@angular/router';
+import { Response }   from '@angular/http';
+
+import { Angular2TokenService } from 'angular2-token';
+import { Observable }           from 'rxjs/Observable';
+//import { environment } from '../../environments/environment'
+
 
 @Injectable()
 export class AuthService {
+  redirectUrl: string;
 
-  userSignedIn$:Subject<boolean> = new Subject();
+  constructor(
+    private tokenService: Angular2TokenService, 
+    public router: Router) {
+      //this.tokenService.init(environment.token_auth_config)
+            this.tokenService.init({apiPath: 'http://localhost:3000'})
 
-  constructor(private authService:Angular2TokenService) {
 
-    this.authService.validateToken().subscribe(
-        res => res.status == 200 ? this.userSignedIn$.next(res.json().success) : this.userSignedIn$.next(false)
-    )
+    }
+
+  logIn(email: string, password: string): Observable<Response> {
+    return this.tokenService.signIn({ email: email,
+                                     password: password });
   }
 
-  logOutUser():Observable<Response>{
+  signUp(){
 
-    return this.authService.signOut().map(
-        res => {
-          this.userSignedIn$.next(false);
-          return res;
-        }
-    );
+        this.tokenService.registerAccount({
+        email:                'admin@admin.com',
+        password:             '12345678',
+        passwordConfirmation: '12345678'})
+        .subscribe(
+        res =>      console.log(res),
+          error =>    console.log(error));
+      }
+
+
+  signInWithGithub(): Observable<any> {
+    return this.tokenService.signInOAuth('github');
   }
 
-  registerUser(signUpData:  {email:string, password:string, passwordConfirmation:string}):Observable<Response>{
-    return this.authService.registerAccount(signUpData).map(
-        res => {
-          this.userSignedIn$.next(true);
-          return res
-        }
-    );
+  proccessOauthCallback(): void {
+    this.tokenService.processOAuthCallback();
+    this.redirectAfterLogin();
   }
 
-  logInUser(signInData: {email:string, password:string}):Observable<Response>{
-
-    return this.authService.signIn(signInData).map(
-        res => {
-          this.userSignedIn$.next(true);
-          return res
-        }
-    );
-
+  logOut(): void {
+    this.redirectUrl = undefined;
+    this.tokenService.signOut();
+    this.router.navigate(['/']);
   }
 
+  isLoggedIn(): boolean {
+    return this.tokenService.userSignedIn();
+  }
+
+  redirectAfterLogin(): void {
+    let redirectTo = this.redirectUrl ? this.redirectUrl : '/';
+    this.redirectUrl = undefined;
+    this.router.navigate([redirectTo]);
+  }
 }
