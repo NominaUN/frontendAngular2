@@ -1,4 +1,92 @@
-<h1>Liquidaciones de la Empresa</h1>
+
+
+
+
+
+<div id="title">
+	<br>
+<h1>LIQUIDACIONES</h1>
+<hr id="first">
+<hr id="second">
+</div>
+
+<div class="container" id="general">
+	<div class="row">
+		<form class="form-horizontal">
+
+<fieldset>
+
+<br>
+
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputType">Tipo de liquidación</label>
+  <div class="col-md-6">
+    <select id="typeMaster" class="form-control input-md">
+     <option>Nómina</option>
+	 <option>Prima</option>
+	 <option>Cesantías</option>
+	 <option>Intereses de Cesantias</option>
+	</select>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputType">Area</label>
+  <div class="col-md-6">
+    <select id="typeMaster" class="form-control input-md">
+     <option>1</option>
+	 <option>2</option>
+	 <option>3</option>
+	 <option>4</option>
+	</select>
+  </div>
+</div>
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="inputDate">Fecha</label>  
+  <div class="col-md-4">
+  <input id="dateMaster" type="datetime-local" class="form-control  input-md">
+
+		
+
+  </div>
+</div>
+
+
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Liquidar</button>
+	
+  </div>
+</div>
+
+
+</fieldset>
+
+		</form>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
 <div class="container" id="masterHeader">
 	<form>
 		<div class="form-group">
@@ -10,6 +98,7 @@
 				<option>Cesantías</option>
 				<option>Intereses de Cesantias</option>
 			</select><br>
+
 			<label for="inputArea">Area:</label>
 			<select id="areaMaster">
  				<option>1</option>
@@ -23,6 +112,10 @@
 		<button type="submit" class="btn btn-primary">Liquidar</button>
 	</form>
 </div>
+
+-->
+
+
 <div class="page-header"> <h3>Ver liquidaciones recientes</h3></div>
 <div class="container" id="masterFooter">
 	<div id="masterTable" class="table-responsive">
@@ -43,3 +136,7 @@
 	</div>
 </div>
 <div *ngIf="selectedLiquidation">
+
+
+
+
