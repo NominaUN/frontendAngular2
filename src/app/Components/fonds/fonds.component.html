@@ -1,66 +1,38 @@
-<br>
-
-<legend>Fondos de la Empresa</legend>
-
-<div class="container" id="general">
-	<div class="row">
-		<form class="form-horizontal">
-<fieldset>
-
-<br>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputFondDocNumber">Número Documento del fondo</label>  
-  <div class="col-md-4">
-  <input id="docNumberFond" placeholder="Ingrese el documento del fondo" class="form-control input-md" required="" type="number">
-    
-  </div>
+<h1 align="center">Fondos de la Empresa</h1>
+<div class="container" id="fondCont">
+	<form (ngSubmit)="createFond(fond)" #postForm='ngForm'>
+		<div class="form-group">
+			<label for="inputFondDocType">Tipo Documento del fondo</label>  
+			<select id="docTypeFond" class="form-control" #document_type='ngModel' [(ngModel)]='fond.document_type' name="docTypeFond">
+				<option>NIT</option>
+			</select>				
+		</div>	
+		<div class="form-group">
+			<label for="inputFondDocNumber">Número Documento del fondo</label>  
+			<input id="docNumberFond" placeholder="Ingrese el documento del fondo" class="form-control input-md" required="" type="number" #document_number='ngModel'
+				[(ngModel)]='fond.document_number' name="docNumberFond">	
+		</div>
+		<div class="form-group">
+			<label for="inputFondName">Razón Social del fondo</label>  
+			<input id="nameFond" placeholder="Ingrese el nombre del fondo" class="form-control input-md" required="" type="text" #business_name='ngModel'
+				[(ngModel)]='fond.business_name' name="nameFond">		
+		</div>
+		<div class="form-group">
+			<label for="inputFondType">Tipo de Fondo</label>
+			<select id="typeFond" class="form-control" #fond_type='ngModel' [(ngModel)]='fond.fond_type' name="typeFond">
+				<option>Aseguradora de Riesgos Laborales</option>
+				<option>Caja de Compensación</option>
+				<option>Entidad Promotora de Salud</option>
+				<option>Fondo de Cesantías</option>
+				<option>Fondo de Pensiones</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary" id="setFond" (click)="loadFonds()">Guardar</button>
+	</form>
 </div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputFondName">Razón Social del fondo</label>  
-  <div class="col-md-4">
-  <input id="nameFond" placeholder="Ingrese el nombre del fondo" class="form-control input-md" required="" type="text">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputFondType">Tipo de Fondo</label>
-  <div class="col-md-6">
-    <select id="typeFond" class="form-control">
-      <option>Aseguradora de Riesgos Laborales</option>
-	  <option>Caja de Compensación</option>
-	  <option>Entidad Promotora de Salud</option>
-	  <option>Fondo de Cesantías</option>
-	  <option>Fondo de Pensiones</option>
-	</select>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
-	<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteFond">Eliminar</button>
-  </div>
-</div>
-
-
-</fieldset>
-
-		</form>
-	</div>
-</div>
-
-
-<br>
-<legend>Lista de Fondos Actuales</legend>
-
-
-<div class="container" id="fondFooter">
-	<div id="fondTable" class="table-responsive">
+<div class="container">
+	<div class="page-header"> <h3>Seleccionar un fondo para ver detalles</h3></div>
+		<div id="fondTable" class="table-responsive">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -71,7 +43,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let fond of fonds.data" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
+				<tr *ngFor="let fond of fonds" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
 					<td>{{fond.document_type}}</td>
 					<td>{{fond.document_number}}</td>
 					<td>{{fond.business_name}}</td>

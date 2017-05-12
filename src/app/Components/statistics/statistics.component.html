@@ -1,1 +1,18 @@
-<canvas id="myChart"></canvas>
+<div class="container" *ngIf="isDataAvailable">
+	<canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+</div>
+<div class="container">
+	<div class="form-group">
+		<button class="btn btn-info btn-lg col-xs-3" (click)="loadG1()">Neto vs. Devengado</button>
+		<button class="btn btn-warning btn-lg col-xs-3" (click)="loadG2()">Inactividades por Empleado</button>
+		<button class="btn btn-danger btn-lg col-xs-3" (click)="loadG3()">Horas Extras por Empleado</button>
+		<button class="btn btn-success btn-lg col-xs-3" (click)="loadG4()">Empleados por Año</button>
+	</div>
+</div>

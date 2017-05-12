@@ -1,42 +1,29 @@
-﻿<body>
-  <h1>Areas de la Empresa</h1>
-  <form (ngSubmit)="createArea(area)" #postForm='ngForm'>
-
-    <div class="form-group">
-      <label for="inputAreaName">Nombre del Area:</label>
-      <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
-             [(ngModel)]='area.area_name' name="nameArea">
-    </div>
-
-    <button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
-    <!-- <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button
-      -->
-    <!--
-     <div class="form-group">
-         <label for="inputAreaName">Nombre del Area:</label>
-         <input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí">
-     </div>
-     <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setArea">Guardar</button>
-     <button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteArea">Eliminar</button>
-         -->
-
-  </form>
-    <div class="container">
-      <div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
-      <div id="areaTable" class="table-responsive">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Nombre del Area</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
-              <td>{{area.area_name}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div *ngIf="selectedArea">
+﻿<h1>Areas de la Empresa</h1>
+<div class="container" id="areaCont">
+	<form (ngSubmit)="createArea(area)" #postForm='ngForm'>
+		<div class="form-group">
+			<label for="inputAreaName">Nombre del Area:</label>
+			<input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
+				[(ngModel)]='area.area_name' name="nameArea">
+		</div>
+		<button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
+	</form>
+</div>
+<div class="container">
+	<div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
+	<div id="areaTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nombre del Area</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
+					<td>{{area.area_name}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div *ngIf="selectedArea">

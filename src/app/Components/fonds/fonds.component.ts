@@ -1,44 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { FondsService } from  '../../Services/fonds/fonds.service';
+import { Fond } from '../../Models/fond';
+import { Observable } from 'rxjs/Rx';
 
 @Component({
-  selector: 'app-fonds',
-  templateUrl: './fonds.component.html',
-  styleUrls: ['./fonds.component.css']
+	selector: 'app-fonds',
+	templateUrl: './fonds.component.html',
+	styleUrls: ['./fonds.component.css']
 })
+
 export class FondsComponent implements OnInit {
-
-  fonds=[];
-
-  constructor(private fondService: FondsService) {
-  }
-  
-  loadFonds(){
-	this.fondService.getFonds().subscribe(
-		(resFondData => this.fonds = resFondData)
-    );
-  }
-  
-  ngOnInit() {
-    this.loadFonds();   
-  }
-  
-  onSelect(fond:any):void {
-  	console.log(fond);
-  }
-
-  onClick(event){
-	var target = event.target || event.srcElement || event.currentTarget;
-    var idAttr = target.attributes.id;
-    var value = idAttr.nodeValue;
-	if (value === "setFond") {
-		var tipodoc = "NIT.";
-		var numero = (<HTMLInputElement>document.getElementById("docNumberFond")).value;
-		var nombre = (<HTMLInputElement>document.getElementById("nameFond")).value;
-		var category = (<HTMLInputElement>document.getElementById("typeFond")).value;
-		this.fondService.setFonds(tipodoc, numero, nombre, category);
-		location.reload();
+	
+	fonds: Fond[];
+    fond = new Fond;
+    constructor(private fondService: FondsService) {
 	}
-  }
 
+    loadFonds(){
+		this.fondService.getFonds().subscribe(
+			(resFondData => this.fonds = resFondData)
+		);
+	}
+
+    ngOnInit() {
+        this.loadFonds();
+    }
+
+    onSelect(fond: any): void {
+        console.log(fond);
+    }
+
+    createFond(fond: Fond) {
+        this.fondService.setFonds(fond).subscribe(
+            data => console.log('Success uploading the fond', data),
+            error => console.error(`Error: ${error}`), ()=>this.loadFonds());
+    }
+	
 }

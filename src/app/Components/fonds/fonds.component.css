@@ -12,17 +12,13 @@ body {
   background-color:#ffffff;
 }
 
-#general {
+#fondCont {
     border: 1px solid #e9e6e8;
     box-shadow: 5px 5px 2px grey;
+	padding-top: 15px;
 }
 
-#fondHeader {
-    border: 5px solid;
-}
-
-
-#fondFooter {
+#fondTable {
      overflow:scroll;
      height:300px;
      width:100%;

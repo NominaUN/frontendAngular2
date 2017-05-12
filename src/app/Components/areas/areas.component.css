@@ -4,19 +4,18 @@
   box-sizing:border-box;
 }
 
-
-
 body {
- 
+  font-family:Georgia,"Times New Roman",Times,serif;
   font-size:15px;
   line-height:1.42857143;
   color:#777777;
   background-color:#ffffff;
 }
 
-#general {
+#areaCont {
     border: 1px solid #e9e6e8;
     box-shadow: 5px 5px 2px grey;
+	padding-top: 15px;
 }
 
 #areaTable {

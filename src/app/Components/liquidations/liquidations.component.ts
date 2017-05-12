@@ -4,26 +4,25 @@ import { PaydayMaster } from '../../Models/payday_master';
 import { Observable } from 'rxjs/Rx';
 
 @Component({
-  selector: 'app-liquidations',
-  templateUrl: './liquidations.component.html',
-  styleUrls: ['./liquidations.component.css']
+	selector: 'app-liquidations',
+	templateUrl: './liquidations.component.html',
+	styleUrls: ['./liquidations.component.css']
 })
+
 export class LiquidationsComponent implements OnInit {
 
-  liquidations: PaydayMaster[];
-  liquidation = new PaydayMaster;
+	liquidations: PaydayMaster[];
+	liquidation = new PaydayMaster;
 
-  constructor(private liquidationsService: LiquidationsService) { }
+	constructor(private liquidationsService: LiquidationsService) { }
    
     loadLiquidations() {
-        this.liquidationsService.getLiquidations().subscribe((resLiquidationData => this.liquidations = resLiquidationData));
+        this.liquidationsService.getLiquidations().subscribe(
+			(resLiquidationData => this.liquidations = resLiquidationData));
     }
 
     ngOnInit() {
-
         this.loadLiquidations();
-    //    let timer = Observable.timer(0, 5000);
-    //    timer.subscribe(() => this.loadAreas());
     }
 
     onSelect(liquidation: any): void {
@@ -31,11 +30,9 @@ export class LiquidationsComponent implements OnInit {
     }
 
     createPaydayMaster(liquidation: PaydayMaster) {
-        this.liquidationsService.setLiquidations(liquidation)
-            .subscribe(
+        this.liquidationsService.setLiquidations(liquidation).subscribe(
             data => console.log('Success uploading the liquidation', data),
             error => console.error(`Error: ${error}`), ()=>this.loadLiquidations());
-
     }
 
 }

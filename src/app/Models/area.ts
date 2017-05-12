@@ -2,7 +2,6 @@
     constructor(
         id?: number,
         area_name?: string,
-        employee?:any
+        employee?: any
     ) { }
-
 }

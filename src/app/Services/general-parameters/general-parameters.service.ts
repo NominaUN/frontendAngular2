@@ -16,7 +16,7 @@ export class GeneralParametersService {
 		let options = new RequestOptions({ headers: headers });
 		let body = JSON.stringify({round_type: parseInt(round), laboral_days: parseInt(laboral), payday: payday, integral_base: integral});
 	    
-		return this.http.post(this.urlpost, body, options).map(response => response.json()).subscribe(
+		return this.http.put(this.urlpost, body, options).map(response => response.json()).subscribe(
            data => console.log('Success uploading the parameters', data),
            error => console.error(`Error: ${error}`));
 	}

@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {  A2tUiModule } from 'angular2-token';
+import { A2tUiModule } from 'angular2-token';
 import { AppRoutingModule } from './app-routing.module';
+import { ChartsModule } from 'ng2-charts';
 
 
 //SERVICIOS
@@ -43,7 +44,8 @@ import { AppComponent } from './app.component';
         FormsModule,
         HttpModule,
         AppRoutingModule,
-        A2tUiModule
+        A2tUiModule,
+		ChartsModule
     ],
     providers: [
         EmployeesService,
