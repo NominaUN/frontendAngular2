@@ -18,10 +18,8 @@ export class HomeComponent implements OnInit {
       output: any;
 
      constructor(
-                private _tokenService: Angular2TokenService, 
                 private router:Router,
                     private authService: AuthService) {
-            this._tokenService.init(environment.token_auth_config)
      }
     
 
@@ -42,7 +40,7 @@ export class HomeComponent implements OnInit {
 
         this.output = null;
 
-        this._tokenService.signIn(this.signInData).subscribe(
+        this.authService.logIn(this.signInData.email, this.signInData.password).subscribe(
             res => {
 
                  if(res.status == 200){
@@ -57,26 +55,14 @@ export class HomeComponent implements OnInit {
         );
     }
 
-     signUp(){
-        /*
-        this._tokenService.registerAccount({
-        email:                'admin@admin.com',
-        password:             '12345678',
-        passwordConfirmation: '12345678'})
-        .subscribe(
-        res =>      console.log(res),
-          error =>    console.log(error));
-          */
-      }
 
     
       isLoggedIn(): boolean {
-          return this._tokenService.userSignedIn();
+          return this.authService.isLoggedIn();
          }
 
       logOut(): void {
-          this._tokenService.signOut();
-          this.router.navigate(['/']);
+          this.authService.logOut();
       }
 
       
