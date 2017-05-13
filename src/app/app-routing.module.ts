@@ -24,6 +24,7 @@ import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
+import { InicioComponent } from './Components/inicio/inicio.component';
 
 
 ///SECURITY SERV
@@ -69,6 +70,12 @@ const routes: Routes = [
     { path: 'positions', component: PositionsComponent,
              canActivate: [LoggedInGuard],
     },
+    { path: 'inicio', component: InicioComponent,
+             canActivate: [LoggedInGuard],
+    },
+
+
+
     { path: '**', component: NotfoundComponent }
 ];
 
@@ -97,6 +104,7 @@ export const RoutingComponent = [
     PositionsComponent,
     NotfoundComponent,
     EmployeeDetailsComponent,
-    EmployeeNewComponent
+    EmployeeNewComponent,
+    InicioComponent
 
 ]

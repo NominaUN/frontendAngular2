@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
             res => {
 
                  if(res.status == 200){
-                this.router.navigate(['/employees'])
+                this.router.navigate(['/inicio'])
                  }
                 this.signInData     = <SignInData>{};
                 this.output         = res;
