@@ -1,11 +1,17 @@
-﻿import { BrowserModule } from '@angular/platform-browser';
+﻿
+//MODULOS
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { A2tUiModule } from 'angular2-token';
+import { AppRoutingModule } from './app-routing.module';
+import { ChartsModule } from 'ng2-charts';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
-import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 
-
+//SERVICIOS
+import { Angular2TokenService } from 'angular2-token';
 import { EmployeesService } from './Services/employees/employees.service';
 import { LiquidationsService } from './Services/liquidations/liquidations.service';
 import { ParametersService } from './Services/parameters/parameters.service';
@@ -17,13 +23,12 @@ import { FondsService } from './Services/fonds/fonds.service';
 import { GeneralParametersService } from './Services/general-parameters/general-parameters.service';
 import { PositionsService } from './Services/positions/positions.service';
 import { AuthService } from './Services/authentication/auth.service';
+import { LoggedInGuard } from './Services/authentication/logged-in-guard.service';
 
-import { RoutingComponent, AppRoutingModule } from './app-routing.module';
+
+//COMPONENTES
+import { RoutingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BannerComponent } from './Components/banner/banner.component';
-
-import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
-import { ModalDemoComponent } from './Components/modal-demo/modal-demo.component';
 
 
 
@@ -32,11 +37,8 @@ import { ModalDemoComponent } from './Components/modal-demo/modal-demo.component
 @NgModule({
     declarations: [
         AppComponent,
-        RoutingComponent,
-        BannerComponent,
-        ModalDemoComponent
+        RoutingComponent
 /////AGREGARLOS EN EL app-routing.module.ts
-
     ],
     imports: [
         BrowserModule,
@@ -44,7 +46,8 @@ import { ModalDemoComponent } from './Components/modal-demo/modal-demo.component
         HttpModule,
         AppRoutingModule,
         A2tUiModule,
-        Ng2Bs3ModalModule
+        Ng2Bs3ModalModule,
+		ChartsModule
     ],
     providers: [
         EmployeesService,
@@ -58,7 +61,8 @@ import { ModalDemoComponent } from './Components/modal-demo/modal-demo.component
         GeneralParametersService,
         PositionsService,
         Angular2TokenService,
-        AuthService
+        AuthService,
+        LoggedInGuard
     ],
     bootstrap: [AppComponent]
 })

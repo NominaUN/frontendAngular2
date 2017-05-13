@@ -31,7 +31,3 @@ ul, ol {
 .nav li:hover > ul {
 	display:block;
 }
-
-body {
-	margin-bottom: 0px;
-}

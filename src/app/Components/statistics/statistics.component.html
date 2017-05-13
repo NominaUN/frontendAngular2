@@ -1,23 +1,18 @@
-<h1>Usuarios</h1>
-<div class="page-header"> <h3>Usuarios</h3></div>
-<div class="container" id="statistic">
-	<div id="statisticTable" class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Identificador</th>
-					<th>Rol</th>
-					<th>Empleado</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let statistic of statistics.data" [class.selected]="statistic === selectedStatistic" (click)="onSelect(statistic)">
-					<td>{{statistic.user_name}}</td>
-					<td>{{statistic.user_role}}</td>
-					<td>{{statistic.employee.first_name}}</td>
-				</tr>
-			</tbody>
-		</table>
+<div class="container" *ngIf="isDataAvailable">
+	<canvas baseChart
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+</div>
+<div class="container">
+	<div class="form-group">
+		<button class="btn btn-info btn-lg col-xs-3" (click)="loadG1()">Neto vs. Devengado</button>
+		<button class="btn btn-warning btn-lg col-xs-3" (click)="loadG2()">Inactividades por Empleado</button>
+		<button class="btn btn-danger btn-lg col-xs-3" (click)="loadG3()">Horas Extras por Empleado</button>
+		<button class="btn btn-success btn-lg col-xs-3" (click)="loadG4()">Empleados por Año</button>
 	</div>
 </div>
-<div *ngIf="selectedStatistic">

@@ -1,18 +1,19 @@
 <body>
+
 <div id="title">
 	<br>
-<h1>CONCEPTOS</h1>
-<hr id="first">
-<hr id="second">
+    <h1>CONCEPTOS</h1>
+    <hr id="first">
+    <hr id="second">
 </div>
 
-<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
-        (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
+<modal #validationModal>
         <form (ngSubmit)="createConcept(concept)" #postForm='ngForm'>
         
             <modal-header [show-close]="true">
-                <h4 class="modal-title">Ingrese el nombre del Area</h4>
+                <h4 class="modal-title">Ingrese la información del concepto</h4>
             </modal-header>
+
             <modal-body>
                 <div class="form-group">
                     <label for="Name">Nombre</label>
@@ -33,7 +34,9 @@
                 </div>
                
             </modal-body>
+
             <modal-footer>
+
                 <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
                 <button type="submit" class="btn btn-primary" id="setArea" (click)="loadConcepts()" (click)="validationModal.close()">Guardar</button>
                 
@@ -68,7 +71,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let concept of concepts.data" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
+                                <tr *ngFor="let concept of concepts" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
 
                                     <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
                                     <td class="hidden-xs">{{concept.id}}</td>
@@ -86,82 +89,8 @@
     </div>
 </div>
 
-<div *ngIf="selectedConcept">
+<div *ngIf="selectedConcept"></div>
 
-<!--
-<br>
-
-<legend>Conceptos de la Empresa</legend>
-
-<div class="container" id="general">
-	<div class="row">
-		<form class="form-horizontal">
-<fieldset>
-
-<br>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputConceptName">Nombre del Concepto</label>  
-  <div class="col-md-4">
-  <input id="nameConcept" type="text" class="form-control input-md" placeholder="Ingrese el nombre del concepto aquí">
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputConceptCategory">Categoria del Concepto</label>  
-  <div class="col-md-4">
-  <input id="categoryConcept" type="text" class="form-control input-md" placeholder="Ingrese la categoría del concepto aquí">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
-	<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteFond">Eliminar</button>
-  </div>
-</div>
-
-
-
-</fieldset>
-
-		</form>
-	</div>
-</div>
-
-
-<br>
-<legend>Lista de conceptos actuales</legend>
-
-<div class="container" id="conceptFooter">
-	<div id="conceptTable" class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre del Concepto</th>
-					<th>Categoría</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let concept of concepts.data" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
-					<td>{{concept.concept_name}}</td>
-					<td>{{concept.category}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-</div>
-<div *ngIf="selectedConcept">
-
-
--->
-
-
-
-
-</div>
 </body>
 
 

@@ -1,11 +1,10 @@
 ﻿<html>
 
-<script src="node_modules/ng2-bs3-modal/bundles/ng2-bs3-modal.js"></script>
+
 
 <body>
 
  <!--<p><b>Signed In?</b> {{_tokenService.currentUserData != null}} </p>-->
-
 
    
 
@@ -24,7 +23,7 @@
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" [disabled]="!signInForm.form.valid">Log In</button>
-                <button class="btn btn-primary btn-block" (click)="signUp()">Sign Up</button>
+           <!--     <button class="btn btn-primary btn-block" (click)="signUp()">Sign Up</button> -->
 
             </div><a [routerLink]="['/reset']" class="forgot">Forgot your email or password?</a></form>
     </div>
@@ -62,12 +61,8 @@
             </div>
         </div>
     </div>
-
-
-<br>
+    
 </body>
-
-<app-aboutus></app-aboutus>
 
 
 </html>

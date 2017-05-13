@@ -10,24 +10,32 @@
 </div>
 
 
-<modal [animation]="animation" [keyboard]="keyboard" [backdrop]="backdrop" (onClose)="closed()" (onDismiss)="dismissed()"
-        (onOpen)="opened()" [cssClass]="cssClass" #validationModal>
+<modal #validationModal>
         <form (ngSubmit)="createPositions(position)" #postForm='ngForm'>
         
             <modal-header [show-close]="true">
                 <h4 class="modal-title">Ingrese el nombre del Cargo</h4>
             </modal-header>
+
             <modal-body>
                 <div class="form-group">
-      				<label for="inputPositionName">Nombre del Cargo:</label>
-      				<input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
-           		 		  [(ngModel)]='position.position_name' name="namePosition">
+      				<label for="position_name">Nombre del Cargo:</label>
+      				<input required id="position_name" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
+           		 		  [(ngModel)]='position.position_name' name="position_name">
     			</div>
+
+                <div *ngIf="position_name.errors && (position_name.dirty || position_name.touched)" class="alert alert-danger">
+                     <div [hidden]="!position_name.errors.required">
+                         Por favor ingresar el nombre del cargo
+                    </div>
+                </div>
+
                
             </modal-body>
+            
             <modal-footer>
                 <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
-                <button type="submit" class="btn btn-primary" id="setArea" (click)="validationModal.close()">Guardar</button>
+                <button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="createPosition" (click)="validationModal.close()">Guardar</button>
                 
             </modal-footer>
         </form>

@@ -1,7 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Angular2TokenService, SignInData } from 'angular2-token';
 import {environment} from "../../../environments/environment";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
+import  { AuthService } from '../../Services/authentication/auth.service';
 
 
 @Component({
@@ -11,25 +12,39 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
+        submitted: boolean;
 
       signInData: SignInData = <SignInData>{};
       output: any;
 
-     constructor(private _tokenService: Angular2TokenService, private router:Router) {
-            this._tokenService.init(environment.token_auth_config)
+     constructor(
+                private router:Router,
+                    private authService: AuthService) {
      }
+    
 
-  ngOnInit() {}
+
+
+
+  ngOnInit() {
+      
+      if (this.authService.isLoggedIn()) {
+         this.router.navigateByUrl('/inicio');
+    }}
+
+
+
+  
 
       onSubmit() {
 
         this.output = null;
 
-        this._tokenService.signIn(this.signInData).subscribe(
+        this.authService.logIn(this.signInData.email, this.signInData.password).subscribe(
             res => {
 
                  if(res.status == 200){
-                this.router.navigate(['/employees'])
+                this.router.navigate(['/inicio'])
                  }
                 this.signInData     = <SignInData>{};
                 this.output         = res;
@@ -40,22 +55,15 @@ export class HomeComponent implements OnInit {
         );
     }
 
-      signUp(){
-        this.output = null;
 
-        this._tokenService.registerAccount({
-        email:                'admin@admin.com',
-        password:             '12345678',
-        passwordConfirmation: '12345678'})
-        .subscribe(
-        res =>      console.log(res),
-          error =>    console.log(error));
+    
+      isLoggedIn(): boolean {
+          return this.authService.isLoggedIn();
+         }
+
+      logOut(): void {
+          this.authService.logOut();
       }
 
-
-      isLogged(){
-        return this._tokenService.currentUserData !=null;
-      }
-
-
+      
 }

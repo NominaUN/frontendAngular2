@@ -30,10 +30,10 @@ export class ConceptsComponent implements OnInit {
   	console.log(concept);
   }
 
-  createConcept(concept : Concept){
+  createArea(concept : Concept){
 
   		this.conceptService.setConcepts(concept).subscribe(
-            data => console.log('Success uploading the concept', data),
+            data => console.log('Success uploading the area', data),
             error => console.error(`Error: ${error}`), ()=>this.loadConcepts());
 
 

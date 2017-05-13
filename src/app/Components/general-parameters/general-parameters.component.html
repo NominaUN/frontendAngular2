@@ -1,76 +1,33 @@
-<body>
-
-
-<div id="title">
-	<br>
-<h1>PARAMETROS GENERALES</h1>
-<hr id="first">
-<hr id="second">
+<h1>Parámetros Generales de la Empresa</h1>
+<div class="container" id="generalPage">
+	<form (ngSubmit)="updateGeneral(general)" #postForm='ngForm'>
+		<div class="form-group">
+		    <label for="inputRound">Redondeo</label>
+			<select id="roundGeneral" class="form-control" #round_type='ngModel' [(ngModel)]='general.round_type' name="roundGeneral">
+			    <option value="1">Unidades</option>
+			    <option value="10">Decenas</option>
+			    <option value="100">Centenas</option>
+			    <option value="1000">Miles</option>
+			</select>
+			<div class="form-group">
+				<label for="inputLaboral">Dias Laborales</label>  
+				<input id="laboralGeneral" class="form-control input-md" required="" type="number" #laboral_days='ngModel' [(ngModel)]='general.laboral_days' name="laboralGeneral">
+			</div>
+			<div class="form-group">
+				<label for="inputPayday">Tipo de Liquidación</label>
+				<select id="paydayGeneral" class="form-control" #payday='ngModel' [(ngModel)]='general.payday' name="paydayGeneral">
+					<option value="Quincenal">Quincenal</option>
+					<option value="Mensual">Mensual</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="inputIntegral">Base para Salario Integral</label>
+				<select id="integralGeneral" class="form-control" #integral_base='ngModel' [(ngModel)]='general.integral_base' name="integralGeneral">
+					<option value="70">70%</option>
+					<option value="1.3">1.3</option>
+				</select>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-primary" id="setGeneral" (click)="loadGeneral()">Guardar</button>
+	</form>
 </div>
-
-<div class="container" id="general">
-	<div class="row">
-		<form class="form-horizontal">
-<fieldset>
-
-<br>
-
-
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputRound">Redondeo</label>
-  <div class="col-md-6">
-    <select id="roundGeneral" class="form-control">
-      <option value="Unidades">Unidades</option>
-      <option value="Decenas">Decenas</option>
-	  <option value="Centenas">Centenas</option>
-	  <option value="Miles">Miles</option>
-    </select>
-  </div>
-</div>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputLaboral">Dias Laborales</label>  
-  <div class="col-md-4">
-  <input id="laboralGeneral" placeholder="Numero de dias laborales" class="form-control input-md" required="" type="number">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputPayday">Tipo de Liquidación</label>
-  <div class="col-md-6">
-    <select id="paydayGeneral" class="form-control">
-      <option value="Quincenal">Quincenal</option>
-      <option value="Mensual">Mensual</option>
-	</select>
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputIntegral">Base para Salario Integral</label>
-  <div class="col-md-6">
-    <select id="integralGeneral" class="form-control">
-      <option value="70%">70%</option>
-      <option value="1.3">1.3</option>
-	</select>
-  </div>
-</div>
-
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
-  </div>
-</div>
-
-</fieldset>
-
-		</form>
-	</div>
-</div>
-
-</body>
