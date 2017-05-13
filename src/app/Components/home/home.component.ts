@@ -28,7 +28,11 @@ export class HomeComponent implements OnInit {
 
 
 
-  ngOnInit() {}
+  ngOnInit() {
+      
+      if (this.authService.isLoggedIn()) {
+         this.router.navigateByUrl('/inicio');
+    }}
 
 
 
@@ -54,7 +58,7 @@ export class HomeComponent implements OnInit {
     }
 
      signUp(){
-
+        /*
         this._tokenService.registerAccount({
         email:                'admin@admin.com',
         password:             '12345678',
@@ -62,6 +66,7 @@ export class HomeComponent implements OnInit {
         .subscribe(
         res =>      console.log(res),
           error =>    console.log(error));
+          */
       }
 
     

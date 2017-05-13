@@ -34,15 +34,23 @@ import { LoggedInGuard } from './Services/authentication/logged-in-guard.service
 
 
 const routes: Routes = [
-    { path: '', component: HomeComponent },
+    { path: '', component: HomeComponent,
+
+    },
     
     { path: 'aboutus', component: AboutusComponent },
     { path: 'reset', component: ResetComponent },
     { path: 'employees', component: EmployeesComponent,
       canActivate: [LoggedInGuard]
     },
-    { path: 'employee/:id', component: EmployeeDetailsComponent },
-    { path: 'employeenew', component: EmployeeNewComponent },
+    { path: 'employee/:id', component: EmployeeDetailsComponent,
+        canActivate: [LoggedInGuard]
+    },
+
+    { path: 'employeenew', component: EmployeeNewComponent,
+            canActivate: [LoggedInGuard]
+    },
+
     { path: 'novelties', component: NoveltiesComponent,
          canActivate: [LoggedInGuard]
     },

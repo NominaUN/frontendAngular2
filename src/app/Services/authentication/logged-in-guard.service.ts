@@ -32,10 +32,16 @@ export class LoggedInGuard implements CanActivate, CanActivateChild, CanLoad {
   }
 
   private checkLogin(url: string): boolean {
-    if (this.authService.isLoggedIn()) { return true; }
+    if (this.authService.isLoggedIn()) { 
+      return true; 
+    }
 
     this.authService.redirectUrl = url;
     this.router.navigate(['/']);
     return false;
   }
+
+
+
+
 }
