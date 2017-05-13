@@ -54,7 +54,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let concept of concepts.data" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
+				<tr *ngFor="let concept of concepts" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
 					<td>{{concept.concept_name}}</td>
 					<td>{{concept.category}}</td>
 				</tr>

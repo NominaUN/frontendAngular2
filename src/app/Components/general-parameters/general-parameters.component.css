@@ -12,7 +12,8 @@ body {
   background-color:#ffffff;
 }
 
-#general {
+#generalPage {
     border: 1px solid #e9e6e8;
     box-shadow: 5px 5px 2px grey;
+	padding-top: 15px;
 }
