@@ -1,5 +1,4 @@
-﻿
-//MODULOS
+﻿//MODULOS
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -7,7 +6,9 @@ import { HttpModule } from '@angular/http';
 import { A2tUiModule } from 'angular2-token';
 import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
-
+import { CalendarModule } from 'angular-calendar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 //SERVICIOS
 import { Angular2TokenService } from 'angular2-token';
@@ -25,7 +26,7 @@ import { AuthService } from './Services/authentication/auth.service';
 import { LoggedInGuard } from './Services/authentication/logged-in-guard.service';
 
 
-//COMPONENTES
+//COMPONENTES DE ROUTING Y ROOT
 import { RoutingComponent } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -45,7 +46,9 @@ import { AppComponent } from './app.component';
         HttpModule,
         AppRoutingModule,
         A2tUiModule,
-		ChartsModule
+		ChartsModule,
+        BrowserAnimationsModule,
+        CalendarModule.forRoot()
     ],
     providers: [
         EmployeesService,
