@@ -27,34 +27,44 @@ export class InicioComponent implements OnInit {
 
   viewDate: Date = new Date();
 
+  quincena = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0);
+
+
   recurringEvents: RecurringEvent[] = [{
-    title: 'Recurs on the 5th of each month',
+    title: 'Quincena mitad de Mes',
     color: colors.yellow,
     rrule: {
       freq: RRule.MONTHLY,
-      bymonthday: 5
+      bymonthday: 15
     }
-  }, {
-    title: 'Recurs yearly on the 10th of the current month',
-    color: colors.blue,
+  },
+  {
+    title: 'Quincena Final de Mes',
+    color: colors.yellow,
     rrule: {
-      freq: RRule.YEARLY,
-      bymonth: getMonth(new Date()) + 1,
-      bymonthday: 10
-    }
-  }, {
-    title: 'Recurs weekly on mondays',
-    color: colors.red,
-    rrule: {
-      freq: RRule.WEEKLY,
-      byweekday: [RRule.MO],
+      freq: RRule.MONTHLY,
+      bymonthday: this.quincena.getDate()
     }
   }];
 
   calendarEvents: CalendarEvent[] = [];
 
+
+  getDiasQuincena() : number {
+     var hoy = this.viewDate.getDate()+1; 
+
+    if (hoy> 15){
+        return this.quincena.getDate()-hoy
+    }
+    else {
+      return 15-hoy
+    }
+
+  }
+
   ngOnInit(): void {
     this.updateCalendarEvents();
+    console.log(this.getDiasQuincena());
   }
 
   updateCalendarEvents(): void {
