@@ -27,32 +27,8 @@ import {
 
 @Component({
   selector: 'mwl-demo-utils-date-time-picker',
-  template: `
-    <form class="form-inline">
-      <div class="form-group">
-        <div class="input-group">
-          <input
-            readonly
-            class="form-control"
-            [placeholder]="placeholder"
-            name="date"
-            [(ngModel)]="dateStruct"
-            (ngModelChange)="updateDate()"
-            ngbDatepicker
-            #datePicker="ngbDatepicker">
-            <div class="input-group-addon" (click)="datePicker.toggle()" >
-              <i class="fa fa-calendar"></i>
-            </div>
-        </div>
-      </div>
-    </form>
-    <ngb-timepicker [(ngModel)]="timeStruct" (ngModelChange)="updateTime()" [meridian]="true"></ngb-timepicker>
-  `,
-  styles: [`
-    .form-group {
-      width: 100%;
-    }
-  `]
+  templateUrl: './date-time-picker.component.html',
+  styleUrls : ['./date-time-picker.component.css']
 })
 export class DateTimePickerComponent implements OnChanges {
 
