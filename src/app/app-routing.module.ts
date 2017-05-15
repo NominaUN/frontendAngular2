@@ -113,6 +113,6 @@ export const RoutingComponent = [
     NotfoundComponent,
     EmployeeDetailsComponent,
     EmployeeNewComponent,
-    InicioComponent
+    //InicioComponent
 
 ]

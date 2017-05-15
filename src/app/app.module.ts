@@ -9,6 +9,8 @@ import { ChartsModule } from 'ng2-charts';
 import { CalendarModule } from 'angular-calendar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { InicioModule } from './Components/inicio/inicio.module';
+
 
 //SERVICIOS
 import { Angular2TokenService } from 'angular2-token';
@@ -48,7 +50,8 @@ import { AppComponent } from './app.component';
         A2tUiModule,
 		ChartsModule,
         BrowserAnimationsModule,
-        CalendarModule.forRoot()
+        CalendarModule.forRoot(),
+        InicioModule
     ],
     providers: [
         EmployeesService,
