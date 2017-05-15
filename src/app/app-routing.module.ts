@@ -1,9 +1,9 @@
 ﻿import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
-
-
 import { NgModule } from '@angular/core';
+
+
 
 ///Componentes///
 import { AppComponent } from './app.component';
@@ -24,7 +24,6 @@ import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
-import { InicioComponent } from './Components/inicio/inicio.component';
 
 
 ///SECURITY SERV
@@ -34,10 +33,10 @@ import { LoggedInGuard } from './Services/authentication/logged-in-guard.service
 
 
 const routes: Routes = [
-    { path: '', component: HomeComponent,
+   
 
+    { path: '', component: HomeComponent,
     },
-    
     { path: 'aboutus', component: AboutusComponent },
     { path: 'reset', component: ResetComponent },
     { path: 'employees', component: EmployeesComponent,
@@ -78,12 +77,12 @@ const routes: Routes = [
     { path: 'positions', component: PositionsComponent,
              canActivate: [LoggedInGuard],
     },
+    /*
     { path: 'inicio', component: InicioComponent,
              canActivate: [LoggedInGuard],
+            
     },
-
-
-
+    */
     { path: '**', component: NotfoundComponent }
 ];
 
@@ -113,6 +112,6 @@ export const RoutingComponent = [
     NotfoundComponent,
     EmployeeDetailsComponent,
     EmployeeNewComponent,
-    InicioComponent
+
 
 ]
