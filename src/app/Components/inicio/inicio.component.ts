@@ -3,6 +3,8 @@ import { getMonth, startOfMonth, startOfWeek, startOfDay, endOfMonth, endOfWeek,
 import { RRule } from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from './demo-utils/colors';
+import { PushNotificationsService } from 'angular2-notifications';
+
 
 interface RecurringEvent {
   title: string;
@@ -22,6 +24,12 @@ interface RecurringEvent {
   styleUrls: ['inicio.component.css']
 })
 export class InicioComponent implements OnInit {
+
+  constructor(private _pushNotifications: PushNotificationsService ){
+
+
+  }
+
 
   view: string = 'month';
 
@@ -51,7 +59,7 @@ export class InicioComponent implements OnInit {
 
 
   getDiasQuincena() : number {
-     var hoy = this.viewDate.getDate()+1; 
+     var hoy = this.viewDate.getDate(); 
 
     if (hoy> 15){
         return this.quincena.getDate()-hoy
@@ -65,6 +73,8 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.updateCalendarEvents();
     console.log(this.getDiasQuincena());
+    this.request()
+    this.create()
   }
 
   updateCalendarEvents(): void {
@@ -98,6 +108,21 @@ export class InicioComponent implements OnInit {
 
     });
 
+  }
+
+   create(){
+
+    this._pushNotifications.create('NominaUN', {body: 'Faltan '+this.getDiasQuincena()+" dias para la quincena !!" , icon: '../favicon.ico'}).subscribe(
+            res => console.log(res),
+            err => console.log(err)
+        )
+
+  }
+
+
+  request(){
+
+    this._pushNotifications.requestPermission()
   }
 
 }

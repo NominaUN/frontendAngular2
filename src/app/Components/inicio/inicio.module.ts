@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InicioRoutingModule } from './inicio-routing.module'
 import { InicioComponent } from './inicio.component';
+import { PushNotificationsModule } from 'angular2-notifications';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { InicioComponent } from './inicio.component';
     DemoUtilsModule,
     BrowserAnimationsModule,
     NgbModule,
-    InicioRoutingModule
+    InicioRoutingModule,
+    PushNotificationsModule
         
   ],
   declarations: [
