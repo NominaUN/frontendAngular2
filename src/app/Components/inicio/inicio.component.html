@@ -1,9 +1,12 @@
+
+
 <mwl-demo-utils-calendar-header
   [(view)]="view"
-  [(viewDate)]="viewDate"
+   [(viewDate)]="viewDate"
   (viewDateChange)="updateCalendarEvents()"
   (viewChange)="updateCalendarEvents()">
 </mwl-demo-utils-calendar-header>
+
 
 <div [ngSwitch]="view">
   <mwl-calendar-month-view
@@ -22,3 +25,4 @@
     [events]="calendarEvents">
   </mwl-calendar-day-view>
 </div>
+

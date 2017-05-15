@@ -1,15 +1,14 @@
-﻿//MODULOS
+﻿//MODULOS DE ANGULAR
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { A2tUiModule } from 'angular2-token';
-import { AppRoutingModule } from './app-routing.module';
 import { ChartsModule } from 'ng2-charts';
-import { CalendarModule } from 'angular-calendar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+//MODULOS 
 import { InicioModule } from './Components/inicio/inicio.module';
+import { AppRoutingModule } from './app-routing.module';
 
 
 //SERVICIOS
@@ -46,12 +45,11 @@ import { AppComponent } from './app.component';
         BrowserModule,
         FormsModule,
         HttpModule,
+        InicioModule,
         AppRoutingModule,
         A2tUiModule,
 		ChartsModule,
-        BrowserAnimationsModule,
-        CalendarModule.forRoot(),
-        InicioModule
+        
     ],
     providers: [
         EmployeesService,
