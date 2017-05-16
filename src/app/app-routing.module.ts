@@ -40,46 +40,46 @@ const routes: Routes = [
     { path: 'aboutus', component: AboutusComponent },
     { path: 'reset', component: ResetComponent },
     { path: 'employees', component: EmployeesComponent,
-      //canActivate: [LoggedInGuard]
+      canActivate: [LoggedInGuard]
     },
     { path: 'employee/:id', component: EmployeeDetailsComponent,
-        //canActivate: [LoggedInGuard]
+        canActivate: [LoggedInGuard]
     },
 
     { path: 'employeenew', component: EmployeeNewComponent,
-            //canActivate: [LoggedInGuard]
+            canActivate: [LoggedInGuard]
     },
 
     { path: 'novelties', component: NoveltiesComponent,
-         //canActivate: [LoggedInGuard]
+         canActivate: [LoggedInGuard]
     },
     { path: 'liquidations', component: LiquidationsComponent,
-        //canActivate: [LoggedInGuard],
+        canActivate: [LoggedInGuard],
     },
     { path: 'statistics', component: StatisticsComponent,
-        //canActivate: [LoggedInGuard],
+        canActivate: [LoggedInGuard],
     },
     { path: 'parameters', component: ParametersComponent,
-        //canActivate: [LoggedInGuard],
+        canActivate: [LoggedInGuard],
     },
     { path: 'areas', component: AreasComponent,
-        //canActivate: [LoggedInGuard],
+        canActivate: [LoggedInGuard],
     },
     { path: 'concepts', component: ConceptsComponent,
-             //canActivate: [LoggedInGuard],
+             canActivate: [LoggedInGuard],
     },
     { path: 'fonds', component: FondsComponent,
-             //canActivate: [LoggedInGuard],
+             canActivate: [LoggedInGuard],
     },
     { path: 'general-parameters', component: GeneralParametersComponent,
-             //canActivate: [LoggedInGuard],
+             canActivate: [LoggedInGuard],
     },
     { path: 'positions', component: PositionsComponent,
-             //canActivate: [LoggedInGuard],
+             canActivate: [LoggedInGuard],
     },
     /*
     { path: 'inicio', component: InicioComponent,
-             //canActivate: [LoggedInGuard],
+             canActivate: [LoggedInGuard],
             
     },
     */
