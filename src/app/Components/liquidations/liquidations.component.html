@@ -1,5 +1,5 @@
-<h1>Liquidaciones de la Empresa</h1>
-<div class="container" id="masterHeader">
+<div class="container" id="masterCont">
+	<h1>Liquidaciones de la Empresa</h1>
 	<form (ngSubmit)="createPaydayMaster(liquidation)" #postForm='ngForm'>
 		<div class="form-group">
 			<label for="inputType">Tipo de liquidación:</label>
@@ -21,7 +21,7 @@
 		<button type="submit" class="btn btn-primary" id="setLiquidation" (click)="loadLiquidations()">Liquidar</button>
 	</form>
 </div>
-<div class="container" id="masterFooter">
+<div class="container">
 	<div class="page-header"> <h3>Ver liquidaciones recientes</h3></div>
 	<div id="masterTable" class="table-responsive">
 		<table class="table table-striped">
@@ -29,12 +29,18 @@
 				<tr>
 					<th>Tipo</th>
 					<th>Fecha</th>
+					<th>Eliminar</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr *ngFor="let liquidation of liquidations" [class.selected]="liquidation === selectedLiquidation" (click)="onSelect(liquidation)">
 					<td>{{liquidation.payday_type}}</td>
 					<td>{{liquidation.payday_date}}</td>
+					<td>
+						<button type="button" class="btn btn-danger btn-sm" (click)="deletePaydayMaster(liquidation.id)" >
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>

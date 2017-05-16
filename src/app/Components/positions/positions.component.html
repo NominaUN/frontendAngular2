@@ -1,19 +1,17 @@
-<body>
-<h1>Cargos de la Empresa</h1>
-
-  <form (ngSubmit)="createPositions(position)" #postForm='ngForm'>
-
-    <div class="form-group">
-      <label for="inputPositionName">Nombre del Cargo:</label>
-      <input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
-             [(ngModel)]='position.position_name' name="namePosition">
-    </div>
-
-    <button type="submit" class="btn btn-primary" id="setArea" >Guardar</button>
-</form>
+<div class="container" id="positionCont">
+	<h1>Cargos de la Empresa</h1>
+	<form (ngSubmit)="createPositions(position)" #postForm='ngForm'>
+		<div class="form-group">
+			<label for="inputPositionName">Nombre del Cargo:</label>
+			<input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
+				[(ngModel)]='position.position_name' name="namePosition">
+		</div>
+		<button type="submit" class="btn btn-primary" id="setArea" >Guardar</button>
+	</form>
+</div>
 <div class="container">
 	<div class="page-header"> <h3>Seleccionar un cargo para ver detalles</h3></div>
-	<div id="positionTable" class="table-responsive">
+	<div class="table-responsive" id="positionTable">
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -28,5 +26,4 @@
 		</table>
 	</div>
 </div>
-
 <div *ngIf="selectedPosition">

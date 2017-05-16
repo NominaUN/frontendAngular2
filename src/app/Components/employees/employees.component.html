@@ -1,41 +1,39 @@
-
-<h3 align="center">Empleados</h3>
-
+<div class="container" id="employeeCont">
+	<h1>Empleados de la Empresa</h1>
+	<form>
+		<button type="button" class="btn btn-primary" (click)="createEmployee()">Ingresar empleado</button>
+	</form>
+</div>
 <div class="container">
-  <div class="page-header">
-    <h3>Seleccionar un empleado para ver detalles</h3>
-    <div>
-      <button type="button" class="btn btn-primary" (click)="createEmployee()">Ingresar empleado</button>
-    </div>
-  </div>
-  <div class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Nombre </th>
-          <th>Cedula </th>
-          <th>Salario </th>
-          <th>Cargo </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let employee of employees.data"[class.selected]="employee === selectedEmployee" >
-        <td>{{employee.first_name}}</td>
-        <td>{{employee.document_number}}</td>
-        <td>${{employee.salary}}</td>
-        <td>{{employee.position.position_name}}</td>
-        <td>
-          <button type="button" class="btn btn-default btn-sm" (click)="deleteEmployee(employee.id)" >
-            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-          </button>
-          <button type="button" class="btn btn-default btn-sm" (click)="onSelect(employee)" >
-            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-          </button>
-        </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+	<div class="page-header"> <h3>Seleccionar un empleado para ver detalles</h3></div>
+	<div id="employeeTable" class="table-responsive">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Nombre </th>
+					<th>Cedula </th>
+					<th>Salario </th>
+					<th>Cargo </th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let employee of employees.data"[class.selected]="employee === selectedEmployee" >
+					<td>{{employee.first_name}}</td>
+					<td>{{employee.document_number}}</td>
+					<td>${{employee.salary}}</td>
+					<td>{{employee.position.position_name}}</td>
+					<td>
+						<button type="button" class="btn btn-default btn-sm" (click)="deleteEmployee(employee.id)" >
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-default btn-sm" (click)="onSelect(employee)" >
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <div *ngIf="selectedEmployee">

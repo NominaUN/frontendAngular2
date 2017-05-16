@@ -1,50 +1,21 @@
-<br>
-
-<legend>Fondos de la Empresa</legend>
-
-<div class="container" id="general">
-	<div class="row">
-		<form class="form-horizontal">
-<fieldset>
-
-<br>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputConceptName">Nombre del Concepto</label>  
-  <div class="col-md-4">
-  <input id="nameConcept" type="text" class="form-control input-md" placeholder="Ingrese el nombre del concepto aquí">
-  </div>
+<div class="container" id="conceptCont">
+	<h1>Conceptos de la Empresa</h1>
+	<form (ngSubmit)="createConcept(concept)" #postForm='ngForm'>
+		<div class="form-group">
+			<label for="inputConceptName">Nombre del Concepto</label>  
+			<input id="nameConcept" placeholder="Ingrese el nombre del concepto" class="form-control input-md" required="" type="text" #concept_name='ngModel'
+				[(ngModel)]='concept.concept_name' name="nameConcept">			
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="inputConceptCategory">Categoria del Concepto</label>  
+			<input id="categoryConcept" placeholder="Ingrese la categoría del concepto" class="form-control input-md" required="" type="text" #category='ngModel'
+				[(ngModel)]='concept.category' name="categoryConcept">
+		</div>
+		<button type="submit" class="btn btn-primary" id="setConcept" (click)="loadConcepts()">Guardar</button>
+	</form>
 </div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="inputConceptCategory">Categoria del Concepto</label>  
-  <div class="col-md-4">
-  <input id="categoryConcept" type="text" class="form-control input-md" placeholder="Ingrese la categoría del concepto aquí">
-    
-  </div>
-</div>
-
-<div class="form-group">
-  <label class="col-md-4 control-label" for="submit"></label>
-  <div class="col-md-4">
-    <button type="submit" class="btn btn-primary" (click)="onClick($event)" id="setGeneral">Guardar</button>
-	<button type="submit" class="btn btn-danger" (click)="onClick($event)" id="deleteFond">Eliminar</button>
-  </div>
-</div>
-
-
-
-</fieldset>
-
-		</form>
-	</div>
-</div>
-
-
-<br>
-<legend>Lista de conceptos actuales</legend>
-
-<div class="container" id="conceptFooter">
+<div class="container">
+	<div class="page-header"> <h3>Seleccionar un concepto para ver detalles</h3></div>
 	<div id="conceptTable" class="table-responsive">
 		<table class="table table-striped">
 			<thead>
@@ -62,21 +33,5 @@
 		</table>
 	</div>
 </div>
+
 <div *ngIf="selectedConcept">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	

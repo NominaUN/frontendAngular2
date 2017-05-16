@@ -23,6 +23,19 @@ html {
   -webkit-text-size-adjust:100%;
 }
 
+#employeeCont {
+    border: 1px solid #e9e6e8;
+    padding-top: 15px;
+	padding-bottom: 10px;
+}
+
+#employeeTable {
+    overflow:scroll;
+    height:300px;
+    width:100%;
+	border: 3px solid #e9e6e8;
+}
+
 *:before, *:after {
   -webkit-box-sizing:border-box;
   -moz-box-sizing:border-box;
@@ -47,39 +60,33 @@ tr:hover td {
     margin:100px;
     margin-top:20px;
     border: #22262e;
-  }
+ }
 .panel-default {
-opacity: 0.8;
-/*margin-top:30px;*/
+	opacity: 0.8;
 }
-.input-group-addon
-{
+.input-group-addon{
     background-color: #474c5b;
     border-color: #22262e;
     color: rgb(255, 255, 255);
 }
-.form-control:focus
-{
+.form-control:focus{
     background-color: #474c5b;
     border-color: #22262e;
     color: rgb(255, 255, 255);
 }
 
 h4 {
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      margin: .5em;
-      padding: .3em 0;
-      height: 1.6em;
-      border-radius: 4px;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;
 }
-
 .form-group {
- 
-      position: relative;
-      left: 0;
-      background-color: #EEE;
-      
-      border-radius: 4px;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    border-radius: 4px;
 }
