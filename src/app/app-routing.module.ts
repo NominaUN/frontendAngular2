@@ -24,6 +24,8 @@ import { FondsComponent } from './Components/fonds/fonds.component';
 import { GeneralParametersComponent } from './Components/general-parameters/general-parameters.component';
 import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
+import { BannerComponent } from './Components/banner/banner.component';
+
 
 
 ///SECURITY SERV
@@ -112,6 +114,7 @@ export const RoutingComponent = [
     NotfoundComponent,
     EmployeeDetailsComponent,
     EmployeeNewComponent,
+    BannerComponent
 
 
 ]
