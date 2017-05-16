@@ -12,7 +12,7 @@ interface RecurringEvent {
   rrule?: {
     freq: RRule.Frequency,
     bymonth?: number,
-    bymonthday?: number,
+     bymonthday?: number,
     byweekday?: RRule.Weekday[]
   };
 }
@@ -32,6 +32,8 @@ export class InicioComponent implements OnInit {
 
 
   view: string = 'month';
+
+  tarea: string;
 
   viewDate: Date = new Date();
 
@@ -62,9 +64,11 @@ export class InicioComponent implements OnInit {
      var hoy = this.viewDate.getDate(); 
 
     if (hoy> 15){
+        this.tarea= "FINAL de mes";
         return this.quincena.getDate()-hoy
     }
     else {
+      this.tarea= "MITAD de mes";
       return 15-hoy
     }
 
@@ -75,6 +79,7 @@ export class InicioComponent implements OnInit {
     console.log(this.getDiasQuincena());
     this.request()
     this.create()
+
   }
 
   updateCalendarEvents(): void {
@@ -112,7 +117,7 @@ export class InicioComponent implements OnInit {
 
    create(){
 
-    this._pushNotifications.create('NominaUN', {body: 'Faltan '+this.getDiasQuincena()+" dias para la quincena !!" , icon: '../favicon.ico'}).subscribe(
+    this._pushNotifications.create('NominaUN', {body: 'Faltan '+this.getDiasQuincena()+" dias para la quincena de "+this.tarea , icon: '../favicon.ico'}).subscribe(
             res => console.log(res),
             err => console.log(err)
         )
