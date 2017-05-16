@@ -12,58 +12,49 @@ import  { AuthService } from '../../Services/authentication/auth.service';
 })
 export class HomeComponent implements OnInit {
 
-        submitted: boolean;
+  submitted: boolean;
 
-      signInData: SignInData = <SignInData>{};
-      output: any;
+  signInData: SignInData = <SignInData>{};
+  output: any;
 
-     constructor(
-                private router:Router,
-                    private authService: AuthService) {
-     }
-    
-
-
-
+  constructor(
+    private router:Router,
+    private authService: AuthService) {
+  }
 
   ngOnInit() {
-      
-      if (this.authService.isLoggedIn()) {
-         this.router.navigateByUrl('/inicio');
+
+    if (this.authService.isLoggedIn()) {
+      this.router.navigateByUrl('/inicio');
     }}
 
+    onSubmit() {
 
+      this.output = null;
 
-  
+      this.authService.logIn(this.signInData.email, this.signInData.password).subscribe(
+        res => {
 
-      onSubmit() {
+          if(res.status == 200){
+            this.router.navigate(['/inicio']);
+          }
 
-        this.output = null;
+          this.signInData     = <SignInData>{};
+          this.output         = res;
+        }, error => {
+          this.signInData     = <SignInData>{};
+          this.output         = error;
+        }
+      );
+    }
 
-        this.authService.logIn(this.signInData.email, this.signInData.password).subscribe(
-            res => {
+    isLoggedIn(): boolean {
+      return this.authService.isLoggedIn();
+    }
 
-                 if(res.status == 200){
-                this.router.navigate(['/inicio'])
-                 }
-                this.signInData     = <SignInData>{};
-                this.output         = res;
-            }, error => {
-                this.signInData     = <SignInData>{};
-                this.output         = error;
-            }
-        );
+    logOut(): void {
+      this.authService.logOut();
     }
 
 
-    
-      isLoggedIn(): boolean {
-          return this.authService.isLoggedIn();
-         }
-
-      logOut(): void {
-          this.authService.logOut();
-      }
-
-      
-}
+  }
