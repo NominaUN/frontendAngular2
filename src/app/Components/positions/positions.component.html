@@ -1,29 +1,94 @@
-<div class="container" id="positionCont">
-	<h1>Cargos de la Empresa</h1>
-	<form (ngSubmit)="createPositions(position)" #postForm='ngForm'>
-		<div class="form-group">
-			<label for="inputPositionName">Nombre del Cargo:</label>
-			<input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
-				[(ngModel)]='position.position_name' name="namePosition">
-		</div>
-		<button type="submit" class="btn btn-primary" id="setArea" >Guardar</button>
-	</form>
+<body>
+
+<div id="title">
+	<br>
+    <h1>CONCEPTOS</h1>
+    <hr id="first">
+    <hr id="second">
 </div>
-<div class="container">
-	<div class="page-header"> <h3>Seleccionar un cargo para ver detalles</h3></div>
-	<div class="table-responsive" id="positionTable">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre del Cargo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let position of positions" [class.selected]="position === selectedPositions" (click)="onSelect(position)">
-					<td>{{position.position_name}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+
+<modal #validationModal>
+        <form (ngSubmit)="createConcept(concept)" #postForm='ngForm'>
+        
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">Ingrese la información del concepto</h4>
+            </modal-header>
+
+            <modal-body>
+                <div class="form-group">
+                    <label for="Name">Nombre</label>
+                    <input id="nameConcept" type="text" class="form-control" placeholder="Ingrese el nombre del concepto aquí" #concept_name='ngModel'
+             [(ngModel)]='concept.concept_name' name="nameConcept">
+                </div>
+
+                 <div class="form-group">
+                    <label for="CategoryName">Categoria</label>
+                    <input id="categoryName" type="text" class="form-control" placeholder="Ingrese la categoria aquí" #category_name='ngModel'
+             [(ngModel)]='concept.category_name' name="nameCategory">
+                </div>
+
+                 <div class="form-group">
+                    <label for="Payday">Detalles</label>
+                    <input id="payday" type="text" class="form-control" placeholder="Ingrese los detalles aquí" #payday_details='ngModel'
+             [(ngModel)]='concept.payday_details' name="payday">
+                </div>
+               
+            </modal-body>
+
+            <modal-footer>
+
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
+                <button type="submit" class="btn btn-primary" id="setArea" (click)="loadConcepts()" (click)="validationModal.close()">Guardar</button>
+                
+            </modal-footer>
+        </form>
+    </modal>
+
+
+<div>
+    
+    <div class="container">
+        <div class="row">
+           <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title">Panel Heading</h3></div>
+                            <div class="col col-xs-6 text-right">
+                                <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                    <th><em class="fa fa-cog"></em></th>
+                                    <th class="hidden-xs">ID</th>
+                                    <th>Nombre</th>
+                                    <th>Categoria</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let concept of concepts" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
+
+                                    <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+                                    <td class="hidden-xs">{{concept.id}}</td>
+                                    <td>{{concept.concept_name}}</td>
+					                <td>{{concept.category}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div *ngIf="selectedPosition">
+
+<div *ngIf="selectedConcept"></div>
+
+</body>

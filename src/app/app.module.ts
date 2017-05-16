@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { A2tUiModule } from 'angular2-token';
 import { ChartsModule } from 'ng2-charts';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 //MODULOS 
 import { InicioModule } from './Components/inicio/inicio.module';
@@ -48,7 +49,8 @@ import { AppComponent } from './app.component';
         InicioModule,
         AppRoutingModule,
         A2tUiModule,
-		ChartsModule,
+        Ng2Bs3ModalModule,
+		ChartsModule
         
     ],
     providers: [

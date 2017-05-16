@@ -1,29 +1,97 @@
-﻿<div class="container" id="areaCont">
-	<h1>Areas de la Empresa</h1>
-	<form (ngSubmit)="createArea(area)" #postForm='ngForm'>
-		<div class="form-group">
-			<label for="inputAreaName">Nombre del Area:</label>
-			<input id="nameArea" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
-				[(ngModel)]='area.area_name' name="nameArea">
-		</div>
-		<button type="submit" class="btn btn-primary" id="setArea" (click)="loadAreas()">Guardar</button>
-	</form>
+﻿<body>
+
+<div id="title">
+	<br>
+<h1>AREAS</h1>
+<hr id="first">
+<hr id="second">
 </div>
-<div class="container">
-	<div class="page-header"> <h3>Seleccionar un area para ver detalles</h3></div>
-	<div id="areaTable" class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre del Area</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
-					<td>{{area.area_name}}</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
+
+
+<modal #validationModal>
+        <form (ngSubmit)="createArea(area)" #postForm='ngForm'>
+        
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">Ingrese el nombre del Area</h4>
+            </modal-header>
+            <modal-body>
+                <div class="form-group">
+                    <label for="area_name">Nombre</label>
+                    <input required id="area_name" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
+                            [(ngModel)]='area.area_name' name="area_name">
+                </div>
+                
+               
+           <div *ngIf="area_name.errors && (area_name.dirty || area_name.touched)" class="alert alert-danger">
+                <div [hidden]="!area_name.errors.required">
+                         Por favor ingresar el nombre del area
+                </div>
+           </div>
+        
+
+               
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
+                <button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="createArea" (click)="loadAreas()" (click)="validationModal.close()">Guardar</button>
+ 
+                
+            </modal-footer>
+        </form>
+</modal>
+
+
+
+<div>
+    
+    <div class="container">
+        <div class="row">
+           <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-default panel-table">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col col-xs-6">
+                                <h3 class="panel-title">Areas</h3></div>
+                            <div class="col col-xs-6 text-right">
+                                <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <table  class="table table-striped table-bordered table-list">
+                            <thead>
+                                <tr>
+                                    <th><em class="fa fa-cog"></em></th>
+                                    <th class="hidden-xs">ID</th>
+                                    <th>Nombre</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    
+                                  <tr *ngFor="let area of areas" [class.selected]="area === selectedArea" (click)="onSelect(area)">
+              
+                           
+
+                                    <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+                                    <td class="hidden-xs">{{area.id}}</td>
+                                    <td>{{area.area_name}}</td>
+                                    
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="panel-footer">
+                        <p>Lista de las areas guardadas actualmente</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div *ngIf="selectedArea">
+
+<div *ngIf="selectedArea"></div>
+
+</body>
