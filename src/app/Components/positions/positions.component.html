@@ -2,43 +2,31 @@
 
 <div id="title">
 	<br>
-    <h1>CONCEPTOS</h1>
+    <h1>CARGOS</h1>
     <hr id="first">
     <hr id="second">
 </div>
 
 <modal #validationModal>
-        <form (ngSubmit)="createConcept(concept)" #postForm='ngForm'>
+        <form (ngSubmit)="createPosition(position)" #postForm='ngForm'>
         
             <modal-header [show-close]="true">
-                <h4 class="modal-title">Ingrese la información del concepto</h4>
+                <h4 class="modal-title">Ingrese la información del cargo</h4>
             </modal-header>
 
             <modal-body>
                 <div class="form-group">
                     <label for="Name">Nombre</label>
-                    <input id="nameConcept" type="text" class="form-control" placeholder="Ingrese el nombre del concepto aquí" #concept_name='ngModel'
-             [(ngModel)]='concept.concept_name' name="nameConcept">
+                    <input id="namePosition" type="text" class="form-control" placeholder="Ingrese el nombre del cargo aquí" #position_name='ngModel'
+             [(ngModel)]='position.position_name' name="namePosition">
                 </div>
-
-                 <div class="form-group">
-                    <label for="CategoryName">Categoria</label>
-                    <input id="categoryName" type="text" class="form-control" placeholder="Ingrese la categoria aquí" #category_name='ngModel'
-             [(ngModel)]='concept.category_name' name="nameCategory">
-                </div>
-
-                 <div class="form-group">
-                    <label for="Payday">Detalles</label>
-                    <input id="payday" type="text" class="form-control" placeholder="Ingrese los detalles aquí" #payday_details='ngModel'
-             [(ngModel)]='concept.payday_details' name="payday">
-                </div>
-               
+              
             </modal-body>
 
             <modal-footer>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
-                <button type="submit" class="btn btn-primary" id="setArea" (click)="loadConcepts()" (click)="validationModal.close()">Guardar</button>
+                <button type="submit" class="btn btn-primary" id="setArea" (click)="loadPositions()" (click)="validationModal.close()">Guardar</button>
                 
             </modal-footer>
         </form>
@@ -67,16 +55,14 @@
                                     <th><em class="fa fa-cog"></em></th>
                                     <th class="hidden-xs">ID</th>
                                     <th>Nombre</th>
-                                    <th>Categoria</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let concept of concepts" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
+                                <tr *ngFor="let position of positions" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
 
                                     <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
-                                    <td class="hidden-xs">{{concept.id}}</td>
-                                    <td>{{concept.concept_name}}</td>
-					                <td>{{concept.category}}</td>
+                                    <td class="hidden-xs">{{position.id}}</td>
+                                    <td>{{position.position_name}}</td>
                                 </tr>
                             </tbody>
                         </table>

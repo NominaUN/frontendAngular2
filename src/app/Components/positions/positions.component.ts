@@ -33,7 +33,7 @@ export class PositionsComponent implements OnInit {
   createPositions(position: Position){
         this.positionService.setPositions(position)
             .subscribe(
-            data => console.log('Success uploading the area', data),
+            data => console.log('Success uploading the position', data),
             error => console.error(`Error: ${error}`), ()=>this.getPositions());
 	
   }   
