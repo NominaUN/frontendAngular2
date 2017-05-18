@@ -50,9 +50,7 @@ export class AreasComponent implements OnInit {
 
     }
 
-     obtenerDatos(){
-         return this.tempData;
-    }
+ 
 
     createArea(area: Area) {
         this.areaService.setAreas(area).subscribe(
