@@ -1,104 +1,62 @@
-
-<br>
-<legend>Novedades de la Empresa</legend>
-
-<div class="container" id="general">
-  <div class="row">
-  <form class="form-horizontal" (ngSubmit)="createNoveltie(noveltie)" #postForm='ngForm' [class.selected]="isUpdating == true">
-      <fieldset>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="inputType">Tipo de novedad</label>
-          <div class="col-md-6">
-            <select id="typeNovelty" class="form-control" [(ngModel)]="noveltie.novelty_type" [ngModelOptions]="{standalone: true}">
-              <option>Inactividad</option>
-              <option>Otros</option>
-              <option>Devengado</option>
-              <option>Deducción</option>
+<div class="container" id="noveltyCont">
+	<h1>Novedades de la Empresa</h1>
+	<form (ngSubmit)="createNoveltie(noveltie)" #postForm='ngForm' [class.selected]="isUpdating == true">
+		<div class="form-group">
+			<label for="inputType">Tipo de novedad</label>
+			<select id="typeNovelty" class="form-control" [(ngModel)]="noveltie.novelty_type" [ngModelOptions]="{standalone: true}">
+				<option>Devengado</option>
+				<option>Deducción</option>
             </select>
-          </div>
         </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="inputCategory">Categoria de novedad</label>
-          <div class="col-md-6">
-            <select id="categoryNovelty" class="form-control" [(ngModel)]="noveltie.category" [ngModelOptions]="{standalone: true}">
-              <option>Vacaciones</option>
-              <option>Devengado</option>
-              <option>Inactividad</option>
-              <option>Hora Extra</option>
-              <option>Otros</option>
-            </select>
-          </div>
+		<div class="form-group">
+			<label for="inputCategory">Categoria de novedad</label>
+			<select id="categoryNovelty" class="form-control" [(ngModel)]="noveltie.category" [ngModelOptions]="{standalone: true}">
+				<option>Vacaciones</option>
+				<option>Inactividad</option>
+				<option>Hora Extra</option>
+				<option>Otros</option>
+			</select>
         </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="inputValue">Valor</label>  
-          <div class="col-md-4">
-            <input id="valueNovelty" type="number" class="form-control input-md" placeholder="Ingrese el valor aquí" [(ngModel)]="noveltie.novelty_value" [ngModelOptions]="{standalone: true}">  
-          </div>
+		<div class="form-group">
+			<label for="inputValue">Valor</label>  
+			<input id="valueNovelty" type="number" class="form-control input-md" placeholder="Ingrese el valor aquí" [(ngModel)]="noveltie.novelty_value" [ngModelOptions]="{standalone: true}">  
         </div>
-
         <div class="form-group">
-          <label class="col-md-4 control-label" for="inputPeriod">Cuántas veces</label>  
-          <div class="col-md-4">
+			<label for="inputPeriod">Cuántas veces</label>  
             <input id="periodNovelty" type="number" class="form-control input-md" placeholder="Ingrese la cantidad" [(ngModel)]="noveltie.period" [ngModelOptions]="{standalone: true}">  
-          </div>
         </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="inputApplied"> Aplicadas</label>  
-          <div class="col-md-4">
-            <input id="appliedNovelty" type="number" class="form-control input-md" placeholder="Ingrese la cantidad" [(ngModel)]="noveltie.applied" [ngModelOptions]="{standalone: true}">
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="inputDesc" >Razón Social del fondo</label>  
-          <div class="col-md-4">
-            <input id="descNoveltyFond" type="text" class="form-control  input-md" placeholder="Para que es"  [(ngModel)]="noveltie.description" [ngModelOptions]="{standalone: true}">
-          </div>
+        <div class="form-group">			
+			<label for="inputApplied">Aplicadas</label>  
+			<input id="appliedNovelty" type="number" class="form-control input-md" placeholder="Ingrese la cantidad" [(ngModel)]="noveltie.applied" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="inputDesc" >payday_detail</label>  
-          <div class="col-md-4">
-            <input id="descNoveltyFond" type="number" class="form-control  input-md" placeholder="payday_detail"  [(ngModel)]="noveltie.payday_detail_id" [ngModelOptions]="{standalone: true}">
-          </div>
+			<label for="inputDesc">Descripción</label>  
+            <input id="descNoveltyFond" type="text" class="form-control input-md" placeholder="Ingrese la descripción"  [(ngModel)]="noveltie.description" [ngModelOptions]="{standalone: true}">
         </div>
-
         <div class="form-group">
-          <label class="col-md-4 control-label" for="inputEmployee">Empleado</label>
-          <div class="col-md-6">
+			<label for="inputDetail">Detalle</label>  
+            <input id="detailNovelty" type="number" class="form-control input-md" placeholder="Ingrese el detalle"  [(ngModel)]="noveltie.payday_detail_id" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+			<label for="inputEmployee">Empleado</label>
             <select id="employeeNovelty" class="form-control" [(ngModel)]="noveltie.employee_id" [ngModelOptions]="{standalone: true}">
-              <option value="0">1</option>
-              <option value="1">2</option>
-              <option value="2">3</option>
-              <option value="3">4</option>
-              <option value="4">5</option>
+				<option value="1">Andrew</option>
+				<option value="2">Lucas</option>
+				<option value="3">Gerardo</option>
+				<option value="4">Takashi</option>
+				<option value="5">Carlos</option>
             </select>
-          </div>
         </div>
         <div class="form-group">
-          <label class="col-md-4 control-label" for="submit"></label>
-          <div class="col-md-4">
-            <button *ngIf="isUpdating" type="submit" class="btn btn-primary" id="setGeneral">Guardar</button>
-            <button *ngIf="!isUpdating" type="submit" class="btn btn-primary" id="setGeneral">Crear</button>
-
-            <button type="button" class="btn btn-danger" (click)="deleteNoveltie()" id="deleteFond">Eliminar</button>
-          </div>
+			<label for="submit"></label>
+			<button *ngIf="isUpdating" type="submit" class="btn btn-primary" id="setGeneral" (click)="loadNovelties()">Guardar</button>
+			<button *ngIf="!isUpdating" type="submit" class="btn btn-primary" id="setGeneral" (click)="loadNovelties()">Crear</button>
+			<button type="button" class="btn btn-danger" (click)="deleteNoveltie()" id="deleteFond" (click)="loadNovelties()">Eliminar</button>
         </div>
-
-
-      </fieldset>
-
-    </form>
-  </div>
+	</form>
 </div>
-
-
-<br>
-<legend>Lista de Novedades</legend>
-<div class="container" id="noveltyFooter">
+<div class="container">
+	<div class="page-header"> <h3>Ver novedades recientes</h3></div>
 	<div id="noveltyTable" class="table-responsive">
 		<table class="table table-striped">
 			<thead>
@@ -106,27 +64,25 @@
 					<th>Tipo</th>
 					<th>Categoria</th>
 					<th>Valor</th>
-          <th colspan="2">Empleado</th>
+					<th colspan="2">Empleado</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let novelty of novelties.data" [class.selected]="isUpdating == true" 
-        >
+				<tr *ngFor="let novelty of novelties.data" [class.selected]="isUpdating == true">
 					<td>{{novelty.novelty_type}}</td>
 					<td>{{novelty.category}}</td>
 					<td>{{novelty.novelty_value}}</td>
-          <td>{{novelty.employee.first_name}}</td>
+					<td>{{novelty.employee.first_name}}</td>
 					<td>
-            <button type="button" class="btn btn-default btn-sm" (click)="deleteNoveltie(novelty.id)" >
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="btn btn-default btn-sm" (click)="onSelect(novelty)" >
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-            </button>
-          </td>
+						<button type="button" class="btn btn-default btn-sm" (click)="deleteNoveltie(novelty.id)" >
+							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn btn-default btn-sm" (click)="onSelect(novelty)" >
+							<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+						</button>
+					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
-<div>

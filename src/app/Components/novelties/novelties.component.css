@@ -12,13 +12,13 @@ body {
 	background-color:#ffffff;
 }
 
-#masterCont {
+#noveltyCont {
     border: 1px solid #e9e6e8;
     padding-top: 15px;
 	padding-bottom: 10px;
 }
 
-#masterTable {
+#noveltyTable {
     overflow:scroll;
     height:300px;
     width:100%;
