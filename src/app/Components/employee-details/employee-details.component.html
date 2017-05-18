@@ -93,7 +93,7 @@
             </div>
             <label class="col-sm-2 control-label">Cargo:</label>
             <div class="col-sm-4">
-              <select class="form-control" [(ngModel)]="employee.position.id" [ngModelOptions]="{standalone: true}">
+              <select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let position of positions"
                   [value]="position.id"
                   [selected]="position.id == employee.position.id"
