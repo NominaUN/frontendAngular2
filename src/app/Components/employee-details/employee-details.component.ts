@@ -86,7 +86,7 @@ export class EmployeeDetailsComponent implements OnInit {
       (resFondData => {
         this.fonds = resFondData;
         this.cajaComps = this.fonds.filter(fond => fond.fond_type == "CajaComp" );
-        this.cesantias = this.fonds.filter(fond => fond.fond_type == "Cesantias" );
+        this.cesantias = this.fonds.filter(fond => fond.fond_type == "Cesantías" );
         this.pensiones = this.fonds.filter(fond => fond.fond_type == "Pensiones" );
         this.epss = this.fonds.filter(fond => fond.fond_type == "EPS" );
         this.arls = this.fonds.filter(fond => fond.fond_type == "ARL" );

@@ -157,7 +157,7 @@
                             <thead>
                                 <tr>
                                     <th><em class="fa fa-cog"></em></th>
-                                    <th class="hidden-xs">ID</th>
+                                    <th hidden>ID</th>
                                     <th>Tipo Doc.</th>
 									<th>Número Doc.</th>
 									<th>Razón Social</th>
@@ -169,7 +169,7 @@
                                     
                                <tr *ngFor="let fond of fonds" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
 				                    <td align="center"><a class="btn btn-default" (click)="guardarDatos(fond)" (click)="updateFondModal.open(fond)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
-                                    <td class="hidden-xs">{{fond.id}}</td>
+                                    <td hidden>{{fond.id}}</td>
                                    	<td>{{fond.document_type}}</td>
 									<td>{{fond.document_number}}</td>
 									<td>{{fond.business_name}}</td>

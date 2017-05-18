@@ -75,7 +75,7 @@
             </div>
 			<label class="col-sm-2 control-label">Tipo de contrato:</label>
             <div class="col-sm-4">
-              <select class="form-control" >
+              <select class="form-control" [(ngModel)]="employee.contract" [ngModelOptions]="{standalone: true}">
                 <option>Fijo</option>
 				<option>Indefinido</option>
               </select>

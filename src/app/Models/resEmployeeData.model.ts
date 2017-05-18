@@ -32,6 +32,7 @@ export class Employee{
     address:string = "";
     phones:string = "";
     email:string = "";
+	contract: string = "";
     admission_date:string = "";
     retirement_date:string = "";
     salary:string = "";
@@ -44,5 +45,4 @@ export class Employee{
     payday_details:Array<any>;
     vacations:Array<any>;
     novelties:Array<any>;
-    users:Array<any>;
 }

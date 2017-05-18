@@ -6,7 +6,6 @@ export class Noveltie{
   category:number = 0;
   period:number = 0;
   description:string = '';
-  payday:any  = {};
   percentage1:number = 0;
   percentage2:number = 0;
   percentage3:number = 0;

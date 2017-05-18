@@ -96,7 +96,7 @@
                             <thead>
                                 <tr>
                                     <th><em class="fa fa-cog"></em></th>
-                                    <th class="hidden-xs">ID</th>
+                                    <th hidden>ID</th>
                                     <th>Nombre</th>
                                 </tr>
                             </thead>
@@ -104,7 +104,7 @@
                                 <tr *ngFor="let position of positions" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
 
                                     <td align="center"><a class="btn btn-default" (click)="guardarDatos(position)" (click)="updatePositionModal.open(position)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
-                                    <td class="hidden-xs">{{position.id}}</td>
+                                    <td hidden>{{position.id}}</td>
                                     <td>{{position.position_name}}</td>
                                 </tr>
                             </tbody>

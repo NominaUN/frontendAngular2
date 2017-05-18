@@ -4,7 +4,8 @@ export class GeneralParameter {
         round_type?: number,
         laboral_days?: number,
 		payday?: string,
-		integral_base?: string
+		integral_base?: string,
+		auto_liquidation?: boolean
     ) { }
 
 }
