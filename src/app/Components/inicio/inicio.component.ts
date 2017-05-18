@@ -35,8 +35,8 @@ interface FilmEvent extends CalendarEvent {
 @Component({
   templateUrl: 'inicio.component.html',
   styleUrls: ['inicio.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.None
+  //changeDetection: ChangeDetectionStrategy.OnPush,
+//  encapsulation: ViewEncapsulation.None
 })
 export class InicioComponent implements OnInit {
 
@@ -72,14 +72,17 @@ export class InicioComponent implements OnInit {
     }
   }];
 
-  calendarEvents: CalendarEvent[] = [{
+  calendarEvents: CalendarEvent[] = [
+ 
+    {
     start: subDays(startOfDay(new Date()), 1),
    // end: addDays(new Date(), 1),
     title: 'A 3 day event',
     color: colors.red,
     cssClass: 'my-custom-class'
-
-    }];
+    }
+   
+    ];
 
 
   getDiasQuincena() : number {

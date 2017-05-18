@@ -6,7 +6,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InicioRoutingModule } from './inicio-routing.module'
 import { InicioComponent } from './inicio.component';
+import { TableComponent } from './table.component';
 import { PushNotificationsModule } from 'angular2-notifications';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { EmployeesService } from  '../../Services/employees/employees.service';
+
 
 
 @NgModule({
@@ -17,14 +21,18 @@ import { PushNotificationsModule } from 'angular2-notifications';
     BrowserAnimationsModule,
     NgbModule,
     InicioRoutingModule,
-    PushNotificationsModule
+    PushNotificationsModule,
+    Ng2OrderModule
         
   ],
   declarations: [
-    InicioComponent
+    InicioComponent,
+    TableComponent
   ],
   exports: [
-    InicioComponent
-  ]
+    InicioComponent,
+    
+  ],
+  providers : [EmployeesService]
 })
 export class InicioModule {}
