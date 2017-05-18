@@ -1,7 +1,7 @@
 ﻿export class Area {
     constructor(
-        id?: number,
-        area_name?: string,
-        employee?: any
+        public id?: number,
+        public area_name?: string,
+        public employee?: any
     ) { }
 }

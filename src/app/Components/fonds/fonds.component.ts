@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FondsService } from  '../../Services/fonds/fonds.service';
 import { Fond } from '../../Models/fond';
 import { Observable } from 'rxjs/Rx';
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 
 @Component({
 	selector: 'app-fonds',
@@ -13,6 +15,8 @@ export class FondsComponent implements OnInit {
 	
 	fonds: Fond[];
     fond = new Fond;
+    tempData = new Fond;
+
     constructor(private fondService: FondsService) {
 	}
 
@@ -30,10 +34,27 @@ export class FondsComponent implements OnInit {
         console.log(fond);
     }
 
+    guardarDatos(fond){
+        this.tempData=fond;
+
+    }
+
     createFond(fond: Fond) {
         this.fondService.setFonds(fond).subscribe(
             data => console.log('Success uploading the fond', data),
             error => console.error(`Error: ${error}`), ()=>this.loadFonds());
+    }
+
+    updateFond(fond){
+        this.tempData.document_number=fond.document_number
+        this.tempData.business_name=fond.business_name;
+        this.tempData.fond_type=fond.fond_type;
+        console.log("Despues",this.tempData)
+        this.fondService.updateFond(this.tempData).subscribe(
+            data => console.log('Success uploading the area', data),
+            error => console.error(`Error: ${error}`), ()=>this.loadFonds());
+
+
     }
 	
 }
