@@ -59,6 +59,11 @@ export class NoveltiesComponent implements OnInit {
     }
   }
 
+  cancel(){
+    this.noveltie = new Noveltie();
+    this.isUpdating = false;
+  }
+
     deleteNoveltie(id:number):void{
     this.noveltiesService.delNoveltie(id)
     .subscribe(
@@ -71,6 +76,9 @@ export class NoveltiesComponent implements OnInit {
   }
 
   onSelect(noveltie:Noveltie):void {
+    let noveltieToUpdate = JSON.parse(JSON.stringify(noveltie));
+
+    console.log(noveltie, noveltieToUpdate);
     this.noveltie = JSON.parse(JSON.stringify(noveltie));
     this.isUpdating = true;
   }
