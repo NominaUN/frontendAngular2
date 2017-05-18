@@ -1,28 +1,71 @@
-<div class="container" id="masterCont">
-	<h1>Liquidaciones de la Empresa</h1>
-	<form (ngSubmit)="createPaydayMaster(liquidation)" #postForm='ngForm'>
+<body>
+
+
+	<div id="title">
+		<br>
+		<h1>LIQUIDACIONES</h1>
+		<hr id="first">
+		<hr id="second">
+		<br><br>
+</div>
+<div class="container" id="form-title">
+        <h2>Ingrese Liquidación</h2>
+  <br>
+  </div>
+	<br>
+
+<div class="container" id="general">
+	<br>
+	<div class="row">
+	<form class="form-horizontal"  (ngSubmit)="createPaydayMaster(liquidation)" #postForm='ngForm'>
+		<fieldset>
 		<div class="form-group">
-			<label for="inputType">Tipo de liquidación:</label>
+			<label class="col-md-4 control-label"  for="inputType">Tipo de liquidación:</label>
+			<div class="col-md-4">
 			<select id="typeMaster" class="form-control" #payday_type='ngModel' [(ngModel)]='liquidation.payday_type' name="typeMaster">
  				<option>Nómina</option>
 				<option>Prima</option>
 				<option>Cesantías</option>
 				<option>Intereses de Cesantias</option>
-			</select>				
+			</select>	
+		</div>			
 		</div>
 		<div class="form-group">
-			<label for="inputDate">Fecha:</label>
+			<label class="col-md-4 control-label"  for="inputDate">Fecha:</label>
+			<div class="col-md-4">
 			<input id="dateMaster" type="datetime-local" class="form-control" #description='ngModel' [(ngModel)]='liquidation.payday_date' name="dateMaster"><br>
+			</div>
 		</div>
 		<div class="form-group">
-			<label for="inputFondDocNumber">Descripción:</label>  
+			<label class="col-md-4 control-label"  for="inputFondDocNumber">Descripción:</label> 
+			<div class="col-md-4"> 
 			<input id="descMaster" class="form-control input-md" required="" type="text" #description='ngModel' [(ngModel)]='liquidation.description' name="descMaster">	
 		</div>
+		</div>
+		<div class="form-group">
+		<label class="col-md-4 control-label" for="submit"></label>
+		<div class="col-md-4">
 		<button type="submit" class="btn btn-primary" id="setLiquidation" (click)="loadLiquidations()">Liquidar</button>
+		</div>
+		</div>
+		</fieldset>
 	</form>
+	</div>
+	<br>
 </div>
+
+	
+<br>
+
+
 <div class="container">
-	<div class="page-header"> <h3>Ver liquidaciones recientes</h3></div>
+<h2>Ver liquidaciones recientes</h2>
+<br>
+</div>
+<br>
+
+<div class="container">
+
 	<div id="masterTable" class="table-responsive">
 		<table class="table table-striped">
 			<thead>
@@ -46,4 +89,6 @@
 		</table>
 	</div>
 </div>
-<div *ngIf="selectedLiquidation">
+<div *ngIf="selectedLiquidation"></div>
+
+</body>
