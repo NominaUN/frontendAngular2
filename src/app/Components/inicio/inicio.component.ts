@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { getMonth, startOfMonth, startOfWeek, startOfDay, endOfMonth, endOfWeek, endOfDay } from 'date-fns';
+import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation  } from '@angular/core';
+import { getMonth, startOfMonth, startOfWeek, startOfDay, endOfMonth, endOfWeek, endOfDay, subDays, addDays } from 'date-fns';
 import { RRule } from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from './demo-utils/colors';
@@ -16,6 +16,15 @@ interface RecurringEvent {
     byweekday?: RRule.Weekday[]
   };
 }
+interface Film {
+  id: number;
+  title: string;
+  release_date: string;
+}
+
+interface FilmEvent extends CalendarEvent {
+  film: Film;
+}
 
 
 
@@ -25,7 +34,9 @@ interface RecurringEvent {
 
 @Component({
   templateUrl: 'inicio.component.html',
-  styleUrls: ['inicio.component.css']
+  styleUrls: ['inicio.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None
 })
 export class InicioComponent implements OnInit {
 
@@ -61,7 +72,14 @@ export class InicioComponent implements OnInit {
     }
   }];
 
-  calendarEvents: CalendarEvent[] = [];
+  calendarEvents: CalendarEvent[] = [{
+    start: subDays(startOfDay(new Date()), 1),
+   // end: addDays(new Date(), 1),
+    title: 'A 3 day event',
+    color: colors.red,
+    cssClass: 'my-custom-class'
+
+    }];
 
 
   getDiasQuincena() : number {
@@ -88,7 +106,7 @@ export class InicioComponent implements OnInit {
 
   updateCalendarEvents(): void {
 
-    this.calendarEvents = [];
+    this.calendarEvents;
 
     const startOfPeriod: any = {
       month: startOfMonth,

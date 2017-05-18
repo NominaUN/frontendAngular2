@@ -3,3 +3,7 @@
     height : 600px;
     margin : 15px;
 }
+
+  .my-custom-class a {
+     color: #FF3D7F !important;
+   }
