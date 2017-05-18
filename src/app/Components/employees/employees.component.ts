@@ -32,9 +32,7 @@ export class EmployeesComponent implements OnInit {
     .subscribe(
       data => {
         console.log('Success deleted the employee', data);
-        this.employeesService.getEmployees().subscribe(
-         (resEmployeeData => this.employees = resEmployeeData)
-        );
+        this.ngOnInit();
       },
       error => console.error(`Error: ${error}`)
       )

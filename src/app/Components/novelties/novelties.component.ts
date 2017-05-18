@@ -1,5 +1,6 @@
 import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { NoveltiesService } from  '../../Services/novelties/novelties.service';
+import { EmployeesService } from  '../../Services/employees/employees.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { Noveltie } from '../../Models/resNoveltiesData.model';
@@ -48,6 +49,17 @@ export class NoveltiesComponent implements OnInit {
         error => console.error(`Error: ${error}`)
         )
     }
+  }
+
+    deleteNoveltie(id:number):void{
+    this.noveltiesService.delNoveltie(id)
+    .subscribe(
+      data => {
+        console.log('Success deleted the noveltie', data);
+        this.ngOnInit();
+      },
+      error => console.error(`Error: ${error}`)
+      )
   }
 
   onSelect(noveltie:Noveltie):void {
