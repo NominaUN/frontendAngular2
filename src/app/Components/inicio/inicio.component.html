@@ -2,9 +2,7 @@
 <div class="cube">
 <mwl-demo-utils-calendar-header
   [(view)]="view"
-   [(viewDate)]="viewDate"
-  (viewDateChange)="updateCalendarEvents()"
-  (viewChange)="updateCalendarEvents()">
+   [(viewDate)]="viewDate">
 </mwl-demo-utils-calendar-header>
 
 
@@ -12,7 +10,7 @@
   <mwl-calendar-month-view
     *ngSwitchCase="'month'"
     [viewDate]="viewDate"
-    [events]="calendarEvents">
+    [events]="calendarEvents" >
   </mwl-calendar-month-view>
   <mwl-calendar-week-view
     *ngSwitchCase="'week'"
@@ -25,5 +23,14 @@
     [events]="calendarEvents">
   </mwl-calendar-day-view>
 </div>
+
+</div>
+<br>
+<br>
+<br>
+
+<div class="cuadro">
+
+<table-employees></table-employees>
 
 </div>

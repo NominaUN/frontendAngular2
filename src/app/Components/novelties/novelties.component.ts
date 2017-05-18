@@ -14,16 +14,24 @@ export class NoveltiesComponent implements OnInit {
 
   novelties=[];
   noveltie= new Noveltie();
+  employees=[];
   myForm:FormGroup;
   isUpdating:boolean=false;
 
   constructor(
+    private employeesService: EmployeesService,
     private noveltiesService: NoveltiesService
     ) { }
 
   ngOnInit():void {
     this.noveltiesService.getNovelties().subscribe (
        (resNoveltiesData => this.novelties = resNoveltiesData)
+    );
+    this.employeesService.getEmployees().subscribe(
+     (resEmployeeData => {
+       console.log(resEmployeeData.data);
+       this.employees = resEmployeeData.data;
+     })
     );
   }
 
@@ -51,6 +59,11 @@ export class NoveltiesComponent implements OnInit {
     }
   }
 
+  cancel(){
+    this.noveltie = new Noveltie();
+    this.isUpdating = false;
+  }
+
     deleteNoveltie(id:number):void{
     this.noveltiesService.delNoveltie(id)
     .subscribe(
@@ -63,6 +76,9 @@ export class NoveltiesComponent implements OnInit {
   }
 
   onSelect(noveltie:Noveltie):void {
+    let noveltieToUpdate = JSON.parse(JSON.stringify(noveltie));
+
+    console.log(noveltie, noveltieToUpdate);
     this.noveltie = JSON.parse(JSON.stringify(noveltie));
     this.isUpdating = true;
   }

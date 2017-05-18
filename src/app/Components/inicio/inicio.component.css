@@ -1,4 +1,15 @@
 .cube {
     width : 600px;
     height : 600px;
+    margin : 15px;
+}
+
+  .my-custom-class a {
+     color: #FF3D7F !important;
+   }
+
+   .cuadro {
+    position: absolute;
+    left: 700px;
+    top: 150px;
 }

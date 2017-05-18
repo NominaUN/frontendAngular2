@@ -1,9 +1,9 @@
 export class Concept {
     constructor(
-        id?: number,
-        concept_name?: string,
-        category_name?: string,
-        payday_details?:any
+        public id?: number,
+        public concept_name?: string,
+        public category_name?: string,
+        public payday_details?:any
 
     ) { }
 

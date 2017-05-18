@@ -12,6 +12,8 @@ export class PositionsComponent implements OnInit {
 
   positions: Position[];
   position = new Position;
+  tempData = new Position;
+
 
   constructor(private positionService: PositionsService) {}
   
@@ -30,12 +32,29 @@ export class PositionsComponent implements OnInit {
   	console.log(position);
   }
 
-  createPositions(position: Position){
+
+    guardarDatos(position){
+        this.tempData=position;
+
+    }
+
+
+  createPosition(position: Position){
         this.positionService.setPositions(position)
             .subscribe(
             data => console.log('Success uploading the position', data),
             error => console.error(`Error: ${error}`), ()=>this.getPositions());
 	
-  }   
+  } 
+   updatePosition(position){
+        this.tempData.position_name=position.position_name;
+        console.log("Despues",this.tempData)
+        this.positionService.updatePosition(this.tempData).subscribe(
+            data => console.log('Success uploading the area', data),
+            error => console.error(`Error: ${error}`), ()=>this.getPositions());
+
+
+    }
+
 
 }

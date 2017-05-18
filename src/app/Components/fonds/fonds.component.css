@@ -4,13 +4,27 @@
   box-sizing:border-box;
 }
 
+
 body {
-  font-family:Georgia,"Times New Roman",Times,serif;
+ 
   font-size:15px;
   line-height:1.42857143;
   color:#777777;
-  background-color:#ffffff;
+  background-color:#E2E7E4;
 }
+
+#title{
+  margin-top: 80px;
+  background: white;
+  color:#22262e;
+  margin-bottom: 50px;
+  font-family: Helvetica;
+  border-bottom-width: 2px;
+  border-bottom-color: #7A7C7B;
+  border-bottom-style:solid;
+}
+
+
 
 #general {
     border: 1px solid #e9e6e8;
@@ -37,13 +51,7 @@ tr:hover td {
 }
 
 
-#title{
-  margin-top: 0px;
-  background: transparent;
-  color:#22262e;
-  margin-bottom: 80px;
-  font-family: Helvetica;
-}
+
 
 
 
