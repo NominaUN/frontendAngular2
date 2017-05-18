@@ -16,15 +16,6 @@ interface RecurringEvent {
     byweekday?: RRule.Weekday[]
   };
 }
-interface Film {
-  id: number;
-  title: string;
-  release_date: string;
-}
-
-interface FilmEvent extends CalendarEvent {
-  film: Film;
-}
 
 
 

@@ -2,6 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
+import {OrderByPipe} from "./orderby.pipe"
 
 @Component({
   selector: 'table-employees',
