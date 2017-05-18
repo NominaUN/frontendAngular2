@@ -2,6 +2,9 @@
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Area } from '../../Models/area'
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+
+
 
 @Injectable()
 export class AreasService {
@@ -27,5 +30,24 @@ export class AreasService {
     setAreas(area: Area): Observable<Area> {
         return this.http.post(this.urlpost, JSON.stringify(area), this.options).map(response => response.json())
     }
+
+   
+    updateArea(area): Observable<Area> {
+        const url = `${this.urlpost}/${area.id}`;
+        console.log(url)
+        return this.http.put(url, JSON.stringify(area), 
+                this.options).map((res: Response) => res.json())
+  //                          .map(function(res : Response){ 
+    //                            console.log(res.json());
+      //                          res.json()
+        //                        })
+                            .catch(this.handleError);
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+  } 
+
 
 }
