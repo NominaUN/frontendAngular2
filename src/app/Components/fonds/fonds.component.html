@@ -1,6 +1,5 @@
 <body>
 
-
 <div id="title">
 	<br>
 <h1>FONDOS</h1>
@@ -18,7 +17,7 @@
         </modal-header>
            
 		 			 
-		 <modal-body>
+		<modal-body>
 
         <div class="form-group">
 			<label for="document_type">Tipo Documento del fondo</label>  
@@ -33,11 +32,9 @@
 				[(ngModel)]='fond.document_number' name="document_number">	
 		</div>
 
-         <div *ngIf="document_number.errors && (document_number.dirty || document_number.touched)" class="alert alert-danger">
-                <div [hidden]="!document_number.errors.required">
-                         Por favor ingresar el número de documento del fondo
-                </div>
-           </div>
+        <div *ngIf="document_number.errors && (document_number.dirty || document_number.touched)" class="alert alert-danger">
+            <div [hidden]="!document_number.errors.required">Por favor ingresar el número de documento del fondo</div>
+        </div>
 
 		<div class="form-group">
 			<label for="business_name">Razón Social del fondo</label>  
@@ -54,11 +51,11 @@
 		<div class="form-group">
 			<label for="fond_type">Tipo de Fondo</label>
 			<select required id="fond_type" class="form-control" #fond_type='ngModel' [(ngModel)]='fond.fond_type' name="fond_type">
-				<option>Aseguradora de Riesgos Laborales</option>
-				<option>Caja de Compensación</option>
-				<option>Entidad Promotora de Salud</option>
-				<option>Fondo de Cesantías</option>
-				<option>Fondo de Pensiones</option>
+				<option value="ARL">Aseguradora de Riesgos Laborales</option>
+				<option value="CajaComp">Caja de Compensación</option>
+				<option value="EPS">Entidad Promotora de Salud</option>
+				<option value="Cesantías">Fondo de Cesantías</option>
+				<option value="Pensiones">Fondo de Pensiones</option>
 			</select>
 		</div>
                

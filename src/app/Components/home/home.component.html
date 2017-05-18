@@ -1,66 +1,42 @@
 ﻿<body>
-
- <!--<p><b>Signed In?</b> {{_tokenService.currentUserData != null}} </p>-->
-
-   
-
     <div class="login-dark">
-        <form #signInForm="ngForm" (ngSubmit)="onSubmit()">
-            
+        <form #signInForm="ngForm" (ngSubmit)="onSubmit()">           
             <h2 class="sr-only">Login Form</h2>
             <div class="illustration"><i class="glyphicon glyphicon-user"></i></div>
             <div class="form-group">
-                <input type="email" name="email" placeholder="Email" class="form-control" required
-					[(ngModel)]="signInData.email"/>
+                <input type="email" name="email" placeholder="Email" class="form-control" required [(ngModel)]="signInData.email"/>
             </div>
             <div class="form-group">
-                <input type="password" name="password" placeholder="Password" class="form-control" required [(ngModel)]="signInData.password"
-					name="password"/>
+                <input type="password" name="password" placeholder="Password" class="form-control" required [(ngModel)]="signInData.password" name="password"/>
             </div>
             <div class="form-group">
                 <button class="btn btn-primary btn-block" type="submit" [disabled]="!signInForm.form.valid">Log In</button>
-           <!--     <button class="btn btn-primary btn-block" (click)="signUp()">Sign Up</button> -->
-
-            </div><a [routerLink]="['/reset']" class="forgot">Forgot your email or password?</a></form>
+            </div>
+			<a [routerLink]="['/reset']" class="forgot">Forgot your email or password?</a></form>
     </div>
-
-
     <div class="container-fluid" id="descripcion">
-        <h1 class="text-center">NominaUN </h1>
-        <p class="text-center">Es una aplicación para administrar de forma fácil e intuitiva la nómina de una empresa. Cuenta con 2 modulos, en el módulo empleador se administra todo el sistema (registro de empleados, fondos, liquidaciones, reportes y demás procesos operativos);
-            en el módulo del empleado se permitirá al usuario consultar sus pagos y registrar sus incapacidades. </p>
+        <h1 class="text-center">Características</h1>
     </div>
-
-
-    <div class="container-fluid" id="caracteristicas">
-        <h1 class="text-center">Caracteristicas </h1>
-    </div>
-
     <div>
         <div class="container-fluid" id="caracteristicas">
             <div class="row">
                 <div class="col-md-4">
                     <h2 class="text-center"><i class="glyphicon glyphicon-cog"></i></h2>
-                    <h2 class="text-center">Todo en Uno</h2>
-                    <p class="text-center">Todas las herramientas para administrar la nomina en una sola aplicación</p>
+                    <h2 class="text-center">Todo en uno</h2>
+                    <p class="text-center">Todas las herramientas para administrar su nómina en una sola aplicación.</p>
                 </div>
                 <div class="col-md-4">
                     <h2 class="text-center"><i class="glyphicon glyphicon-search"></i></h2>
-                    <h2 class="text-center">Consultas </h2>
-                    <p class="text-center">Empleados con acceso a consultar sus pagos y registro de eventualidades.</p>
+                    <h2 class="text-center">Consultas</h2>
+                    <p class="text-center">Empleados con acceso a consultar sus pagos y registrar sus eventualidades.</p>
                 </div>
                 <div class="col-md-4">
                     <h2 class="text-center"><i class="glyphicon glyphicon-ok"></i></h2>
-                    <h2 class="text-center">Estadisticas </h2>
-                    <p class="text-center">Acceso a estadisticas graficas que le permiten un analisis mas detallado de la nomina.</p>
+                    <h2 class="text-center">Estadisticas</h2>
+                    <p class="text-center">Acceso a estadísticas gráficas que le permiten un análisis mas detallado de la nómina.</p>
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div>    
 </body>
-
 <app-aboutus></app-aboutus>
-
-
-
