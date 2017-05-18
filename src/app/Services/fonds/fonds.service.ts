@@ -24,4 +24,21 @@ export class FondsService {
         return this.http.post(this.urlpost, JSON.stringify(fond), this.options).map(response => response.json())
     }
 
+    updateFond(fond): Observable<Fond> {
+        const url = `${this.urlpost}/${fond.id}`;
+        console.log(url)
+        return this.http.put(url, JSON.stringify(fond), 
+                this.options).map((res: Response) => res.json())
+  //                          .map(function(res : Response){ 
+    //                            console.log(res.json());
+      //                          res.json()
+        //                        })
+                            .catch(this.handleError);
+    }
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+    } 
+
 }

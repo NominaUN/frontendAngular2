@@ -1,12 +1,12 @@
 ﻿export class Fond {
     constructor(
-        id?: number,
-		document_type?: string,
-		document_number?: number,
-		business_name?: string,
-		fond_type?: string,
-		fond_employee?: any,
-		employee?: any
+        public id?: number,
+		public document_type?: string,
+		public document_number?: number,
+		public business_name?: string,
+		public fond_type?: string,
+		public fond_employee?: any,
+		public employee?: any
     ) { }
 
 }

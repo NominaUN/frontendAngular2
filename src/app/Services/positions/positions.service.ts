@@ -24,4 +24,24 @@ export class PositionsService {
         return this.http.post(this.urlpost, JSON.stringify(position), this.options).map(response => response.json())
 
 	}
+
+  updatePosition(position): Observable<Position> {
+        const url = `${this.urlpost}/${position.id}`;
+        console.log(url)
+        return this.http.put(url, JSON.stringify(position), 
+                this.options).map((res: Response) => res.json())
+  //                          .map(function(res : Response){ 
+    //                            console.log(res.json());
+      //                          res.json()
+        //                        })
+                            .catch(this.handleError);
+    }
+
+
+    private handleError(error: any): Promise<any> {
+        console.error('An error occurred', error); // for demo purposes only
+        return Promise.reject(error.message || error);
+  } 
+
+
 }
