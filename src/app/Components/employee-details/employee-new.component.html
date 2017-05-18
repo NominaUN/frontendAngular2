@@ -85,19 +85,17 @@
             <label class="col-sm-2 control-label">Área:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
-                <option value="1">Government</option>
-                <option value="2">Legal</option>
-                <option value="3">Design</option>
-                <option value="4">Hospitality</option>
+                <option *ngFor="let area of areas"
+                  [value]="area.id"
+                >{{area.area_name}}</option>
               </select>
             </div>
             <label class="col-sm-2 control-label">Cargo:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
-                <option value="1">International Administrator</option>
-                <option value="2">Marketing Engineer</option>
-                <option value="3">Consulting Architect</option>
-                <option value="4">Customer Accounting Agent</option>
+                <option *ngFor="let arl of arls"
+                  [value]="arl.id"
+                >{{arl.business_name}}</option>
               </select>
             </div>
           </div>       
@@ -123,13 +121,17 @@
 			<label class="col-sm-2 control-label">EPS:</label>
             <div class="col-sm-4">
               <select class="form-control">
-                <option value="1">International Administrator</option>
+                <option *ngFor="let eps of epss"
+                  [value]="eps.id"
+                >{{eps.business_name}}</option>
               </select>
             </div>
 			<label class="col-sm-2 control-label">Caja de compensación:</label>
             <div class="col-sm-4">
               <select class="form-control" >
-                <option value="2">Marketing Engineer</option>
+                <option *ngFor="let caja of cajaComps"
+                  [value]="caja.id"
+                >{{caja.business_name}}</option>
               </select>
             </div>
           </div>
@@ -137,13 +139,17 @@
             <label class="col-sm-2 control-label">Fondo de cesantias:</label>
             <div class="col-sm-4">
               <select class="form-control" >
-                <option value="3">Consulting Architect</option>
+                <option *ngFor="let cesantia of cesantias"
+                  [value]="cesantia.id"
+                >{{cesantia.business_name}}</option>
               </select>
             </div>
 			<label class="col-sm-2 control-label">Fondo de pensiones:</label>
             <div class="col-sm-4">
               <select class="form-control" >
-                <option value="4">Customer Accounting Agent</option>
+                <option *ngFor="let pension of pensiones"
+                  [value]="pension.id"
+                >{{pension.business_name}}</option>
               </select>
             </div>
           </div>

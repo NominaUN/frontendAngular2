@@ -1,6 +1,7 @@
 <div class="container" id="noveltyCont">
 	<h1>Novedades de la Empresa</h1>
 	<form (ngSubmit)="createNoveltie(noveltie)" #postForm='ngForm' [class.selected]="isUpdating == true">
+	<fieldset>
 		<div class="form-group">
 			<label for="inputType">Tipo de novedad</label>
 			<select id="typeNovelty" class="form-control" [(ngModel)]="noveltie.novelty_type" [ngModelOptions]="{standalone: true}">
@@ -40,21 +41,25 @@
         <div class="form-group">
 			<label for="inputEmployee">Empleado</label>
             <select id="employeeNovelty" class="form-control" [(ngModel)]="noveltie.employee_id" [ngModelOptions]="{standalone: true}">
-				<option value="1">Andrew</option>
-				<option value="2">Lucas</option>
-				<option value="3">Gerardo</option>
-				<option value="4">Takashi</option>
-				<option value="5">Carlos</option>
+              <option *ngFor="let employee of employees"
+                [value]="employee.id"
+                [attr.selected]="employee.id==noveltie.employee.id ? true : null"
+              >{{employee.id}}</option>
             </select>
         </div>
         <div class="form-group">
-			<label for="submit"></label>
-			<button *ngIf="isUpdating" type="submit" class="btn btn-primary" id="setGeneral" (click)="loadNovelties()">Guardar</button>
-			<button *ngIf="!isUpdating" type="submit" class="btn btn-primary" id="setGeneral" (click)="loadNovelties()">Crear</button>
-			<button type="button" class="btn btn-danger" (click)="deleteNoveltie()" id="deleteFond" (click)="loadNovelties()">Eliminar</button>
+          <label class="col-md-4 control-label" for="submit"></label>
+          <div class="col-md-4">
+            <button *ngIf="isUpdating" type="submit" class="btn btn-primary" id="setGeneral">Guardar</button>
+            <button *ngIf="!isUpdating" type="submit" class="btn btn-success" id="setGeneral">Crear</button>
+            <button type="button" class="btn btn-default" (click)="cancel()" id="deleteFond">Cancelar</button>
+          </div>
         </div>
-	</form>
-</div>
+      </fieldset>
+
+    </form>
+  </div>
+
 <div class="container">
 	<div class="page-header"> <h3>Ver novedades recientes</h3></div>
 	<div id="noveltyTable" class="table-responsive">
