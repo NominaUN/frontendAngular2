@@ -70,11 +70,7 @@
           <label class="col-md-4 control-label" for="inputEmployee">Empleado</label>
           <div class="col-md-6">
             <select id="employeeNovelty" class="form-control" [(ngModel)]="noveltie.employee_id" [ngModelOptions]="{standalone: true}">
-              <option value="0">1</option>
-              <option value="1">2</option>
-              <option value="2">3</option>
-              <option value="3">4</option>
-              <option value="4">5</option>
+              <option *ngFor="let employee of employees" [value]="employee.id">{{employee.id}}</option>
             </select>
           </div>
         </div>

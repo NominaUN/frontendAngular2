@@ -14,16 +14,24 @@ export class NoveltiesComponent implements OnInit {
 
   novelties=[];
   noveltie= new Noveltie();
+  employees=[];
   myForm:FormGroup;
   isUpdating:boolean=false;
 
   constructor(
+    private employeesService: EmployeesService,
     private noveltiesService: NoveltiesService
     ) { }
 
   ngOnInit():void {
     this.noveltiesService.getNovelties().subscribe (
        (resNoveltiesData => this.novelties = resNoveltiesData)
+    );
+    this.employeesService.getEmployees().subscribe(
+     (resEmployeeData => {
+       console.log(resEmployeeData.data);
+       this.employees = resEmployeeData.data;
+     })
     );
   }
 
