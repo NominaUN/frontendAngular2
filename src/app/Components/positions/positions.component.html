@@ -26,11 +26,53 @@
             <modal-footer>
 
                 <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
-                <button type="submit" class="btn btn-primary" id="setArea" (click)="loadPositions()" (click)="validationModal.close()">Guardar</button>
+                <button type="submit" class="btn btn-primary" id="setPosition" (click)="getPositions()" (click)="validationModal.close()">Guardar</button>
                 
             </modal-footer>
         </form>
     </modal>
+
+
+<modal #updatePositionModal>
+        <form (ngSubmit)="updatePosition(position)" #postForm='ngForm'>
+        
+            <modal-header [show-close]="true">
+                <h4 class="modal-title">Ingrese el nombre del Cargo </h4>
+            </modal-header>
+            <modal-body>
+                <div class="form-group">
+                    <label for="position_name">Nombre  </label>
+                     <input required id="position_name" type="text" class="form-control" value={{tempData.position_name}} #position_name='ngModel'
+                            [(ngModel)]='position.position_name' name="position_name">
+                </div>
+                
+               
+           <div *ngIf="position_name.errors && (position_name.dirty || position_name.touched)" class="alert alert-danger">
+                <div [hidden]="!position_name.errors.required">
+                         Por favor ingresar el nombre del cargo 
+                </div>
+           </div>
+        
+
+               
+            </modal-body>
+            <modal-footer>
+                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updatePositionModal.dismiss()">Cancelar</button>
+                <button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="updatePosition"  (click)="updatePositionModal.close()">Guardar</button>
+ 
+                
+            </modal-footer>
+        </form>
+</modal>
+
+
+
+
+
+
+
+
+
 
 
 <div>
@@ -60,7 +102,7 @@
                             <tbody>
                                 <tr *ngFor="let position of positions" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
 
-                                    <td align="center"><a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+                                    <td align="center"><a class="btn btn-default" (click)="guardarDatos(position)" (click)="updatePositionModal.open(position)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
                                     <td class="hidden-xs">{{position.id}}</td>
                                     <td>{{position.position_name}}</td>
                                 </tr>
