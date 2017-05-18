@@ -21,6 +21,7 @@ export class GeneralParametersComponent implements OnInit {
 			(resGeneralData => this.generalp = resGeneralData)
 		);
 	}
+    
   
 	ngOnInit() {
 		this.loadGeneral();   
