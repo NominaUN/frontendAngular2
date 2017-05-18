@@ -32,3 +32,9 @@ tr:hover td {
 	border-top: 1px solid #22262e;
 	border-bottom: 1px solid #22262e;
 }
+
+form.selected,
+tr.selected,
+tr.selected td{
+	background: rgba(51, 122, 183, 0.15);
+}

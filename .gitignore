@@ -150,6 +150,7 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.sw[pomn]
 
 # Chutzpah Test files
 _Chutzpah*
