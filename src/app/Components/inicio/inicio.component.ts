@@ -19,6 +19,10 @@ interface RecurringEvent {
 
 
 
+
+
+
+
 @Component({
   templateUrl: 'inicio.component.html',
   styleUrls: ['inicio.component.css']
@@ -53,7 +57,7 @@ export class InicioComponent implements OnInit {
     color: colors.yellow,
     rrule: {
       freq: RRule.MONTHLY,
-      bymonthday: this.quincena.getDate()
+      bymonthday: -1
     }
   }];
 
