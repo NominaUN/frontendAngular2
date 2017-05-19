@@ -42,7 +42,7 @@ const routes: Routes = [
     { path: 'aboutus', component: AboutusComponent },
     { path: 'reset', component: ResetComponent },
     { path: 'employees', component: EmployeesComponent,
-      canActivate: [LoggedInGuard]
+       canActivate: [LoggedInGuard]
     },
     { path: 'employee/:id', component: EmployeeDetailsComponent,
         canActivate: [LoggedInGuard]
