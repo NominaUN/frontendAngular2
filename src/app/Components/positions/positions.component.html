@@ -8,6 +8,18 @@
     <br><br>
 </div>
 
+<modal #advertencia>
+		<modal-header>
+			<h4 class="modal-title">Error</h4>
+		</modal-header>
+		<modal-body>
+			No se puede borrar, hay empleados asociados a ese cargo
+		</modal-body>
+		<modal-footer>
+			<button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+		</modal-footer>
+</modal>
+
 <modal #validationModal>
         <form (ngSubmit)="createPosition(position)" #postForm='ngForm'>
         
@@ -103,7 +115,7 @@
                             <tbody>
                                 <tr *ngFor="let position of positions" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
 
-                                    <td align="center"><a class="btn btn-default" (click)="guardarDatos(position)" (click)="updatePositionModal.open(position)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+                                    <td align="center"><a class="btn btn-default" (click)="guardarDatos(position)" (click)="updatePositionModal.open(position)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger" (click)="deletePosition(position)"><em class="glyphicon glyphicon-trash"></em></a></td>
                                     <td hidden>{{position.id}}</td>
                                     <td>{{position.position_name}}</td>
                                 </tr>

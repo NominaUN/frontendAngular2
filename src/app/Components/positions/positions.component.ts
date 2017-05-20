@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { PositionsService } from  '../../Services/positions/positions.service';
 import { Position } from '../../Models/position'
+import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
+
 
 
 @Component({
@@ -9,6 +11,11 @@ import { Position } from '../../Models/position'
   styleUrls: ['./positions.component.css']
 })
 export class PositionsComponent implements OnInit {
+
+      
+  @ViewChild('advertencia')
+   modal: ModalComponent;
+
 
   positions: Position[];
   position = new Position;
@@ -55,6 +62,18 @@ export class PositionsComponent implements OnInit {
 
 
     }
+
+    deletePosition(position) {
+
+
+        this.positionService.deletePosition(position.id)
+        .subscribe(
+            data => {},
+            error => {this.modal.open()},
+             ()=>this.getPositions()
+        );
+       
+  }
 
 
 }

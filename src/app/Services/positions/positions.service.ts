@@ -43,5 +43,17 @@ export class PositionsService {
         return Promise.reject(error.message || error);
   } 
 
+     deletePosition(id: number): Observable<Position> {
+        const url = `${this.urlpost}/${id}`;
+        console.log(url)
+        return this.http.delete(url, this.options)
+        .map(this.extractData)
+        .catch(this.handleError);         
+    }
+    private extractData(res: Response) {
+      let body = res.json();
+      return body || {};
+    }
+
 
 }
