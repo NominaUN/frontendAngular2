@@ -59,6 +59,7 @@ export class AreasComponent implements OnInit {
         this.areaService.setAreas(area).subscribe(
             data => console.log('Success uploading the area', data),
             error => console.error(`Error: ${error}`), ()=>this.loadAreas());
+        
     }
 
     updateArea(name){
@@ -81,4 +82,5 @@ export class AreasComponent implements OnInit {
        
   }
 
+ 
 }

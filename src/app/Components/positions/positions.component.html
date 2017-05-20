@@ -59,19 +59,14 @@
                             [(ngModel)]='position.position_name' name="position_name">
                 </div>
                 
-               
-           <div *ngIf="position_name.errors && (position_name.dirty || position_name.touched)" class="alert alert-danger">
-                <div [hidden]="!position_name.errors.required">
-                         Por favor ingresar el nombre del cargo 
-                </div>
-           </div>
+        
         
 
                
             </modal-body>
             <modal-footer>
                 <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updatePositionModal.dismiss()">Cancelar</button>
-                <button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="updatePosition"  (click)="updatePositionModal.close()">Guardar</button>
+                <button type="submit"  class="btn btn-primary" id="updatePosition"  (click)="updatePositionModal.close()">Guardar</button>
  
                 
             </modal-footer>

@@ -24,7 +24,7 @@
 				<div class="form-group">
 					<label for="area_name">Nombre</label>
 					<input required id="area_name" type="text" class="form-control" placeholder="Ingrese el nombre del area aquí" #area_name='ngModel'
-						[(ngModel)]='area.area_name' name="area_name">
+						[(ngModel)]='area.area_name' name="area_name" >
 				</div>
 				<div *ngIf="area_name.errors && (area_name.dirty || area_name.touched)" class="alert alert-danger">
 					<div [hidden]="!area_name.errors.required">Por favor ingresar el nombre del area</div>
@@ -47,13 +47,11 @@
 					<input required id="area_name" type="text" class="form-control" value={{tempData.area_name}} #area_name='ngModel'
 						[(ngModel)]='area.area_name' name="area_name">
 				</div>
-				<div *ngIf="area_name.errors && (area_name.dirty || area_name.touched)" class="alert alert-danger">
-					<div [hidden]="!area_name.errors.required">Por favor ingresar el nombre del area</div>
-				</div>   
+		
 			</modal-body>
 			<modal-footer>
 				<button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateAreaModal.dismiss()">Cancelar</button>
-				<button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="updateArea"  (click)="updateAreaModal.close()">Guardar</button>    
+				<button type="submit"  class="btn btn-primary" id="updateArea"  (click)="updateAreaModal.close()" >Guardar</button>    
 			</modal-footer>
 		</form>
 	</modal>
