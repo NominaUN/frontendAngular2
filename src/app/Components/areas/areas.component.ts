@@ -3,7 +3,7 @@ import { AreasService } from '../../Services/areas/areas.service';
 import { Area } from '../../Models/area';
 import { Observable } from 'rxjs/Rx';
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
-
+import { ErrorForeignKey } from './../shared/error-foreignkey.component'
 
 @Component({
     selector: 'app-areas',
@@ -13,6 +13,7 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 
 export class AreasComponent implements OnInit {
+    
     @ViewChild('advertencia')
     modal: ModalComponent;
 
