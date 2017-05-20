@@ -11,7 +11,7 @@ import { Observable } from 'rxjs/Observable';
 
 export class GeneralParametersComponent implements OnInit {
 	
-	generalp: GeneralParameter;
+	generalp: GeneralParameter[];
     general = new GeneralParameter;
     constructor(private generalService: GeneralParametersService) {
 	}
@@ -19,8 +19,9 @@ export class GeneralParametersComponent implements OnInit {
     loadGeneral(){
 		this.generalService.getGeneral().subscribe(
 			(resGeneralData => this.generalp = resGeneralData)
-		);
-	}
+            );
+        console.log(this.generalp)
+	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
     
   
 	ngOnInit() {
