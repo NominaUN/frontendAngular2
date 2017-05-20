@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FondsService } from  '../../Services/fonds/fonds.service';
 import { Fond } from '../../Models/fond';
 import { Observable } from 'rxjs/Rx';
@@ -12,6 +12,8 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 })
 
 export class FondsComponent implements OnInit {
+      @ViewChild('advertencia')
+   modal: ModalComponent;
 	
 	fonds: Fond[];
     fond = new Fond;
@@ -49,12 +51,24 @@ export class FondsComponent implements OnInit {
         this.tempData.document_number=fond.document_number
         this.tempData.business_name=fond.business_name;
         this.tempData.fond_type=fond.fond_type;
-        console.log("Despues",this.tempData)
         this.fondService.updateFond(this.tempData).subscribe(
             data => console.log('Success uploading the area', data),
             error => console.error(`Error: ${error}`), ()=>this.loadFonds());
 
 
     }
+     deleteFond(fond) {
+        console.log("dsada")
+        this.fondService.deleteFond(fond.id)
+        .subscribe(
+            data => {},
+            error => {this.modal.open()},
+             ()=>this.loadFonds()
+        );
+       
+  }
+
+
+
 	
 }
