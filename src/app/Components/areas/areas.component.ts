@@ -22,7 +22,6 @@ successMessage: string;
 private _fail = new Subject<string>();
 failMessage: string;
 
-info = 'test';
 
     
   @ViewChild('advertencia')
