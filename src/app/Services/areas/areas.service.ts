@@ -44,10 +44,22 @@ export class AreasService {
                             .catch(this.handleError);
     }
 
+    deleteArea(id: number): Observable<Area> {
+        const url = `${this.urlpost}/${id}`;
+        console.log(url)
+        return this.http.delete(url, this.options)
+        .map(this.extractData)
+        .catch(this.handleError);         
+    }
+
     private handleError(error: any): Promise<any> {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
   } 
+   private extractData(res: Response) {
+    let body = res.json();
+    return body || {};
+  }
 
 
 }

@@ -1,4 +1,15 @@
 ﻿<body>
+	<modal #advertencia>
+		<modal-header>
+			<h4 class="modal-title">Error</h4>
+		</modal-header>
+		<modal-body>
+			No se puede borrar, hay empleados asociados a esa area
+		</modal-body>
+		<modal-footer>
+			<button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
+		</modal-footer>
+	</modal>
 	<modal #validationModal>
 		<form (ngSubmit)="createArea(area)" #postForm='ngForm'>
 			<modal-header [show-close]="true">
@@ -67,7 +78,7 @@
 							</thead>
 							<tbody>    
 								<tr *ngFor="let area of areas" [class.selected]="area === selectedArea" >
-									<td align="center"><a class="btn btn-default" (click)="guardarDatos(area)" (click)="updateAreaModal.open(area)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a></td>
+									<td align="center"><a class="btn btn-default" (click)="guardarDatos(area)" (click)="updateAreaModal.open(area)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger" (click)="deleteArea(area)"><em class="glyphicon glyphicon-trash"></em></a></td>
 									<td hidden>{{area.id}}</td>
 									<td>{{area.area_name}}</td>    
 								</tr>

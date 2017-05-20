@@ -13,6 +13,8 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 
 export class AreasComponent implements OnInit {
+    @ViewChild('advertencia')
+    modal: ModalComponent;
 
 
 
@@ -65,9 +67,17 @@ export class AreasComponent implements OnInit {
         this.areaService.updateArea(this.tempData).subscribe(
             data => console.log('Success uploading the area', data),
             error => console.error(`Error: ${error}`), ()=>this.loadAreas());
-
-        
-
     }
+    deleteArea(area) {
+
+
+        this.areaService.deleteArea(area.id)
+        .subscribe(
+            data => {},
+            error => {this.modal.open()},
+             ()=>this.loadAreas()
+        );
+       
+  }
 
 }

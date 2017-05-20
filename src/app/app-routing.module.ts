@@ -79,12 +79,6 @@ const routes: Routes = [
     { path: 'positions', component: PositionsComponent,
              canActivate: [LoggedInGuard],
     },
-    /*
-    { path: 'inicio', component: InicioComponent,
-             canActivate: [LoggedInGuard],
-            
-    },
-    */
     { path: '**', component: NotfoundComponent }
 ];
 

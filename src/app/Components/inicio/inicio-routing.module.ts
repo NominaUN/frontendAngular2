@@ -6,9 +6,9 @@ import { LoggedInGuard } from '../../Services/authentication/logged-in-guard.ser
 
 const routes: Routes = [
 
-{ path : 'inicio', component : InicioComponent,
- canActivate: [LoggedInGuard]
-
+{ 
+    path : 'inicio', component : InicioComponent,
+    canActivate: [LoggedInGuard]
 }
        
 
