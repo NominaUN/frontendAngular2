@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { A2tUiModule } from 'angular2-token';
 import { ChartsModule } from 'ng2-charts';
 import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 //MODULOS 
 import { InicioModule } from './Components/inicio/inicio.module';
@@ -50,7 +51,8 @@ import { AppComponent } from './app.component';
         AppRoutingModule,
         A2tUiModule,
         Ng2Bs3ModalModule,
-		ChartsModule
+		ChartsModule,
+        NgbModule.forRoot()
         
     ],
     providers: [

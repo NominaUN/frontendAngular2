@@ -1,6 +1,7 @@
 ﻿<body>
 
 
+
 	<modal #advertencia>
 		<modal-header>
 			<h4 class="modal-title">Error</h4>
@@ -56,14 +57,17 @@
 		</form>
 	</modal>
 	<div class="container" id="areaPage">
-		<h1>AREAS</h1>
+		<h1>AREAS</h1> 		
 		<div class="row">
 		   <div class="col-md-10 col-md-offset-1">
 				<div class="panel panel-default panel-table">
 					<div class="panel-heading">
+						<ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">{{ successMessage }}</ngb-alert>
+								<ngb-alert *ngIf="failMessage" type="danger" (close)="failMessage = null">{{ failMessage }}</ngb-alert>	
 						<div class="row">
 							<div class="col col-xs-6">
 								<h3 class="panel-title">Lista de las areas guardadas actualmente</h3>
+								{{info}}	
 							</div>
 							<div class="col col-xs-6 text-right">
 								<button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Crear</button>    
@@ -93,4 +97,6 @@
 		</div>
 	</div>
 	<div *ngIf="selectedArea"></div>
+
+	
 </body>
