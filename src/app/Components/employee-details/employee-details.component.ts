@@ -33,6 +33,13 @@ export class EmployeeDetailsComponent implements OnInit {
   epss:any;
   cesantias:any;
   pensiones:any;
+  employeeFonds:any = {
+    arl:  0,
+    eps: 0,
+    cajaComp: 0,
+    cesantia: 0,
+    pension: 0
+  };
 
   constructor (
     private employeesService : EmployeesService,
@@ -44,33 +51,41 @@ export class EmployeeDetailsComponent implements OnInit {
     ) { }
 
   ngOnInit():void {
+    this.loadEmployee();
+  }
+
+  loadEmployee() {
     this.employeesService.getEmployeeById(this.route.snapshot.params['id'])
     .subscribe(
       resEmployee => {
         console.log('empleados', resEmployee.data)
         this.employee = resEmployee.data;
+        // load data
+        this.setLoadedFonds();
+        this.loadAreas();
+        this.getPositions();
+        this.loadFonds();
       },
       error => console.warn(`Error employee: ${error}`)
-      );
-
-    this.loadAreas();
-    this.getPositions();
-    this.loadFonds();
+    );
   }
 
   loadAreas() {
       this.areaService.getAreas().subscribe(
-          (resAreaData => this.areas = resAreaData)
+        (resAreaData => this.areas = resAreaData)
       );
   }
 
   getPositions(){
     this.positionService.getPositions().subscribe(
-    (resPositionData => this.positions = resPositionData)
+      (resPositionData => this.positions = resPositionData)
     );
   }
 
-  updateEmployee(employee: Employee) {
+  updateEmployee(employee:Employee) {
+    console.info("EMPLOYEE TO UPDATE:", employee);
+    employee.area = this.searchArea(employee.area.id);
+
     this.employeesService.updateEmployee(employee)
     .subscribe(
       data => {
@@ -83,16 +98,29 @@ export class EmployeeDetailsComponent implements OnInit {
   loadFonds(){
     this.fondService.getFonds().subscribe(
       (resFondData => {
+        console.info('FONDOS-ALL', resFondData);
         this.fonds = resFondData;
         this.cajaComps = this.fonds.filter(fond => fond.fond_type == "CajaComp" );
         this.cesantias = this.fonds.filter(fond => fond.fond_type == "Cesantías" );
         this.pensiones = this.fonds.filter(fond => fond.fond_type == "Pensiones" );
         this.epss = this.fonds.filter(fond => fond.fond_type == "EPS" );
         this.arls = this.fonds.filter(fond => fond.fond_type == "ARL" );
-
-        console.log(this.cajaComps,this.cesantias,this.pensiones,this.epss,this.arls);
+        console.info('FONDOS', this.cajaComps,this.cesantias,this.pensiones,this.epss,this.arls);
       })
     );
+  }
+
+  private searchArea(areaId:number):any {
+    let areaFound = this.areas.find(area => area.id == areaId);
+    return areaFound;
+  }
+
+  private setLoadedFonds() {
+    this.employeeFonds.cajaComp = this.employee.fond_employees[0  ].id;
+    this.employeeFonds.arl = this.employee.fond_employees[1].id;
+    this.employeeFonds.cesantia = this.employee.fond_employees[2].id;
+    this.employeeFonds.pension = this.employee.fond_employees[3].id;
+    this.employeeFonds.eps = this.employee.fond_employees[4].id;
   }
 
 }

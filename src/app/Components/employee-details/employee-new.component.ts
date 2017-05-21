@@ -50,7 +50,7 @@ export class EmployeeNewComponent implements OnInit {
 
   loadAreas() {
       this.areaService.getAreas().subscribe(
-          (resAreaData => this.areas = resAreaData)
+        (resAreaData => this.areas = resAreaData)
       );
    }
 
@@ -61,6 +61,9 @@ export class EmployeeNewComponent implements OnInit {
   }
 
   createEmployee(employee: Employee) {
+    console.info("EMPLOYEE TO SAVE:", employee);
+    employee.area = this.searchArea(employee.area_id);
+
     this.employeesService.setEmployee(employee)
     .subscribe(
       data => {
@@ -73,15 +76,21 @@ export class EmployeeNewComponent implements OnInit {
   loadFonds(){
     this.fondService.getFonds().subscribe(
       (resFondData => {
+        console.info('FONDOS-ALL', resFondData);
         this.fonds = resFondData;
         this.cajaComps = this.fonds.filter(fond => fond.fond_type == "CajaComp" );
         this.cesantias = this.fonds.filter(fond => fond.fond_type == "Cesantías" );
         this.pensiones = this.fonds.filter(fond => fond.fond_type == "Pensiones" );
         this.epss = this.fonds.filter(fond => fond.fond_type == "EPS" );
         this.arls = this.fonds.filter(fond => fond.fond_type == "ARL" );
-        console.log(this.cajaComps,this.cesantias,this.pensiones,this.epss,this.arls);
+        console.info('FONDOS', this.cajaComps,this.cesantias,this.pensiones,this.epss,this.arls);
       })
-    );
+    );  
+  }
+
+  private searchArea(areaId:number):any {
+    let areaFound = this.areas.find(area => area.id == areaId);
+    return areaFound;
   }
 
 

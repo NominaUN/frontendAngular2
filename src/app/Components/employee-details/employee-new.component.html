@@ -62,7 +62,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Email:</label>
             <div class="col-sm-4">
-              <input type="email" class="form-control" [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}">
+              <input type="email" class="form-control" required [(ngModel)]="employee.email" [ngModelOptions]="{standalone: true}">
             </div>
             <label class="col-sm-2 control-label">Fecha de contratación:</label>
             <div class="col-sm-4">
@@ -86,9 +86,13 @@
             <label class="col-sm-2 control-label">Área:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let area of areas"[value]="area.id">
+                <option *ngFor="let area of areas" [value]="area.id">
                   {{area.area_name}}
                 </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
               </select>
             </div>
             <label class="col-sm-2 control-label">Cargo:</label>
@@ -97,6 +101,10 @@
                 <option *ngFor="let position of positions" [value]="position.id">
                   {{position.position_name}}
                 </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
               </select>
             </div>
           </div>

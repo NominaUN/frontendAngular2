@@ -27,18 +27,19 @@ export class Employee{
   other_name:string = "";
   last_name:string = "";
   second_surname:string = "";
-  birthdate:string = "";
+  birthdate:string = "1920-01-01";
   birthplace:string = "";
   address:string = "";
   phones:string = "";
   email:string = "";
   contract: string = "";
-  admission_date:string = "";
-  retirement_date:string = "";
+  admission_date:string = "1960-06-01";
+  retirement_date:string = "1960-06-01";
   salary:string = "";
   transport_aid:boolean = false;
   integral_salary:boolean = false;
   area:any = {};
+  area_id?:number = 1; //id_for send
   position:any = {};
   fond_employees:Array<any>;
   fonds:Array<any> = [];

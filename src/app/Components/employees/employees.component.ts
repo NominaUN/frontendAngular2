@@ -17,8 +17,12 @@ export class EmployeesComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getEmployees();
+  }
+
+  getEmployees() {
     this.employeesService.getEmployees().subscribe(
-     (resEmployeeData => this.employees = resEmployeeData)
+     (resEmployeeData => this.employees = resEmployeeData.data)
     );
   }
 

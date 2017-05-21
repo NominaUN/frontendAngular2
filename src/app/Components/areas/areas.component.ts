@@ -40,12 +40,6 @@ export class AreasComponent implements OnInit {
   }
   
 
-  loadAreas() {
-    this.areaService.getAreas().subscribe(
-      (resAreaData => this.areas = resAreaData)
-      );
-  }
-
   ngOnInit() {
     this.loadAreas();
     
@@ -54,6 +48,12 @@ export class AreasComponent implements OnInit {
 
     this._fail.subscribe((message) => this.failMessage = message);
     this._fail.debounceTime(120000).subscribe(() => this.failMessage = null);
+  }
+
+  loadAreas() {
+    this.areaService.getAreas().subscribe(
+      resAreaData => {this.areas = resAreaData;console.log('AREAS CARGADAS: ', resAreaData)}
+    );
   }
 
   onSelect(): void {

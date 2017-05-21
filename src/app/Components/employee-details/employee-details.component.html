@@ -84,8 +84,8 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Área:</label>
             <div class="col-sm-4">
-              <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let area of areas"[value]="area.id"[selected]="area.id == employee.area.id">
+              <select class="form-control" [(ngModel)]="employee.area.id" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let area of areas" [value]="area.id" [selected]="area.id == employee.area.id">
                   {{area.area_name}}
                 </option>
               </select>
@@ -123,7 +123,7 @@
             <label class="col-sm-2 control-label">EPS:</label>
             <div class="col-sm-4">
               <select class="form-control">
-                <option *ngFor="let eps of epss"[value]="eps.id">
+                <option *ngFor="let eps of epss"[value]="eps.id" [selected]="eps.id == employeeFonds.eps">
                   {{eps.business_name}}
                 </option>
               </select>
@@ -131,7 +131,7 @@
             <label class="col-sm-2 control-label">Caja de compensación:</label>
             <div class="col-sm-4">
               <select class="form-control">
-                <option *ngFor="let caja of cajaComps" [value]="caja.id">
+                <option *ngFor="let caja of cajaComps" [value]="caja.id" [selected]="caja.id == employeeFonds.cajaComp">
                   {{caja.business_name}}
                 </option>
               </select>
@@ -141,7 +141,7 @@
             <label class="col-sm-2 control-label">Fondo de cesantias:</label>
             <div class="col-sm-4">
               <select class="form-control">
-                <option *ngFor="let cesantia of cesantias" [value]="cesantia.id">
+                <option *ngFor="let cesantia of cesantias" [value]="cesantia.id" [selected]="cesantia.id == employeeFonds.cesantia">
                   {{cesantia.business_name}}
                 </option>
               </select>
@@ -149,7 +149,7 @@
             <label class="col-sm-2 control-label">Fondo de pensiones:</label>
             <div class="col-sm-4">
               <select class="form-control">
-                <option *ngFor="let pension of pensiones" [value]="pension.id">
+                <option *ngFor="let pension of pensiones" [value]="pension.id" [selected]="pension.id == employeeFonds.pension">
                   {{pension.business_name}}
                 </option>
               </select>
