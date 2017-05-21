@@ -12,63 +12,60 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 })
 
 export class FondsComponent implements OnInit {
-      @ViewChild('advertencia')
-   modal: ModalComponent;
-	
-	fonds: Fond[];
-    fond = new Fond;
-    tempData = new Fond;
+  @ViewChild('advertencia')
+  modal: ModalComponent;
 
-    constructor(private fondService: FondsService) {
-	}
+  fonds: Fond[];
+  fond = new Fond;
+  tempData = new Fond;
 
-    loadFonds(){
-		this.fondService.getFonds().subscribe(
-			(resFondData => this.fonds = resFondData)
-		);
-	}
+  constructor(private fondService: FondsService) {
+  }
 
-    ngOnInit() {
-        this.loadFonds();
-    }
+  loadFonds(){
+    this.fondService.getFonds().subscribe(
+      (resFondData => this.fonds = resFondData)
+      );
+  }
 
-    onSelect(fond: any): void {
-        console.log(fond);
-    }
+  ngOnInit() {
+    this.loadFonds();
+  }
 
-    guardarDatos(fond){
-        this.tempData=fond;
+  onSelect(fond: any): void {
+    console.log(fond);
+  }
 
-    }
+  guardarDatos(fond){
+    this.tempData=fond;
 
-    createFond(fond: Fond) {
-        this.fondService.setFonds(fond).subscribe(
-            data => console.log('Success uploading the fond', data),
-            error => console.error(`Error: ${error}`), ()=>this.loadFonds());
-    }
+  }
 
-    updateFond(fond){
-        this.tempData.document_number=fond.document_number
-        this.tempData.business_name=fond.business_name;
-        this.tempData.fond_type=fond.fond_type;
-        this.fondService.updateFond(this.tempData).subscribe(
-            data => console.log('Success uploading the area', data),
-            error => console.error(`Error: ${error}`), ()=>this.loadFonds());
+  createFond(fond: Fond) {
+    this.fondService.setFonds(fond).subscribe(
+      data => console.log('Success uploading the fond', data),
+      error => console.error(`Error: ${error}`), ()=>this.loadFonds());
+  }
 
+  updateFond(fond){
+    this.tempData.document_number=fond.document_number
+    this.tempData.business_name=fond.business_name;
+    this.tempData.fond_type=fond.fond_type;
+    this.fondService.updateFond(this.tempData).subscribe(
+      data => console.log('Success uploading the area', data),
+      error => console.error(`Error: ${error}`), ()=>this.loadFonds());
+  }
 
-    }
-     deleteFond(fond) {
-        console.log("dsada")
-        this.fondService.deleteFond(fond.id)
-        .subscribe(
-            data => {},
-            error => {this.modal.open()},
-             ()=>this.loadFonds()
-        );
-       
+  deleteFond(fond) {
+    console.log("dsada")
+    this.fondService.deleteFond(fond.id)
+    .subscribe(
+      data => {},
+      error => {this.modal.open()},
+      ()=>this.loadFonds()
+      );
+
   }
 
 
-
-	
 }

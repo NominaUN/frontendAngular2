@@ -10,32 +10,32 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class GeneralParametersComponent implements OnInit {
-	
-	generalp: GeneralParameter[];
-    general = new GeneralParameter;
-    constructor(private generalService: GeneralParametersService) {
-	}
 
-    loadGeneral(){
-		this.generalService.getGeneral().subscribe(
-			(resGeneralData => this.generalp = resGeneralData)
-            );
-        console.log(this.generalp)
-	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-    
-  
-	ngOnInit() {
-		this.loadGeneral();   
-	}
+  generalp: GeneralParameter[];
+  general = new GeneralParameter;
+  constructor(private generalService: GeneralParametersService) {
+  }
 
-    onSelect(fond: any): void {
-        console.log(fond);
-    }
+  loadGeneral(){
+    this.generalService.getGeneral().subscribe(
+      (resGeneralData => this.generalp = resGeneralData)
+      );
+    console.log(this.generalp)
+  }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 
-    updateGeneral(general: GeneralParameter) {
-        this.generalService.setGeneral(general).subscribe(
-            data => console.log('Success uploading the parameters', data),
-            error => console.error(`Error: ${error}`), ()=>this.loadGeneral());
-    }
+
+  ngOnInit() {
+    this.loadGeneral();   
+  }
+
+  onSelect(fond: any): void {
+    console.log(fond);
+  }
+
+  updateGeneral(general: GeneralParameter) {
+    this.generalService.setGeneral(general).subscribe(
+      data => console.log('Success uploading the parameters', data),
+      error => console.error(`Error: ${error}`), ()=>this.loadGeneral());
+  }
 
 }

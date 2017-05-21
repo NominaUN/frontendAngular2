@@ -12,7 +12,6 @@ import { Ng2OrderModule } from 'ng2-order-pipe';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 
 
-
 @NgModule({
   imports: [
     CommonModule,

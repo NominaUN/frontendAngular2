@@ -15,24 +15,24 @@ export class LiquidationsComponent implements OnInit {
 	liquidation = new PaydayMaster;
 
 	constructor(private liquidationsService: LiquidationsService) { }
-   
-    loadLiquidations() {
-        this.liquidationsService.getLiquidations().subscribe(
-			(resLiquidationData => this.liquidations = resLiquidationData));
-    }
+  
+  loadLiquidations() {
+    this.liquidationsService.getLiquidations().subscribe(
+      (resLiquidationData => this.liquidations = resLiquidationData));
+  }
 
-    ngOnInit() {
-        this.loadLiquidations();
-    }
+  ngOnInit() {
+    this.loadLiquidations();
+  }
 
-    onSelect(liquidation: any): void {
-        console.log(liquidation);
-    }
+  onSelect(liquidation: any): void {
+    console.log(liquidation);
+  }
 
-    createPaydayMaster(liquidation: PaydayMaster) {
-        this.liquidationsService.setLiquidations(liquidation).subscribe(
-            data => console.log('Success uploading the liquidation', data),
-            error => console.error(`Error: ${error}`), ()=>this.loadLiquidations());
-    }
+  createPaydayMaster(liquidation: PaydayMaster) {
+    this.liquidationsService.setLiquidations(liquidation).subscribe(
+      data => console.log('Success uploading the liquidation', data),
+      error => console.error(`Error: ${error}`), ()=>this.loadLiquidations());
+  }
 
 }

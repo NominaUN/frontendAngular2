@@ -11,17 +11,17 @@ export class ConceptsService {
 	headers: Headers;
 	options: RequestOptions;
 
-    constructor(private http: Http) { 
-		this.headers = new Headers({ 'Content-Type': 'application/json' });
-        this.options = new RequestOptions({ headers: this.headers });
-	}
-	
-	getConcepts(): Observable<Concept[]> {
-	    return this.http.get(this.urlget).map((response:Response) => <Concept[]>response.json().data);
-	}
-	
-	setConcepts(concept : Concept){
-        return this.http.post(this.urlpost, JSON.stringify(concept), this.options).map(response => response.json())
-	}
-	
+  constructor(private http: Http) { 
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+  }
+  
+  getConcepts(): Observable<Concept[]> {
+    return this.http.get(this.urlget).map((response:Response) => <Concept[]>response.json().data);
+  }
+  
+  setConcepts(concept : Concept){
+    return this.http.post(this.urlpost, JSON.stringify(concept), this.options).map(response => response.json())
+  }
+  
 }

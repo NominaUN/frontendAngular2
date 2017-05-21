@@ -25,14 +25,14 @@ export class NoveltiesComponent implements OnInit {
 
   ngOnInit():void {
     this.noveltiesService.getNovelties().subscribe (
-       (resNoveltiesData => this.novelties = resNoveltiesData)
-    );
+      (resNoveltiesData => this.novelties = resNoveltiesData)
+      );
     this.employeesService.getEmployees().subscribe(
-     (resEmployeeData => {
-       console.log(resEmployeeData.data);
-       this.employees = resEmployeeData.data;
-     })
-    );
+      (resEmployeeData => {
+        console.log(resEmployeeData.data);
+        this.employees = resEmployeeData.data;
+      })
+      );
   }
 
   createNoveltie(noveltie: Noveltie) {
@@ -43,7 +43,7 @@ export class NoveltiesComponent implements OnInit {
           this.ngOnInit();
         },
         error => console.error(`Error: ${error}`)
-      )
+        )
 
     } else {
       this.noveltiesService.setNoveltie(noveltie)
@@ -64,7 +64,7 @@ export class NoveltiesComponent implements OnInit {
     this.isUpdating = false;
   }
 
-    deleteNoveltie(id:number):void{
+  deleteNoveltie(id:number):void{
     this.noveltiesService.delNoveltie(id)
     .subscribe(
       data => {

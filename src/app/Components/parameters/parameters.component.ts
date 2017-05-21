@@ -12,11 +12,9 @@ export class ParametersComponent implements OnInit {
   parameters=[];
 
   constructor(private parametersService: ParametersService) { }
- 
-  ngOnInit() {
-     this.parametersService.getParameters().subscribe(
-     (resParameterData => this.parameters = resParameterData));
 
-    
+  ngOnInit() {
+    this.parametersService.getParameters().subscribe(
+      (resParameterData => this.parameters = resParameterData));
   }
 }

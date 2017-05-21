@@ -34,7 +34,6 @@ export class EmployeeDetailsComponent implements OnInit {
   cesantias:any;
   pensiones:any;
 
-
   constructor (
     private employeesService : EmployeesService,
     private route: ActivatedRoute,
@@ -95,6 +94,5 @@ export class EmployeeDetailsComponent implements OnInit {
       })
     );
   }
-
 
 }

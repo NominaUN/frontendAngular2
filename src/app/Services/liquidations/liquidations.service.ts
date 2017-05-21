@@ -11,17 +11,17 @@ export class LiquidationsService {
 	headers: Headers;
 	options: RequestOptions;
 
-    constructor(private http: Http) {
-        this.headers = new Headers({ 'Content-Type': 'application/json' });
-        this.options = new RequestOptions({ headers: this.headers });
-    }
-	
-    getLiquidations(): Observable<PaydayMaster[]> {
-        return this.http.get(this.urlget).map((response: Response) => <PaydayMaster[]>response.json().data);
-    }
+  constructor(private http: Http) {
+    this.headers = new Headers({ 'Content-Type': 'application/json' });
+    this.options = new RequestOptions({ headers: this.headers });
+  }
+  
+  getLiquidations(): Observable<PaydayMaster[]> {
+    return this.http.get(this.urlget).map((response: Response) => <PaydayMaster[]>response.json().data);
+  }
 
-    setLiquidations(payday_master: PaydayMaster): Observable<PaydayMaster> {
-        return this.http.post(this.urlpost, JSON.stringify(payday_master), this.options).map(response => response.json())
-    }
+  setLiquidations(payday_master: PaydayMaster): Observable<PaydayMaster> {
+    return this.http.post(this.urlpost, JSON.stringify(payday_master), this.options).map(response => response.json())
+  }
   
 }

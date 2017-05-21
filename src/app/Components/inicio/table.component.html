@@ -1,22 +1,20 @@
-
 <div class="container">
-	<div id="employeeTable" class="table-responsive">
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>Nombre </th>
-					<th>Apellido </th>
-					<th>Fecha de Contratacion </th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor="let employee of employees.data | orderBy"[class.selected]="employee === selectedEmployee" >
-					<td>{{employee.first_name}}</td>
-					<td>{{employee.last_name}}</td>
-					<td (click)="test()">{{employee.admission_date}}</td>
-				
-				</tr>
-			</tbody>
-		</table>
-	</div>
+  <div id="employeeTable" class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nombre </th>
+          <th>Apellido </th>
+          <th>Fecha de Contratacion </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees.data | orderBy"[class.selected]="employee === selectedEmployee" >
+          <td>{{employee.first_name}}</td>
+          <td>{{employee.last_name}}</td>
+          <td (click)="test()">{{employee.admission_date}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

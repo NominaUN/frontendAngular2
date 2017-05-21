@@ -8,14 +8,9 @@ export class ParametersService {
 
   private url : string = "http://localhost:3000/api/v1/fonds.json";
 
-
   constructor(private http: Http) { }
 
-        getParameters(){
-          
-            return this.http.get(this.url).map((response:Response) => response.json());
-        }
+  getParameters(){
+    return this.http.get(this.url).map((response:Response) => response.json());
+  }
 }
-
-
-

@@ -1,205 +1,224 @@
 <body>
-
-<div id="title">
-	<br>
-<h1>FONDOS</h1>
-<hr id="first">
-<hr id="second">
-<br><br>
-</div>
-
-
-	<modal #advertencia>
-		<modal-header>
-			<h4 class="modal-title">Error</h4>
-		</modal-header>
-		<modal-body>
-			No se puede borrar, hay empleados asociados a ese fondo
-		</modal-body>
-		<modal-footer>
-			<button type="button" class="btn btn-primary" (click)="modal.close()">Ok</button>
-		</modal-footer>
-	</modal>
-
-
-
-<modal #validationModal>
-    <form (ngSubmit)="createFond(fond)" #postForm='ngForm'>
-        
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">Ingrese la información del Fondo</h4>
-        </modal-header>
-           
-		 			 
-		<modal-body>
-
+  <div id="title">
+    <br>
+    <h1>
+      FONDOS
+    </h1>
+    <hr id="first">
+    <hr id="second">
+    <br>
+    <br>
+  </div>
+  <modal #advertencia>
+    <modal-header>
+      <h4 class="modal-title">
+        Error
+      </h4>
+    </modal-header>
+    <modal-body>
+      No se puede borrar, hay empleados asociados a ese fondo
+    </modal-body>
+    <modal-footer>
+      <button type="button" class="btn btn-primary" (click)="modal.close()">
+        Ok
+      </button>
+    </modal-footer>
+  </modal>
+  <modal #validationModal>
+    <form (ngSubmit)="createFond(fond)" #postForm="ngForm">
+      <modal-header [show-close]="true">
+        <h4 class="modal-title">
+          Ingrese la información del Fondo
+        </h4>
+      </modal-header>
+      <modal-body>
         <div class="form-group">
-			<label for="document_type">Tipo Documento del fondo</label>  
-			<select required id="document_type" class="form-control" #document_type='ngModel' [(ngModel)]='fond.document_type' name="document_type">
-				<option>NIT</option>
-			</select>				
-		</div>	
-
-		<div class="form-group">
-			<label for="document_number">Número Documento del fondo</label>  
-			<input required id="document_number" placeholder="Ingrese el documento del fondo" class="form-control" type="number" #document_number='ngModel'
-				[(ngModel)]='fond.document_number' name="document_number">	
-		</div>
-
+          <label for="document_type">
+            Tipo Documento del fondo
+          </label>
+          <select required id="document_type" class="form-control" #document_type="ngModel" [(ngModel)]="fond.document_type" name="document_type">
+            <option>
+              NIT
+            </option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="document_number">
+            Número Documento del fondo
+          </label>
+          <input required id="document_number" placeholder="Ingrese el documento del fondo" class="form-control" type="number" #document_number="ngModel"
+          [(ngModel)]="fond.document_number" name="document_number">
+        </div>
         <div *ngIf="document_number.errors && (document_number.dirty || document_number.touched)" class="alert alert-danger">
-            <div [hidden]="!document_number.errors.required">Por favor ingresar el número de documento del fondo</div>
+          <div [hidden]="!document_number.errors.required">
+            Por favor ingresar el número de documento del fondo
+          </div>
         </div>
-
-		<div class="form-group">
-			<label for="business_name">Razón Social del fondo</label>  
-			<input required id="business_name" placeholder="Ingrese el nombre del fondo" class="form-control" type="text" #business_name='ngModel'
-				[(ngModel)]='fond.business_name' name="business_name">		
-		</div>
-
-           <div *ngIf="business_name.errors && (business_name.dirty || business_name.touched)" class="alert alert-danger">
-                <div [hidden]="!business_name.errors.required">
-                         Por favor ingresar el nombre del fondo
-                </div>
-           </div>
-
-		<div class="form-group">
-			<label for="fond_type">Tipo de Fondo</label>
-			<select required id="fond_type" class="form-control" #fond_type='ngModel' [(ngModel)]='fond.fond_type' name="fond_type">
-				<option value="ARL">Aseguradora de Riesgos Laborales</option>
-				<option value="CajaComp">Caja de Compensación</option>
-				<option value="EPS">Entidad Promotora de Salud</option>
-				<option value="Cesantías">Fondo de Cesantías</option>
-				<option value="Pensiones">Fondo de Pensiones</option>
-			</select>
-		</div>
-               
-            </modal-body>
-           
-					 
-			<modal-footer>
-
-                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancelar</button>
-               	<button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="createFond" (click)="loadFonds()" (click)="validationModal.close()">Guardar</button>                
-           
-            </modal-footer>
+        <div class="form-group">
+          <label for="business_name">
+            Razón Social del fondo
+          </label>
+          <input required id="business_name" placeholder="Ingrese el nombre del fondo" class="form-control" type="text" #business_name="ngModel"
+          [(ngModel)]="fond.business_name" name="business_name">
+        </div>
+        <div *ngIf="business_name.errors && (business_name.dirty || business_name.touched)" class="alert alert-danger">
+          <div [hidden]="!business_name.errors.required">
+            Por favor ingresar el nombre del fondo
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="fond_type">
+            Tipo de Fondo
+          </label>
+          <select required id="fond_type" class="form-control" #fond_type='ngModel' [(ngModel)]="fond.fond_type" name="fond_type">
+            <option value="ARL">
+              Aseguradora de Riesgos Laborales
+            </option>
+            <option value="CajaComp">
+              Caja de Compensación
+            </option>
+            <option value="EPS">
+              Entidad Promotora de Salud
+            </option>
+            <option value="Cesantías">
+              Fondo de Cesantías
+            </option>
+            <option value="Pensiones">
+              Fondo de Pensiones
+            </option>
+          </select>
+        </div>
+      </modal-body>
+      <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">
+          Cancelar
+        </button>
+        <button type="submit" [disabled]="!postForm.form.valid" class="btn btn-primary" id="createFond" (click)="loadFonds()" (click)="validationModal.close()">
+          Guardar
+        </button>
+      </modal-footer>
     </form>
-</modal>
-
-<modal #updateFondModal>
+  </modal>
+  <modal #updateFondModal>
     <form (ngSubmit)="updateFond(fond)" #postForm='ngForm'>
-        
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">Ingrese la información del Fondo</h4>
-        </modal-header>
-           
-		 			 
-		 <modal-body>
-
-
-		<div class="form-group">
-			<label for="document_number">Número Documento del fondo</label>  
-			<input required id="document_number" placeholder="Ingrese el documento del fondo" value={{tempData.document_number}} class="form-control" type="number" #document_number='ngModel'
-				[(ngModel)]='fond.document_number' name="document_number" >	
-		</div>
-
-         <div *ngIf="document_number.errors && (document_number.dirty || document_number.touched)" class="alert alert-danger">
-                <div [hidden]="!document_number.errors.required">
-                         Por favor ingresar el número de documento del fondo
-                </div>
-           </div>
-
-		<div class="form-group">
-			<label for="business_name">Razón Social del fondo</label>  
-			<input required id="business_name" placeholder="Ingrese el nombre del fondo" class="form-control" type="text" #business_name='ngModel'
-				[(ngModel)]='fond.business_name' name="business_name" value={{tempData.business_name}}>		
-		</div>
-
-    
-		<div class="form-group">
-			<label for="fond_type">Tipo de Fondo</label>
-			<select required id="fond_type" class="form-control" #fond_type='ngModel' [(ngModel)]='fond.fond_type' name="fond_type">
-				<option>Aseguradora de Riesgos Laborales</option>
-				<option>Caja de Compensación</option>
-				<option>Entidad Promotora de Salud</option>
-				<option>Fondo de Cesantías</option>
-				<option>Fondo de Pensiones</option>
-			</select>
-		</div>
-               
-            </modal-body>
-           
-					 
-			<modal-footer>
-
-                <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateFondModal.dismiss()">Cancelar</button>
-               	<button type="submit" class="btn btn-primary" id="createFond" (click)="loadFonds()" (click)="updateFondModal.close()">Guardar</button>                
-           
-            </modal-footer>
-    </form>
-</modal>
-
-
-
-
-<div>
-    
-    <div class="container">
-        <div class="row">
-           <div class="col-md-10 col-md-offset-1">
-                <div class="panel panel-default panel-table">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col col-xs-6">
-                                <h3 class="panel-title">Fondos</h3></div>
-                            <div class="col col-xs-6 text-right">
-                                <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
-                                
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="panel-body">
-                        
-                        <table  class="table table-striped table-bordered table-list">
-                            <thead>
-                                <tr>
-                                    <th><em class="fa fa-cog"></em></th>
-                                    <th hidden>ID</th>
-                                    <th>Tipo Doc.</th>
-									<th>Número Doc.</th>
-									<th>Razón Social</th>
-									<th>Tipo</th>
-                                </tr>
-                            </thead>
-                           
-                            <tbody>
-                                    
-                               <tr *ngFor="let fond of fonds" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
-				                    <td align="center"><a class="btn btn-default" (click)="guardarDatos(fond)" (click)="updateFondModal.open(fond)"><em class="glyphicon glyphicon-pencil"></em></a><a class="btn btn-danger" (click)="deleteFond(fond)"><em class="glyphicon glyphicon-trash"></em></a></td>
-                                    <td hidden>{{fond.id}}</td>
-                                   	<td>{{fond.document_type}}</td>
-									<td>{{fond.document_number}}</td>
-									<td>{{fond.business_name}}</td>
-									<td>{{fond.fond_type}}</td>
-                               </tr>
-                               
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="panel-footer">
-                        <p>Lista de los Fondos guardados actualmente</p>
-                    </div>
-
-                </div>
-            </div>
+      <modal-header [show-close]="true">
+        <h4 class="modal-title">
+          Ingrese la información del Fondo
+        </h4>
+      </modal-header>
+      <modal-body>
+        <div class="form-group">
+          <label for="document_number">
+            Número Documento del fondo
+          </label>
+          <input required id="document_number" placeholder="Ingrese el documento del fondo" value={{tempData.document_number}} class="form-control" type="number" #document_number="ngModel"[(ngModel)]='fond.document_number' name="document_number" >
         </div>
+        <div *ngIf="document_number.errors && (document_number.dirty || document_number.touched)" class="alert alert-danger">
+          <div [hidden]="!document_number.errors.required">
+            Por favor ingresar el número de documento del fondo
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="business_name">
+            Razón Social del fondo
+          </label>
+          <input required id="business_name" placeholder="Ingrese el nombre del fondo" class="form-control" type="text" #business_name="ngModel"
+          [(ngModel)]='fond.business_name' name="business_name" value={{tempData.business_name}}>
+        </div>
+        <div class="form-group">
+          <label for="fond_type">
+            Tipo de Fondo
+          </label>
+          <select required id="fond_type" class="form-control" #fond_type='ngModel' [(ngModel)]="fond.fond_type" name="fond_type">
+            <option>
+              Aseguradora de Riesgos Laborales
+            </option>
+            <option>
+              Caja de Compensación
+            </option>
+            <option>
+              Entidad Promotora de Salud
+            </option>
+            <option>
+              Fondo de Cesantías
+            </option>
+            <option>
+              Fondo de Pensiones
+            </option>
+          </select>
+        </div>
+      </modal-body>
+      <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="updateFondModal.dismiss()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-primary" id="createFond" (click)="loadFonds()" (click)="updateFondModal.close()">
+          Guardar
+        </button>
+      </modal-footer>
+    </form>
+  </modal>
+  <div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="panel panel-default panel-table">
+            <div class="panel-heading">
+              <div class="row">
+                <div class="col col-xs-6">
+                  <h3 class="panel-title">
+                    Fondos
+                  </h3>
+                </div>
+                <div class="col col-xs-6 text-right">
+                  <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">
+                    Create New
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <table  class="table table-striped table-bordered table-list">
+                <thead>
+                  <tr>
+                    <th>
+                      <em class="fa fa-cog"></em>
+                    </th>
+                    <th hidden> ID </th>
+                    <th> Tipo Doc. </th>
+                    <th> Número Doc. </th>
+                    <th> Razón Social </th>
+                    <th> Tipo </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let fond of fonds" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
+                    <td align="center">
+                      <a class="btn btn-default" (click)="guardarDatos(fond)" (click)="updateFondModal.open(fond)">
+                        <em class="glyphicon glyphicon-pencil"></em>
+                      </a>
+                      <a class="btn btn-danger" (click)="deleteFond(fond)">
+                        <em class="glyphicon glyphicon-trash"></em>
+                      </a>
+                    </td>
+                    <td hidden> {{fond.id}} </td>
+                    <td> {{fond.document_type}} </td>
+                    <td> {{fond.document_number}} </td>
+                    <td> {{fond.business_name}} </td>
+                    <td> {{fond.fond_type}} </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+              <p>
+                Lista de los Fondos guardados actualmente
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
-
-
-
-
-<div *ngIf="selectedArea"></div>
-
+  </div>
+  <div *ngIf="selectedArea"> </div>
 </body>

@@ -12,22 +12,17 @@ interface RecurringEvent {
   rrule?: {
     freq: RRule.Frequency,
     bymonth?: number,
-     bymonthday?: number,
+    bymonthday?: number,
     byweekday?: RRule.Weekday[]
   };
 }
-
-
-
-
-
 
 
 @Component({
   templateUrl: 'inicio.component.html',
   styleUrls: ['inicio.component.css'],
   //changeDetection: ChangeDetectionStrategy.OnPush,
-//  encapsulation: ViewEncapsulation.None
+  //  encapsulation: ViewEncapsulation.None
 })
 export class InicioComponent implements OnInit {
 
@@ -38,50 +33,45 @@ export class InicioComponent implements OnInit {
 
 
   view: string = 'month';
-
   tarea: string;
-
   viewDate: Date = new Date();
-
   quincena = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0);
-
-
-  recurringEvents: RecurringEvent[] = [{
-    title: 'Quincena mitad de Mes',
-    color: colors.yellow,
-    rrule: {
-      freq: RRule.MONTHLY,
-      bymonthday: 15
+  recurringEvents: RecurringEvent[] = [
+    {
+      title: 'Quincena mitad de Mes',
+      color: colors.yellow,
+      rrule: {
+        freq: RRule.MONTHLY,
+        bymonthday: 15
+      }
+    },
+    {
+      title: 'Quincena Final de Mes',
+      color: colors.yellow,
+      rrule: {
+        freq: RRule.MONTHLY,
+        bymonthday: -1
+      }
     }
-  },
-  {
-    title: 'Quincena Final de Mes',
-    color: colors.yellow,
-    rrule: {
-      freq: RRule.MONTHLY,
-      bymonthday: -1
-    }
-  }];
+  ];
 
   calendarEvents: CalendarEvent[] = [
- 
     {
-    start: subDays(startOfDay(new Date()), 1),
-   // end: addDays(new Date(), 1),
-    title: 'A 3 day event',
-    color: colors.red,
-    cssClass: 'my-custom-class'
+      start: subDays(startOfDay(new Date()), 1),
+      // end: addDays(new Date(), 1),
+      title: 'A 3 day event',
+      color: colors.red,
+      cssClass: 'my-custom-class'
     }
-   
-    ];
+  ];
 
 
   getDiasQuincena() : number {
-     var hoy = this.viewDate.getDate(); 
+    var hoy = this.viewDate.getDate(); 
 
     if (hoy> 15){
-        this.tarea= "FINAL de mes";
-        return this.quincena.getDate()-hoy
+      this.tarea= "FINAL de mes";
+      return this.quincena.getDate()-hoy
     }
     else {
       this.tarea= "MITAD de mes";
@@ -95,7 +85,6 @@ export class InicioComponent implements OnInit {
     console.log(this.getDiasQuincena());
     this.request()
     this.create()
-
   }
 
   updateCalendarEvents(): void {
@@ -131,18 +120,15 @@ export class InicioComponent implements OnInit {
 
   }
 
-   create(){
-
+  create(){
     this._pushNotifications.create('NominaUN', {body: 'Faltan '+this.getDiasQuincena()+" dias para la quincena de "+this.tarea , icon: '../favicon.ico'}).subscribe(
-            res => console.log(res),
-            err => console.log(err)
-        )
-
+      res => console.log(res),
+      err => console.log(err)
+    )
   }
 
 
   request(){
-
     this._pushNotifications.requestPermission()
   }
 

@@ -14,27 +14,27 @@ export class AuthService {
   constructor(
     private tokenService: Angular2TokenService, 
     public router: Router) {
-      //this.tokenService.init(environment.token_auth_config)
-            this.tokenService.init({apiPath: 'http://localhost:3000'})
+    //this.tokenService.init(environment.token_auth_config)
+    this.tokenService.init({apiPath: 'http://localhost:3000'})
 
 
-    }
+  }
 
   logIn(email: string, password: string): Observable<Response> {
     return this.tokenService.signIn({ email: email,
-                                     password: password });
+      password: password });
   }
 
   signUp(){
 
-        this.tokenService.registerAccount({
-        email:                'admin@admin.com',
-        password:             '12345678',
-        passwordConfirmation: '12345678'})
-        .subscribe(
-        res =>      console.log(res),
-          error =>    console.log(error));
-      }
+    this.tokenService.registerAccount({
+      email:                'admin@admin.com',
+      password:             '12345678',
+      passwordConfirmation: '12345678'})
+    .subscribe(
+      res =>      console.log(res),
+      error =>    console.log(error));
+  }
 
 
   signInWithGithub(): Observable<any> {

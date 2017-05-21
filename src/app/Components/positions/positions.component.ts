@@ -4,7 +4,6 @@ import { Position } from '../../Models/position'
 import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 
-
 @Component({
   selector: 'app-positions',
   templateUrl: './positions.component.html',
@@ -12,9 +11,9 @@ import { ModalComponent } from 'ng2-bs3-modal/ng2-bs3-modal';
 })
 export class PositionsComponent implements OnInit {
 
-      
+
   @ViewChild('advertencia')
-   modal: ModalComponent;
+  modal: ModalComponent;
 
 
   positions: Position[];
@@ -23,56 +22,56 @@ export class PositionsComponent implements OnInit {
 
 
   constructor(private positionService: PositionsService) {}
-  
+
   getPositions(){
-	this.positionService.getPositions().subscribe(
-		(resPositionData => this.positions = resPositionData)
-    );
+    this.positionService.getPositions().subscribe(
+      (resPositionData => this.positions = resPositionData)
+      );
   }
-  
+
   ngOnInit() {
     this.getPositions();   
     console.log(this.positions);
   }
-  
+
   onSelect(position:any):void {
-  	console.log(position);
+    console.log(position);
   }
 
 
-    guardarDatos(position){
-        this.tempData=position;
+  guardarDatos(position){
+    this.tempData=position;
 
-    }
+  }
 
 
   createPosition(position: Position){
-        this.positionService.setPositions(position)
-            .subscribe(
-            data => console.log('Success uploading the position', data),
-            error => console.error(`Error: ${error}`), ()=>this.getPositions());
-	
+    this.positionService.setPositions(position)
+    .subscribe(
+      data => console.log('Success uploading the position', data),
+      error => console.error(`Error: ${error}`), ()=>this.getPositions());
+
   } 
-   updatePosition(position){
-        this.tempData.position_name=position.position_name;
-        console.log("Despues",this.tempData)
-        this.positionService.updatePosition(this.tempData).subscribe(
-            data => console.log('Success uploading the area', data),
-            error => console.error(`Error: ${error}`), ()=>this.getPositions());
+  updatePosition(position){
+    this.tempData.position_name=position.position_name;
+    console.log("Despues",this.tempData)
+    this.positionService.updatePosition(this.tempData).subscribe(
+      data => console.log('Success uploading the area', data),
+      error => console.error(`Error: ${error}`), ()=>this.getPositions());
 
 
-    }
+  }
 
-    deletePosition(position) {
+  deletePosition(position) {
 
 
-        this.positionService.deletePosition(position.id)
-        .subscribe(
-            data => {},
-            error => {this.modal.open()},
-             ()=>this.getPositions()
-        );
-       
+    this.positionService.deletePosition(position.id)
+    .subscribe(
+      data => {},
+      error => {this.modal.open()},
+      ()=>this.getPositions()
+      );
+
   }
 
 

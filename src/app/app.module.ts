@@ -38,38 +38,37 @@ import { AppComponent } from './app.component';
 /////PORFAVOR NO AGREGAR COMPONENTES EN ESTA PARTE
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        RoutingComponent
-/////AGREGARLOS EN EL app-routing.module.ts
-    ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpModule,
-        InicioModule,
-        AppRoutingModule,
-        A2tUiModule,
-        Ng2Bs3ModalModule,
-		ChartsModule,
-        NgbModule.forRoot()
-        
-    ],
-    providers: [
-        EmployeesService,
-        LiquidationsService,
-        ParametersService,
-        NoveltiesService,
-        StatisticsService,
-        AreasService,
-        ConceptsService,
-        FondsService,
-        GeneralParametersService,
-        PositionsService,
-        Angular2TokenService,
-        AuthService,
-        LoggedInGuard
-    ],
-    bootstrap: [AppComponent]
+  declarations: [
+  AppComponent,
+  RoutingComponent
+  /////AGREGARLOS EN EL app-routing.module.ts
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    InicioModule,
+    AppRoutingModule,
+    A2tUiModule,
+    Ng2Bs3ModalModule,
+    ChartsModule,
+    NgbModule.forRoot()
+  ],
+  providers: [
+    EmployeesService,
+    LiquidationsService,
+    ParametersService,
+    NoveltiesService,
+    StatisticsService,
+    AreasService,
+    ConceptsService,
+    FondsService,
+    GeneralParametersService,
+    PositionsService,
+    Angular2TokenService,
+    AuthService,
+    LoggedInGuard
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

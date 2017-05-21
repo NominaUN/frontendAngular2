@@ -22,7 +22,5 @@ export class TableComponent implements OnInit {
     );
   }
 
-
-
 }
 

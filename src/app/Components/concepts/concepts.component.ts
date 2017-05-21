@@ -15,11 +15,11 @@ export class ConceptsComponent implements OnInit {
 	concept = new Concept;
 	constructor(private conceptService: ConceptsService) {
 	}
- 
+  
 	loadConcepts(){
 		this.conceptService.getConcepts().subscribe(
 			(resConceptData => this.concepts = resConceptData)
-		); 
+      ); 
 	}
   
 	ngOnInit() {
@@ -31,9 +31,9 @@ export class ConceptsComponent implements OnInit {
 	}
 
 	createConcept(concept : Concept){
-  		this.conceptService.setConcepts(concept).subscribe(
-            data => console.log('Success uploading the concept', data),
-            error => console.error(`Error: ${error}`), ()=>this.loadConcepts());
-  	}
+    this.conceptService.setConcepts(concept).subscribe(
+      data => console.log('Success uploading the concept', data),
+      error => console.error(`Error: ${error}`), ()=>this.loadConcepts());
+  }
 
 }

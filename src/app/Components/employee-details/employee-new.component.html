@@ -1,17 +1,17 @@
-
-<h3 align="center">Nuevo empleado</h3>
-
+<h3 align="center">
+  Nuevo empleado
+</h3>
 <div class="row">
   <div class="col-md-10 col-md-offset-2">
     <div class="row">
-	  <div class="col-md-10">
-        <form class="form-horizontal" (ngSubmit)="createEmployee(employee)" #postForm='ngForm'>
+      <div class="col-md-10">
+        <form class="form-horizontal" (ngSubmit)="createEmployee(employee)" #postForm="ngForm">
           <div class="form-group">
-		    <label class="col-sm-2 control-label">Tipo de documento:</label>
+            <label class="col-sm-2 control-label">Tipo de documento:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.document_type" [ngModelOptions]="{standalone: true}">
                 <option>CC</option>
-				<option>CE</option>
+                <option>CE</option>
               </select>
             </div>
             <label class="col-sm-2 control-label">C.C.</label>
@@ -26,17 +26,17 @@
             </div>
             <label class="col-sm-2 control-label">Segundo nombre:</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" [(ngModel)]="employee.other_name" [ngModelOptions]="{standalone: true}" >
+              <input type="text" class="form-control" [(ngModel)]="employee.other_name" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">Primer Apellido:</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" [(ngModel)]="employee.last_name" [ngModelOptions]="{standalone: true}" >
+              <input type="text" class="form-control" [(ngModel)]="employee.last_name" [ngModelOptions]="{standalone: true}">
             </div>
             <label class="col-sm-2 control-label">Segundo apellido:</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" [(ngModel)]="employee.second_surname" [ngModelOptions]="{standalone: true}" >
+              <input type="text" class="form-control" [(ngModel)]="employee.second_surname" [ngModelOptions]="{standalone: true}">
             </div>
           </div>
           <div class="form-group">
@@ -74,11 +74,11 @@
             <div class="col-sm-4">
               <input type="number" class="form-control" [(ngModel)]="employee.salary" [ngModelOptions]="{standalone: true}">
             </div>
-			<label class="col-sm-2 control-label">Tipo de contrato:</label>
+            <label class="col-sm-2 control-label">Tipo de contrato:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.contract" [ngModelOptions]="{standalone: true}">
                 <option>Fijo</option>
-				<option>Indefinido</option>
+                <option>Indefinido</option>
               </select>
             </div>
           </div>
@@ -86,73 +86,73 @@
             <label class="col-sm-2 control-label">Área:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let area of areas"
-                  [value]="area.id"
-                >{{area.area_name}}</option>
+                <option *ngFor="let area of areas"[value]="area.id">
+                  {{area.area_name}}
+                </option>
               </select>
             </div>
             <label class="col-sm-2 control-label">Cargo:</label>
             <div class="col-sm-4">
-				<select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let position of positions"
-                  [value]="position.id"
-                >{{position.position_name}}</option>
-				</select>
-            </div>
-          </div>       
-		  <div class="form-group">
-            <label class="col-sm-2 control-label">ARL:</label>
-            <div class="col-sm-4">
-				<select class="form-control">
-                <option *ngFor="let arl of arls"
-                  [value]="arl.id"
-                >{{arl.business_name}}</option>
-              </select>
-            </div>
-			<label class="col-sm-2 control-label">Porcentaje de riesgo:</label>
-            <div class="col-sm-4">
-              <select class="form-control">
-                <option>0.522</option>
-				<option>1.044</option>
-				<option>2.436</option>
-				<option>4.350</option>
-				<option>6.960</option>
-              </select>
-            </div>
-		  </div>
-		  <div class="form-group">
-			<label class="col-sm-2 control-label">EPS:</label>
-            <div class="col-sm-4">
-              <select class="form-control">
-                <option *ngFor="let eps of epss"
-                  [value]="eps.id"
-                >{{eps.business_name}}</option>
-              </select>
-            </div>
-			<label class="col-sm-2 control-label">Caja de compensación:</label>
-            <div class="col-sm-4">
-              <select class="form-control" >
-                <option *ngFor="let caja of cajaComps"
-                  [value]="caja.id"
-                >{{caja.business_name}}</option>
+              <select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let position of positions" [value]="position.id">
+                  {{position.position_name}}
+                </option>
               </select>
             </div>
           </div>
-		  <div class="form-group">
-            <label class="col-sm-2 control-label">Fondo de cesantias:</label>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">ARL:</label>
             <div class="col-sm-4">
-              <select class="form-control" >
-                <option *ngFor="let cesantia of cesantias"
-                  [value]="cesantia.id"
-                >{{cesantia.business_name}}</option>
+              <select class="form-control">
+                <option *ngFor="let arl of arls" [value]="arl.id">
+                  {{arl.business_name}}
+                </option>
               </select>
             </div>
-			<label class="col-sm-2 control-label">Fondo de pensiones:</label>
+            <label class="col-sm-2 control-label">Porcentaje de riesgo:</label>
             <div class="col-sm-4">
-              <select class="form-control" >
-                <option *ngFor="let pension of pensiones"
-                  [value]="pension.id"
-                >{{pension.business_name}}</option>
+              <select class="form-control">
+                <option>0.522</option>
+                <option>1.044</option>
+                <option>2.436</option>
+                <option>4.350</option>
+                <option>6.960</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">EPS:</label>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option *ngFor="let eps of epss" [value]="eps.id">
+                  {{eps.business_name}}
+                </option>
+              </select>
+            </div>
+            <label class="col-sm-2 control-label">Caja de compensación:</label>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option *ngFor="let caja of cajaComps" [value]="caja.id">
+                  {{caja.business_name}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">Fondo de cesantias:</label>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option *ngFor="let cesantia of cesantias" [value]="cesantia.id">
+                  {{cesantia.business_name}}
+                </option>
+              </select>
+            </div>
+            <label class="col-sm-2 control-label">Fondo de pensiones:</label>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option *ngFor="let pension of pensiones" [value]="pension.id">
+                  {{pension.business_name}}
+                </option>
               </select>
             </div>
           </div>
@@ -166,7 +166,9 @@
               <input type="checkbox" class="form-control" [(ngModel)]="employee.integral_salary" [ngModelOptions]="{standalone: true}">
             </div>
             <div class="col-sm-6">
-              <button type="submit" class="btn btn-primary pull-right">Guardar cambios</button>
+              <button type="submit" class="btn btn-primary pull-right">
+                Guardar cambios
+              </button>
             </div>
           </div>
         </form>

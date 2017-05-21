@@ -13,7 +13,6 @@ import  { AuthService } from '../../Services/authentication/auth.service';
 export class HomeComponent implements OnInit {
 
   submitted: boolean;
-
   signInData: SignInData = <SignInData>{};
   output: any;
 
@@ -23,38 +22,37 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-
     if (this.authService.isLoggedIn()) {
       this.router.navigateByUrl('/inicio');
-    }}
-
-    onSubmit() {
-
-      this.output = null;
-
-      this.authService.logIn(this.signInData.email, this.signInData.password).subscribe(
-        res => {
-
-          if(res.status == 200){
-            this.router.navigate(['/inicio']);
-          }
-
-          this.signInData     = <SignInData>{};
-          this.output         = res;
-        }, error => {
-          this.signInData     = <SignInData>{};
-          this.output         = error;
-        }
-      );
     }
-
-    isLoggedIn(): boolean {
-      return this.authService.isLoggedIn();
-    }
-
-    logOut(): void {
-      this.authService.logOut();
-    }
-
-
   }
+
+  onSubmit() {
+
+    this.output = null;
+
+    this.authService.logIn(this.signInData.email, this.signInData.password).subscribe(
+      res => {
+
+        if(res.status == 200){
+          this.router.navigate(['/inicio']);
+        }
+
+        this.signInData     = <SignInData>{};
+        this.output         = res;
+      }, error => {
+        this.signInData     = <SignInData>{};
+        this.output         = error;
+      }
+      );
+  }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+
+  logOut(): void {
+    this.authService.logOut();
+  }
+
+}

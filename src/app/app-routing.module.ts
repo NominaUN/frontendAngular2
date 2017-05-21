@@ -3,8 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { Angular2TokenService, A2tUiModule } from 'angular2-token';
 import { NgModule } from '@angular/core';
 
-
-
 ///Componentes///
 import { AppComponent } from './app.component';
 import { HomeComponent } from './Components/home/home.component';
@@ -26,89 +24,96 @@ import { PositionsComponent } from './Components/positions/positions.component';
 import { NotfoundComponent } from './Components/notfound/notfound.component';
 import { BannerComponent } from './Components/banner/banner.component';
 
-
-
 ///SECURITY SERV
 import { LoggedInGuard } from './Services/authentication/logged-in-guard.service';
 
-
-
-
 const routes: Routes = [
-   
-
-    { path: '', component: HomeComponent,
-    },
-    { path: 'aboutus', component: AboutusComponent },
-    { path: 'reset', component: ResetComponent },
-    { path: 'employees', component: EmployeesComponent,
-       canActivate: [LoggedInGuard]
-    },
-    { path: 'employee/:id', component: EmployeeDetailsComponent,
-        canActivate: [LoggedInGuard]
-    },
-
-    { path: 'employeenew', component: EmployeeNewComponent,
-            canActivate: [LoggedInGuard]
-    },
-
-    { path: 'novelties', component: NoveltiesComponent,
-         canActivate: [LoggedInGuard]
-    },
-    { path: 'liquidations', component: LiquidationsComponent,
-        canActivate: [LoggedInGuard],
-    },
-    { path: 'statistics', component: StatisticsComponent,
-        canActivate: [LoggedInGuard],
-    },
-    { path: 'parameters', component: ParametersComponent,
-        canActivate: [LoggedInGuard],
-    },
-    { path: 'areas', component: AreasComponent,
-        canActivate: [LoggedInGuard],
-    },
-    { path: 'concepts', component: ConceptsComponent,
-             canActivate: [LoggedInGuard],
-    },
-    { path: 'fonds', component: FondsComponent,
-             canActivate: [LoggedInGuard],
-    },
-    { path: 'general-parameters', component: GeneralParametersComponent,
-             canActivate: [LoggedInGuard],
-    },
-    { path: 'positions', component: PositionsComponent,
-             canActivate: [LoggedInGuard],
-    },
-    { path: '**', component: NotfoundComponent }
+  { path: '',
+    component: HomeComponent
+  },
+  { path: 'aboutus',
+    component: AboutusComponent
+  },
+  { path: 'reset',
+    component: ResetComponent
+  },
+  { path: 'employees',
+    component: EmployeesComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'employee/:id',
+    component: EmployeeDetailsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'employeenew',
+    component: EmployeeNewComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'novelties',
+    component: NoveltiesComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'liquidations',
+    component: LiquidationsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'statistics',
+    component: StatisticsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'parameters',
+    component: ParametersComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'areas',
+    component: AreasComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'concepts',
+    component: ConceptsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'fonds',
+    component: FondsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'general-parameters',
+    component: GeneralParametersComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: 'positions',
+    component: PositionsComponent,
+    canActivate: [LoggedInGuard]
+  },
+  { path: '**', 
+    component: NotfoundComponent
+  }
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
 
 export class AppRoutingModule { }
 
 export const RoutingComponent = [
-
-    HomeComponent,
-    AboutusComponent,
-    ResetComponent,
-    BarComponent,
-    EmployeesComponent,
-    NoveltiesComponent,
-    LiquidationsComponent,
-    StatisticsComponent,
-    ParametersComponent,
-    AreasComponent,
-    ConceptsComponent,
-    FondsComponent,
-    GeneralParametersComponent,
-    PositionsComponent,
-    NotfoundComponent,
-    EmployeeDetailsComponent,
-    EmployeeNewComponent,
-    BannerComponent
-
-
+  HomeComponent,
+  AboutusComponent,
+  ResetComponent,
+  BarComponent,
+  EmployeesComponent,
+  NoveltiesComponent,
+  LiquidationsComponent,
+  StatisticsComponent,
+  ParametersComponent,
+  AreasComponent,
+  ConceptsComponent,
+  FondsComponent,
+  GeneralParametersComponent,
+  PositionsComponent,
+  NotfoundComponent,
+  EmployeeDetailsComponent,
+  EmployeeNewComponent,
+  BannerComponent
 ]
