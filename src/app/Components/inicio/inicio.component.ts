@@ -4,7 +4,7 @@ import { RRule } from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from './demo-utils/colors';
 import { PushNotificationsService } from 'angular2-notifications';
-
+import { EmployeesService } from '../../Services/employees/employees.service'
 
 interface RecurringEvent {
   title: string;
@@ -18,11 +18,6 @@ interface RecurringEvent {
 }
 
 
-
-
-
-
-
 @Component({
   templateUrl: 'inicio.component.html',
   styleUrls: ['inicio.component.css'],
@@ -31,7 +26,11 @@ interface RecurringEvent {
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private _pushNotifications: PushNotificationsService ){
+  constructor(
+    private _pushNotifications: PushNotificationsService,
+       private employeesService: EmployeesService,
+    
+    ){
 
 
   }
@@ -44,6 +43,9 @@ export class InicioComponent implements OnInit {
   viewDate: Date = new Date();
 
   quincena = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0);
+
+
+  employees=[];
 
 
   recurringEvents: RecurringEvent[] = [{
@@ -146,5 +148,11 @@ export class InicioComponent implements OnInit {
     this._pushNotifications.requestPermission()
   }
 
+
+  getEmployeesSorted(){
+
+    this.employeesService.getEmployeesSorted().subscribe((data) => this.employees=data)
+
+  }
 }
 
