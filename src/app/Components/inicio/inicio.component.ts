@@ -5,6 +5,9 @@ import { CalendarEvent } from 'angular-calendar';
 import { colors } from './demo-utils/colors';
 import { PushNotificationsService } from 'angular2-notifications';
 import { EmployeesService } from '../../Services/employees/employees.service'
+import { Employee } from '../../Models/resEmployeeData.model'
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+
 
 interface RecurringEvent {
   title: string;
@@ -29,10 +32,11 @@ export class InicioComponent implements OnInit {
   constructor(
     private _pushNotifications: PushNotificationsService,
        private employeesService: EmployeesService,
+       private http: Http
     
     ){
 
-
+   
   }
 
 
@@ -45,8 +49,12 @@ export class InicioComponent implements OnInit {
   quincena = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0);
 
 
-  employees=[];
+ // employees=[];
 
+  test=[];
+  test2=[];
+
+  employees : Employee[];
 
   recurringEvents: RecurringEvent[] = [{
     title: 'Quincena mitad de Mes',
@@ -97,6 +105,7 @@ export class InicioComponent implements OnInit {
     console.log(this.getDiasQuincena());
     this.request()
     this.create()
+    this.getEmployeesSorted();
 
   }
 
@@ -150,9 +159,30 @@ export class InicioComponent implements OnInit {
 
 
   getEmployeesSorted(){
+/*
+    this.http.get("http://localhost:3000/api/v1/employees?sort=-admission_date")
+        .flatMap((response) => response.json().data)
+        .map((person : Employee) => person.admission_date)
+        .subscribe((data) => {
+          this.test.push(data);
+        });
+*/
 
-    this.employeesService.getEmployeesSorted().subscribe((data) => this.employees=data)
+    
+    this.employeesService.getEmployeesSorted()
+    .map((person : Employee) => person)
+    .subscribe(data =>{ 
+      this.test.push(data)
+      });
 
-  }
+
+
+    
+  
+    }
+    
+
+
+  
 }
 

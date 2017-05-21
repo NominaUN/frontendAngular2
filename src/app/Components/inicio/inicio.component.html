@@ -43,7 +43,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr *ngFor="let employee of employees.data | orderBy"[class.selected]="employee === selectedEmployee" >
+				<tr *ngFor="let employee of test | orderBy"[class.selected]="employee === selectedEmployee" >
 					<td>{{employee.first_name}}</td>
 					<td>{{employee.last_name}}</td>
 					<td (click)="test()">{{employee.admission_date}}</td>

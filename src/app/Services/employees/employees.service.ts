@@ -41,7 +41,9 @@ export class EmployeesService {
 
 
   getEmployeesSorted(){
-    return this.http.get("http://localhost:3000/api/v1/employees?sort=-admission_date").map((response:Response) => response.json().data);
+    return this.http.get("http://localhost:3000/api/v1/employees?sort=-admission_date")
+    .flatMap((response:Response) => response.json().data);
+  
   }
 
 }
