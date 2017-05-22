@@ -2,6 +2,7 @@ import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 import { Observable } from 'rxjs/Rx';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-employees',
@@ -9,6 +10,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./employees.component.css']
 })
 export class EmployeesComponent implements OnInit {
+
+  private _success = new Subject<string>();
+  successMessage: string;   
+
+  private _fail = new Subject<string>();
+  failMessage: string;
   
   employees=[];
   constructor(
@@ -18,6 +25,12 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit() {
     this.getEmployees();
+    
+    this._success.subscribe((message) => this.successMessage = message);
+    this._success.debounceTime(12000).subscribe(() => this.successMessage = null);
+
+    this._fail.subscribe((message) => this.failMessage = message);
+    this._fail.debounceTime(120000).subscribe(() => this.failMessage = null);
   }
 
   getEmployees() {
@@ -35,10 +48,10 @@ export class EmployeesComponent implements OnInit {
     this.employeesService.delEmployee(id)
     .subscribe(
       data => {
-        console.log('Success deleted the employee', data);
+        console.log(this._success.next('Empleado eliminado exitosamente!'), data);
         this.ngOnInit();
       },
-      error => console.error(`Error: ${error}`)
+      error => console.error(this._fail.next('Empleado no pudo ser eliminado '+ `Error: ${error}`))
       )
   }
 

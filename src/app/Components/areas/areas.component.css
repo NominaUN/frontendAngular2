@@ -38,6 +38,17 @@ hr{
 	margin-bottom: 2px;
 }
 
+#title{
+  margin-top: 80px;
+  background: white;
+  color:#22262e;
+  margin-bottom: 50px;
+  font-family: Helvetica;
+  border-bottom-width: 2px;
+  border-bottom-color: #7A7C7B;
+  border-bottom-style:solid;
+}
+
 #first{
 	width:25%;
 	border-width:4px;

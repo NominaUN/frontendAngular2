@@ -38,9 +38,21 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
+             <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">
+              {{ successMessage }}
+            </ngb-alert>
+            <ngb-alert *ngIf="failMessage" type="danger" (close)="failMessage = null">
+              {{ failMessage }}
+             </ngb-alert>
             <div class="row">
               <div class="col col-xs-6">
-                <h3 class="panel-title">Panel Heading</h3></div>
+                <h3 class="panel-title">
+                  <button type="button" class="btn btn-default btn-circle" *ngIf="areas">
+                  {{ concepts.length }}
+                </button>
+                Areas guardadas actualmente
+                </h3>
+              </div>
                 <div class="col col-xs-6 text-right">
                   <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
                 </div>
