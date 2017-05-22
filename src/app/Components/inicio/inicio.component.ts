@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation  } from '@angular/core';
-import { getMonth, startOfMonth, startOfWeek, startOfDay, endOfMonth, endOfWeek, endOfDay, subDays, addDays } from 'date-fns';
+import { getDay, getMonth, startOfMonth, startOfWeek, startOfDay, endOfMonth, endOfWeek, endOfDay, subDays, addDays } from 'date-fns';
 import { RRule } from 'rrule';
 import { CalendarEvent } from 'angular-calendar';
 import { colors } from './demo-utils/colors';
@@ -31,13 +31,7 @@ export class InicioComponent implements OnInit {
 
   constructor(
     private _pushNotifications: PushNotificationsService,
-       private employeesService: EmployeesService,
-       private http: Http
-    
-    ){
-
-   
-  }
+       private employeesService: EmployeesService){}
 
 
   view: string = 'month';
@@ -73,8 +67,9 @@ export class InicioComponent implements OnInit {
     }
   }];
 
+
   calendarEvents: CalendarEvent[] = [
- 
+ /*
     {
     start: subDays(startOfDay(new Date()), 1),
    // end: addDays(new Date(), 1),
@@ -82,7 +77,7 @@ export class InicioComponent implements OnInit {
     color: colors.red,
     cssClass: 'my-custom-class'
     }
-   
+   */
     ];
 
 
@@ -101,12 +96,11 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.updateCalendarEvents();
-    console.log(this.getDiasQuincena());
     this.request()
     this.create()
-    this.getEmployeesSorted();
+     this.getEmployeesSorted();
 
+ 
   }
 
   updateCalendarEvents(): void {
@@ -159,26 +153,57 @@ export class InicioComponent implements OnInit {
 
 
   getEmployeesSorted(){
-/*
-    this.http.get("http://localhost:3000/api/v1/employees?sort=-admission_date")
-        .flatMap((response) => response.json().data)
-        .map((person : Employee) => person.admission_date)
-        .subscribe((data) => {
-          this.test.push(data);
-        });
-*/
-
     
-    this.employeesService.getEmployeesSorted()
-    .map((person : Employee) => person)
-    .subscribe(data =>{ 
-      this.test.push(data)
-      });
+
+      
+       this.employeesService.getEmployeesSorted()
+          .map((person : Employee) => person)
+          .subscribe(
+            data => this.test.push(data),
+            err =>{},
+            () =>{ this.agregarContratos()}
+            );
+          
+
+  }
+
+    agregarContratos(){
+
+      for(var i=0;i<this.test.length;i++){
+
+          this.recurringEvents.push(
+            this.crearContrato(this.test[i].first_name, this.test[i].admission_date)
+            )
+      }
+
+      this.recurringEvents.push(  {
+    title: 'Quincena Final de Mes',
+    color: colors.yellow,
+    rrule: {
+      freq: RRule.MONTHLY,
+      bymonthday: 10
+    }
+  })
+      this.updateCalendarEvents();
+
+    }
+
+    crearContrato(nombre, fecha){
 
 
+      var date = new Date(fecha);
+      console.log(nombre, fecha,date)
+            //console.log(getMonth(date), getDay(date))
 
-    
-  
+      return {
+          title: nombre,
+          color: colors.yellow,
+          rrule: {
+            freq: RRule.YEARLY,
+            bymonth: getMonth(date),
+            bymonthday: getDay(date)
+            }
+          }   
     }
     
 
