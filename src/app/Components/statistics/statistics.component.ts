@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { StatisticsService } from  '../../Services/statistics/statistics.service';
+import { Employee } from '../../Models/resEmployeeData.model'
+import { Noveltie } from '../../Models/resNoveltiesData.model'
+import { Detail } from '../../Models/payday-detail'
+import { Vacation } from '../../Models/vacation'
+import { Observable } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-statistics',
@@ -9,76 +14,108 @@ import { StatisticsService } from  '../../Services/statistics/statistics.service
 
 export class StatisticsComponent implements OnInit {
 
-  statistics=[];
+	statsone: Employee[];
+	statstwo: Noveltie[];
+	statsthr: Detail[];
+	statsfou: Vacation[];
+	dataf = [];
 
-  constructor(private statisticsService: StatisticsService) {}
+	constructor(private statisticsService: StatisticsService) {}
 
-  public barChartOptions:any = {
-    scaleShowVerticalLines: false,
-    responsive: true
-  };
-  public barChartLabels:string[] = [];
-  public barChartType:string = 'bar';
-  public barChartLegend:boolean = true;
+	public barChartOptions:any = {
+		scaleShowVerticalLines: false,
+		responsive: true
+	};
+  
+	public barChartLabels:string[] = [];
+	
+	public barChartType:string = 'bar';
+	
+	public barChartLegend:boolean = true;
 
-  public barChartData:any[] = [
-    {data: [], label: 'Series A'},
-    {data: [], label: 'Series B'}
-  ];
+	public barChartData:any[] = [
+		{data: [], label: 'Series A'},
+		{data: [], label: 'Series B'}
+	];
 
-  // events
-  public chartClicked(e:any):void {
-    console.log(e);
-  }
+	// events
+	public chartClicked(e:any):void {
+		console.log(e);
+	}
 
-  public chartHovered(e:any):void {
-    console.log(e);
-  }
+	public chartHovered(e:any):void {
+		console.log(e);
+	}
 
-  public isDataAvailable:boolean = false;
+	public isDataAvailable:boolean = false;
 
-  ngOnInit() {
-    this.loadG1();
-  }
+	ngOnInit() {
+		this.statisticsService.getEmployeesStats().subscribe(
+			(resEmployeeData => this.statsone = resEmployeeData)
+		);
+		this.statisticsService.getNoveltiesStats().subscribe(
+			(resNoveltieData => this.statstwo = resNoveltieData)
+		);
+		this.statisticsService.getLiquidationsStats().subscribe(
+			(resDetailData => this.statsthr = resDetailData)
+		);
+		this.statisticsService.getVacationsStats().subscribe(
+			(resVacationData => this.statsfou = resVacationData)
+		);
+	}
 
-  loadG1(){
-    this.barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    this.barChartData = [
-      {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
-      {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
-    ];
-    this.isDataAvailable = true;
-  }
+	loadG1(){
+		this.dataf = [];
+		for (var i=0; i<this.statsone.length; i++){
+			this.barChartLabels[i] = this.statsone[i].id + '. ' + this.statsone[i].first_name;
+			this.dataf[i] = this.statsone[i].salary;
+		};
+		this.barChartData = [
+			{data: this.dataf, label: 'Salario'}
+		];
+		this.isDataAvailable = true;
+	}
 
-  loadG2(){
-    /*var canvas = <HTMLCanvasElement> document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);*/
-    this.barChartLabels = ['Andrew','Takashi','Gerardo','Rosa','Adolf'];
-    this.barChartData = [
-      {data: [100, 230, 145, 67, 123], label: 'Series A'},
-      {data: [145, 198, 155, 89, 112], label: 'Series B'}
-    ];
-    this.isDataAvailable = true;
-  }
+	loadG2(){
+		this.dataf = [];
+		for (var i=0; i<this.statsone.length; i++){
+			this.barChartLabels[i] = this.statsone[i].id + '. ' + this.statsone[i].first_name;
+		};
+		for (var i=0; i<this.statstwo.length; i++){
+			for (var j=0; j<this.barChartLabels.length; i++){
+				if (this.barChartLabels[j].substring(0,1) === this.statstwo[i].employee.id){
+					this.dataf[i] = this.dataf[i] + 1;
+				}
+			}
+		};
+		this.barChartData = [
+			{data: this.dataf, label: 'Novedades'}
+		];
+		this.isDataAvailable = true;
+	}
 
-  loadG3(){
+	loadG3(){
+		this.dataf = [];
+		for (var i=0; i<this.statsthr.length; i++){
+			this.barChartLabels[i] = this.statsthr[i].employee.first_name;
+			this.dataf[i] = this.statsthr[i].win - this.statsthr[i].loss;
+		};
+		this.barChartData = [
+			{data: this.dataf, label: 'Liquidaciones'}
+		];
+		this.isDataAvailable = true;
+	}
 
-    this.barChartLabels = ['1','2','3','4','5','6'];
-    this.barChartData = [
-      {data: [5, 6, 5, 3, 2, 5], label: 'Series A'},
-      {data: [3, 4, 1, 7, 4, 3], label: 'Series B'}
-    ];
-    this.isDataAvailable = true;
-  }
-
-  loadG4(){
-    this.barChartLabels = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
-    this.barChartData = [
-      {data: [45, 43, 44, 50, 46, 48, 50], label: 'Series A'},
-      {data: [28, 32, 25, 31, 34, 27, 30], label: 'Series B'}
-    ];
-    this.isDataAvailable = true;
-  }
+	loadG4(){
+		this.dataf = [];
+		for (var i=0; i<this.statsfou.length; i++){
+			this.barChartLabels[i] = this.statsfou[i].employee.first_name;
+			this.dataf[i] = this.statsfou[i].taken_days;
+		};
+		this.barChartData = [
+			{data: this.dataf, label: 'Vacaciones'}
+		];
+		this.isDataAvailable = true;
+	}
 
 }
