@@ -2,11 +2,12 @@ import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { CalendarEvent } from 'angular-calendar';
-import { isSameMonth, isSameDay, startOfMonth, endOfMonth, startOfWeek, endOfWeek, startOfDay, endOfDay, format } from 'date-fns';
+import { isSameMonth, isSameDay, startOfMonth, endOfMonth, startOfWeek, endOfWeek, startOfDay, endOfDay, format, subDays } from 'date-fns';
 import { Observable } from 'rxjs/Observable';
 import { colors } from './demo-utils/colors';
 import { Employee } from '../../Models/resEmployeeData.model'
 import { RRule } from 'rrule';
+import { Subject } from 'rxjs/Subject';
 
 
 
@@ -39,6 +40,18 @@ interface RecurringEvent {
 })
 export class InicioComponent implements OnInit {
 
+    calendarEvents: CalendarEvent[] = [
+ 
+    {
+    start: subDays(startOfDay(new Date()), 1),
+   // end: addDays(new Date(), 1),
+    title: 'A 3 day event',
+    color: colors.red,
+    cssClass: 'my-custom-class'
+    }
+   
+];
+
   view: string = 'month';
 
   viewDate: Date = new Date();
@@ -46,6 +59,8 @@ export class InicioComponent implements OnInit {
   events$: Observable<EmployeeEvent[]>;
 
   activeDayIsOpen: boolean = false;
+
+    refresh: Subject<any> = new Subject();
 
   constructor(private http: Http) {}
 
@@ -68,11 +83,12 @@ export class InicioComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchEvents();
-    this.updateCalendarEvents();
 
   }
 
   fetchEvents(): void {
+        this.updateCalendarEvents();
+
 
     const getStart: any = {
       month: startOfMonth,
@@ -105,6 +121,9 @@ export class InicioComponent implements OnInit {
 
 
     console.log(this.events$)
+
+    this.updateCalendarEvents()
+    this.refresh.next()
   }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
@@ -122,8 +141,9 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  updateCalendarEvents(): void {
+ updateCalendarEvents(): void {
 
+    this.calendarEvents;
 
     const startOfPeriod: any = {
       month: startOfMonth,
@@ -144,15 +164,23 @@ export class InicioComponent implements OnInit {
         until: endOfPeriod[this.view](this.viewDate)
       }));
 
-    
+      rule.all().forEach((date) => {
+        this.calendarEvents.push(Object.assign({}, event, {
+          start: new Date(date)
+        }));
+      });
 
     });
 
   }
 
 
-  //eventClicked(event: FilmEvent): void {
-   // window.open(`https://www.themoviedb.org/movie/${event.film.id}`, '_blank');
-  //}
+  
+
+  /*
+  eventClicked(event: EmployeeEvent): void {
+    window.open(`https://www.themoviedb.org/movie/${event.film.id}`, '_blank');
+  }
+  */
 
 }

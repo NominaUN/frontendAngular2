@@ -4,10 +4,7 @@
   [(view)]="view"
   [(viewDate)]="viewDate"
   (viewDateChange)="fetchEvents()"
-  (viewChange)="fetchEvents()"
-  
-    (viewDateChange)="updateCalendarEvents()"
-  (viewChange)="updateCalendarEvents()">
+  (viewChange)="fetchEvents()">
 </mwl-demo-utils-calendar-header>
 
 <ng-template #loading>
