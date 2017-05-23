@@ -1,4 +1,3 @@
-/*
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { Http, URLSearchParams } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -7,6 +6,8 @@ import { isSameMonth, isSameDay, startOfMonth, endOfMonth, startOfWeek, endOfWee
 import { Observable } from 'rxjs/Observable';
 import { colors } from './demo-utils/colors';
 import { Employee } from '../../Models/resEmployeeData.model'
+import { RRule } from 'rrule';
+
 
 
 interface Film {
@@ -15,9 +16,21 @@ interface Film {
   release_date: string;
 }
 
-interface FilmEvent extends CalendarEvent {
-  film: Film;
+interface EmployeeEvent extends CalendarEvent {
+  employee: Employee;
 }
+
+interface RecurringEvent {
+  title: string;
+  color: any;
+  rrule?: {
+    freq: RRule.Frequency,
+    bymonth?: number,
+     bymonthday?: number,
+    byweekday?: RRule.Weekday[]
+  };
+}
+
 
 @Component({
   selector: 'mwl-demo-component',
@@ -30,14 +43,33 @@ export class InicioComponent implements OnInit {
 
   viewDate: Date = new Date();
 
-  events$: Observable<FilmEvent[]>;
+  events$: Observable<EmployeeEvent[]>;
 
   activeDayIsOpen: boolean = false;
 
   constructor(private http: Http) {}
 
+   recurringEvents: RecurringEvent[] = [{
+    title: 'Quincena mitad de Mes',
+    color: colors.yellow,
+    rrule: {
+      freq: RRule.MONTHLY,
+      bymonthday: 15
+    }
+  },
+  {
+    title: 'Quincena Final de Mes',
+    color: colors.yellow,
+    rrule: {
+      freq: RRule.MONTHLY,
+      bymonthday: -1
+    }
+}];
+
   ngOnInit(): void {
     this.fetchEvents();
+    this.updateCalendarEvents();
+
   }
 
   fetchEvents(): void {
@@ -54,23 +86,25 @@ export class InicioComponent implements OnInit {
       day: endOfDay
     }[this.view];
 
-   // const search: URLSearchParams = new URLSearchParams();
-   // search.set('primary_release_date.gte', format(getStart(this.viewDate), 'YYYY-MM-DD'));
-   // search.set('primary_release_date.lte', format(getEnd(this.viewDate), 'YYYY-MM-DD'));
-   // search.set('api_key', '0ec33936a68018857d727958dca1424f');
-    this.events$ = this.http
-      .get("http://localhost:3000/api/v1/employees?sort=-admission_date")
+
+ this.events$ = this.http
+      .get("src/app/Components/inicio/test.json")
       .map(res => res.json().data)
-      .map(({results}: {results: Employee[]}) => {
+      .map((results : Employee[]) => {
+
         return results.map((employee: Employee) => {
+          console.log("employee", new Date(employee.admission_date))
           return {
-            title: film.title,
-            start: new Date(film.release_date),
-            color: colors.yellow,
-            film
+            title: employee.first_name,
+            start: new Date(employee.admission_date+"T00:00:00"),
+            color: colors.red,
+            employee
           };
         });
       });
+
+
+    console.log(this.events$)
   }
 
   dayClicked({date, events}: {date: Date, events: CalendarEvent[]}): void {
@@ -88,129 +122,8 @@ export class InicioComponent implements OnInit {
     }
   }
 
-  eventClicked(event: FilmEvent): void {
-    window.open(`https://www.themoviedb.org/movie/${event.film.id}`, '_blank');
-  }
+  updateCalendarEvents(): void {
 
-}
-
-
-
-*/
-
-import { Component, OnInit, ChangeDetectionStrategy, ViewEncapsulation, Input  } from '@angular/core';
-import { getDay, getMonth, startOfMonth, startOfWeek, startOfDay, endOfMonth, endOfWeek, endOfDay, subDays, addDays } from 'date-fns';
-import { RRule } from 'rrule';
-import { CalendarEvent } from 'angular-calendar';
-import { colors } from './demo-utils/colors';
-import { PushNotificationsService } from 'angular2-notifications';
-import { EmployeesService } from '../../Services/employees/employees.service'
-import { Employee } from '../../Models/resEmployeeData.model'
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Subject } from 'rxjs/Subject';
-import {Observable} from 'rxjs/Observable';  
-import 'rxjs/Rx';
-
-
-interface RecurringEvent {
-  title: string;
-  color: any;
-  rrule?: {
-    freq: RRule.Frequency,
-    bymonth?: number,
-     bymonthday?: number,
-    byweekday?: RRule.Weekday[]
-  };
-}
-
-
-@Component({
-  templateUrl: 'inicio.component.html',
-  styleUrls: ['inicio.component.css'],
-//  changeDetection: ChangeDetectionStrategy.OnPush,
-//  encapsulation: ViewEncapsulation.None
-})
-export class InicioComponent implements OnInit {
-
-  constructor(
-    private _pushNotifications: PushNotificationsService,
-       private employeesService: EmployeesService){
-        
-           
-
-         
-       }
-
-
-  view: string = 'month';
-
-  tarea: string;
-
-  viewDate: Date = new Date();
-
-  quincena = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth()+1, 0);
-    refresh: Subject<any> = new Subject();
-
-   
-
-  test=[];
-  test2=[];
-
-  employees : Employee[];
-
-  recurringEvents: RecurringEvent[] = [
-    {
-    title: 'Quincena mitad de Mes',
-    color: colors.yellow,
-    rrule: {
-      freq: RRule.MONTHLY,
-      bymonthday: 15
-    }
-  },
-  {
-    title: 'Quincena Final de Mes',
-    color: colors.yellow,
-    rrule: {
-      freq: RRule.MONTHLY,
-      bymonthday: -1
-    }
-  }];
-
-
-  calendarEvents: CalendarEvent[] = [
-
-    ];
-
-
-  getDiasQuincena() : number {
-     var hoy = this.viewDate.getDate(); 
-
-    if (hoy> 15){
-        this.tarea= "FINAL de mes";
-        return this.quincena.getDate()-hoy
-    }
-    else {
-      this.tarea= "MITAD de mes";
-      return 15-hoy
-    }
-
-  }
-
-
-
-
-  ngOnInit(): void {
-    this.request()
-    this.create()
-    
-
-    //this.updateCalendarEvents()
-
-    this.getEmployeesSorted()
-  }
-
-  updateCalendarEvents() {
-    this.calendarEvents;
 
     const startOfPeriod: any = {
       month: startOfMonth,
@@ -231,96 +144,15 @@ export class InicioComponent implements OnInit {
         until: endOfPeriod[this.view](this.viewDate)
       }));
 
-      rule.all().forEach((date) => {
-        this.calendarEvents.push(Object.assign({}, event, {
-          start: new Date(date)
-        }));
-      });
+    
 
     });
 
-
-  }
-
-   create(){
-
-    this._pushNotifications.create('NominaUN', {body: 'Faltan '+this.getDiasQuincena()+" dias para la quincena de "+this.tarea , icon: '../favicon.ico'}).subscribe(
-            res => console.log(res),
-            err => console.log(err)
-        )
-
   }
 
 
-  request(){
+  //eventClicked(event: FilmEvent): void {
+   // window.open(`https://www.themoviedb.org/movie/${event.film.id}`, '_blank');
+  //}
 
-    this._pushNotifications.requestPermission()
-  }
-
-
-  getEmployeesSorted(){
-    
-
-      
-       this.employeesService.getEmployeesSorted()
-   //       .map((x)=>{
-     //       this.agregarContratos(x);
-       //     this.test.push(x);
-      //    })
-          .subscribe(
-            (x)=>{ this.agregarContratos(x);
-                this.test.push(x);
-                
-                },
-            ()=>{ },
-            ()=>{this.updateCalendarEvents() },
-
-  
-          )
-          
-          
-          
-
-  }
-
-    agregarContratos(data){
-
-   
-          this.recurringEvents.push(
-            this.crearContrato(data.first_name, data.admission_date)
-            )
-
-            
-
-            
-     
-    }
-
-    crearContrato(nombre, fecha){
-
-
-      var date = new Date(fecha);
-
-      return {
-          title: nombre,
-          color: colors.yellow,
-          rrule: {
-            freq: RRule.YEARLY,
-            bymonth: getMonth(date),
-            bymonthday: getDay(date)
-            }
-          }   
-
-
-    }
-
-    
-    testClick(){
-      console.log(this.recurringEvents)
-
-    }
-
-
-  
 }
-

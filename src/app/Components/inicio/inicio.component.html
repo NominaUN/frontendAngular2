@@ -1,11 +1,13 @@
 
 
-
 <mwl-demo-utils-calendar-header
   [(view)]="view"
   [(viewDate)]="viewDate"
   (viewDateChange)="fetchEvents()"
-  (viewChange)="fetchEvents()">
+  (viewChange)="fetchEvents()"
+  
+    (viewDateChange)="updateCalendarEvents()"
+  (viewChange)="updateCalendarEvents()">
 </mwl-demo-utils-calendar-header>
 
 <ng-template #loading>
@@ -41,14 +43,15 @@
   </div>
 </div>
 
-
-
 <!--
 
 <div class="cube">
 <mwl-demo-utils-calendar-header
   [(view)]="view"
-   [(viewDate)]="viewDate">
+   [(viewDate)]="viewDate"
+     (viewDateChange)="fetchEvents()"
+  (viewChange)="fetchEvents()">
+   >
 </mwl-demo-utils-calendar-header>
 
 
