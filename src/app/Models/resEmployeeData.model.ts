@@ -21,7 +21,7 @@ export class testWidget {
 
 export class Employee{
   id:number = 0;
-  document_type:string = "";
+  document_type:string = "CC";
   document_number:number = 0;
   first_name:string = "";
   other_name:string = "";
@@ -32,15 +32,16 @@ export class Employee{
   address:string = "";
   phones:string = "";
   email:string = "";
-  contract: string = "";
+  contract: string = "Fijo";
   admission_date:string = "1960-06-01";
   retirement_date:string = "1960-06-01";
-  salary:string = "";
+  salary:string = "0";
   transport_aid:boolean = false;
   integral_salary:boolean = false;
   area:any = {};
   area_id?:number = 1; //id_for send
   position:any = {};
+  position_id:number = 1;
   fond_employees:Array<any>;
   fonds:Array<any> = [];
   payday_details:Array<any>;

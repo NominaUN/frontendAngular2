@@ -33,6 +33,7 @@ export class EmployeeDetailsComponent implements OnInit {
   epss:any;
   cesantias:any;
   pensiones:any;
+  position_id:number;
   employeeFonds:any = {
     arl:  0,
     eps: 0,
@@ -58,13 +59,14 @@ export class EmployeeDetailsComponent implements OnInit {
     this.employeesService.getEmployeeById(this.route.snapshot.params['id'])
     .subscribe(
       resEmployee => {
-        console.log('empleados', resEmployee.data)
+        console.info('EMPLEADO-DETAIL: ', resEmployee.data)
         this.employee = resEmployee.data;
         // load data
         this.setLoadedFonds();
         this.loadAreas();
         this.getPositions();
         this.loadFonds();
+        this.loadPosition();
       },
       error => console.warn(`Error employee: ${error}`)
     );
@@ -84,17 +86,21 @@ export class EmployeeDetailsComponent implements OnInit {
 
   updateEmployee(employee:Employee) {
     console.info("EMPLOYEE TO UPDATE:", employee);
-    employee.area = this.searchArea(employee.area.id);
+    //employee.area = this.searchArea(employee.area.id);
+    employee.area = this.searchIn(employee.area.id, this.areas);
+    employee.position = this.searchIn(employee.position_id, this.positions);
 
     this.employeesService.updateEmployee(employee)
     .subscribe(
       data => {
-        console.log('Success uploading the employee', data);
-        this.router.navigate(['/employees']);
+        console.info('Success uploading the employee', data);
+        //this.router.navigate(['/employees']);
+        this.ngOnInit();
       },
       error => console.error(`Error: ${error}`)
       )
   }
+  
   loadFonds(){
     this.fondService.getFonds().subscribe(
       (resFondData => {
@@ -110,17 +116,24 @@ export class EmployeeDetailsComponent implements OnInit {
     );
   }
 
-  private searchArea(areaId:number):any {
-    let areaFound = this.areas.find(area => area.id == areaId);
+
+  loadPosition() {
+    this.position_id = this.employee.position.id;
+  }
+
+  private searchIn(areaId:number,searchIn:any):any {
+    let areaFound = searchIn.find(area => area.id == areaId);
     return areaFound;
   }
 
   private setLoadedFonds() {
-    this.employeeFonds.cajaComp = this.employee.fond_employees[0  ].id;
-    this.employeeFonds.arl = this.employee.fond_employees[1].id;
-    this.employeeFonds.cesantia = this.employee.fond_employees[2].id;
-    this.employeeFonds.pension = this.employee.fond_employees[3].id;
-    this.employeeFonds.eps = this.employee.fond_employees[4].id;
+    if ( this.employee.fond_employees.length) {
+      this.employeeFonds.cajaComp = this.employee.fond_employees[0].id;
+      this.employeeFonds.arl = this.employee.fond_employees[1].id;
+      this.employeeFonds.cesantia = this.employee.fond_employees[2].id;
+      this.employeeFonds.pension = this.employee.fond_employees[3].id;
+      this.employeeFonds.eps = this.employee.fond_employees[4].id;
+    }
   }
 
 }

@@ -84,7 +84,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Área:</label>
             <div class="col-sm-4">
-              <select class="form-control" [(ngModel)]="employee.area.id" [ngModelOptions]="{standalone: true}">
+              <select class="form-control" [(ngModel)]="employee.area_id" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let area of areas" [value]="area.id" [selected]="area.id == employee.area.id">
                   {{area.area_name}}
                 </option>
@@ -93,7 +93,7 @@
             <label class="col-sm-2 control-label">Cargo:</label>
             <div class="col-sm-4">
               <select class="form-control" [(ngModel)]="employee.position_id" [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let position of positions" [value]="position.id" [selected]="position.id == employee.position.id">
+                <option *ngFor="let position of positions" [value]="position.id" [selected]="position.id == position_id">
                   {{position.position_name}}
                 </option>
               </select>
