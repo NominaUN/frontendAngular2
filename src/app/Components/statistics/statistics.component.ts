@@ -85,6 +85,7 @@ export class StatisticsComponent implements OnInit {
 			for (var j=0; j<this.barChartLabels.length; i++){
 				if (this.barChartLabels[j].substring(0,1) === this.statstwo[i].employee.id){
 					this.dataf[i] = this.dataf[i] + 1;
+					break;
 				}
 			}
 		};
@@ -96,24 +97,38 @@ export class StatisticsComponent implements OnInit {
 
 	loadG3(){
 		this.dataf = [];
+		for (var i=0; i<this.statsone.length; i++){
+			this.barChartLabels[i] = this.statsone[i].id + '. ' + this.statsone[i].first_name;
+		};
 		for (var i=0; i<this.statsthr.length; i++){
-			this.barChartLabels[i] = this.statsthr[i].employee.first_name;
-			this.dataf[i] = this.statsthr[i].win - this.statsthr[i].loss;
+			for (var j=0; j<this.barChartLabels.length; i++){
+				if (this.barChartLabels[j].substring(0,1) === this.statsthr[i].employee.id){
+					this.dataf[i] = this.dataf[i] + this.statsthr[i].win - this.statsthr[i].loss;
+					break;
+				}
+			}
 		};
 		this.barChartData = [
-			{data: this.dataf, label: 'Liquidaciones'}
+			{data: this.dataf, label: 'Neto Devengado'}
 		];
 		this.isDataAvailable = true;
 	}
 
 	loadG4(){
 		this.dataf = [];
+		for (var i=0; i<this.statsone.length; i++){
+			this.barChartLabels[i] = this.statsone[i].id + '. ' + this.statsone[i].first_name;
+		};
 		for (var i=0; i<this.statsfou.length; i++){
-			this.barChartLabels[i] = this.statsfou[i].employee.first_name;
-			this.dataf[i] = this.statsfou[i].taken_days;
+			for (var j=0; j<this.barChartLabels.length; i++){
+				if (this.barChartLabels[j].substring(0,1) === this.statsfou[i].employee.id){
+					this.dataf[i] = this.dataf[i] + this.statsfou[i].taken_days;
+					break;
+				}
+			}
 		};
 		this.barChartData = [
-			{data: this.dataf, label: 'Vacaciones'}
+			{data: this.dataf, label: 'Vacaciones Tomadas'}
 		];
 		this.isDataAvailable = true;
 	}
