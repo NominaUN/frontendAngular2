@@ -3,6 +3,7 @@ import { NoveltiesService } from  '../../Services/novelties/novelties.service';
 import { EmployeesService } from  '../../Services/employees/employees.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
+import { Subject } from 'rxjs/Subject';
 import { Noveltie } from '../../Models/resNoveltiesData.model';
 
 @Component({
@@ -11,6 +12,12 @@ import { Noveltie } from '../../Models/resNoveltiesData.model';
   styleUrls: ['./novelties.component.css']
 })
 export class NoveltiesComponent implements OnInit {
+
+  private _success = new Subject<string>();
+  successMessage: string;   
+
+  private _fail = new Subject<string>();
+  failMessage: string;
 
   novelties=[];
   noveltie= new Noveltie();
@@ -33,6 +40,12 @@ export class NoveltiesComponent implements OnInit {
         this.employees = resEmployeeData.data;
       })
       );
+
+    this._success.subscribe((message) => this.successMessage = message);
+    this._success.debounceTime(12000).subscribe(() => this.successMessage = null);
+
+    this._fail.subscribe((message) => this.failMessage = message);
+    this._fail.debounceTime(120000).subscribe(() => this.failMessage = null);
   }
 
   createNoveltie(noveltie: Noveltie) {
@@ -49,12 +62,12 @@ export class NoveltiesComponent implements OnInit {
       this.noveltiesService.setNoveltie(noveltie)
       .subscribe(
         data => {
-          console.log('Success uploading the noveltie', data);
+          console.log(this._success.next('Novedad registrada exitosamente!'), data);
           this.ngOnInit();
           this.noveltie = new Noveltie();
           this.isUpdating = false;
         },
-        error => console.error(`Error: ${error}`)
+        error => console.error(this._fail.next('Novedad no pudo ser registrada '+ `Error: ${error}`))
         )
     }
   }
@@ -68,10 +81,10 @@ export class NoveltiesComponent implements OnInit {
     this.noveltiesService.delNoveltie(id)
     .subscribe(
       data => {
-        console.log('Success deleted the noveltie', data);
+        console.log(this._success.next('Novedad eliminada exitosamente!'), data);
         this.ngOnInit();
       },
-      error => console.error(`Error: ${error}`)
+      error => console.error(this._fail.next('Novedad no pudo ser eliminada '+ `Error: ${error}`))
       )
   }
 

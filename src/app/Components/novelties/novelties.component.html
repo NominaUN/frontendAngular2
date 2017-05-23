@@ -18,7 +18,7 @@
        <fieldset>
         <div class="form-group">
          <label class="col-md-4 control-label" for="inputType">Tipo de novedad</label>
-         <div class="col-md-6">
+         <div class="col-md-4">
            <select id="typeNovelty" class="form-control" [(ngModel)]="noveltie.novelty_type" [ngModelOptions]="{standalone: true}">
             <option>Devengado</option>
             <option>Deducción</option>
@@ -27,7 +27,7 @@
       </div>
       <div class="form-group">
        <label class="col-md-4 control-label" for="inputCategory">Categoria de novedad</label>
-       <div class="col-md-6">
+       <div class="col-md-4">
          <select id="categoryNovelty" class="form-control" [(ngModel)]="noveltie.category" [ngModelOptions]="{standalone: true}">
           <option>Vacaciones</option>
           <option>Inactividad</option>
@@ -89,35 +89,71 @@
   <br>
 </div>
 <br>
-<div class="container">
-  <br>
-  <div id="noveltyTable" class="table-responsive">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Tipo</th>
-          <th>Categoria</th>
-          <th>Valor</th>
-          <th colspan="2">Empleado</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let novelty of novelties.data" [class.selected]="isUpdating == true">
-          <td>{{novelty.novelty_type}}</td>
-          <td>{{novelty.category}}</td>
-          <td>{{novelty.novelty_value}}</td>
-          <td>{{novelty.employee.first_name}}</td>
-          <td>
-            <button type="button" class="btn btn-default btn-sm" (click)="deleteNoveltie(novelty.id)" >
-              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-            </button>
-            <button type="button" class="btn btn-default btn-sm" (click)="onSelect(novelty)" >
-              <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+
+
+<div>
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default panel-table">
+          <div class="panel-heading">
+             <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">
+              {{ successMessage }}
+            </ngb-alert>
+            <ngb-alert *ngIf="failMessage" type="danger" (close)="failMessage = null">
+              {{ failMessage }}
+             </ngb-alert>
+            <div class="row">
+              <div class="col col-xs-6">
+                <h3 class="panel-title">
+                  <button type="button" class="btn btn-default btn-circle" *ngIf="novelties">
+                  {{ novelties.length }}
+                </button>
+                Novedades registradas
+                </h3>
+              </div>
+                <div class="col col-xs-6 text-right">
+                  <button type="button" class="btn btn-sm btn-primary btn-create" (click)="validationModal.open()">Create New</button>
+                </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-list">
+                <thead>
+                 <tr>
+                  <th></th>
+                  <th>Tipo</th>
+                  <th>Categoria</th>
+                  <th>Valor</th>
+                  <th colspan="2">Empleado</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="5" *ngIf="novelties.length == 0">No se encontraron novedades</td>
+                  </tr>
+                  <tr *ngFor="let novelty of novelties.data" [class.selected]="isUpdating == true">
+                    <td>
+                      <button type="button" class="btn btn-default btn-sm" (click)="onSelect(novelty)" >
+                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                      </button> 
+                      <button type="button" class="btn btn-danger btn-sm" (click)="deleteNoveltie(novelty.id)" >
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                      </button>
+                    </td>
+                    <td>{{novelty.novelty_type}}</td>
+                    <td>{{novelty.category}}</td>
+                    <td>{{novelty.novelty_value}}</td>
+                    <td>{{novelty.employee.first_name}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ 
+
 </body>
