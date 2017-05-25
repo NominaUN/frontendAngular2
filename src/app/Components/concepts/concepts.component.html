@@ -73,8 +73,7 @@
                 <tbody>
                   <tr *ngFor="let concept of concepts" [class.selected]="concept === selectedConcept" (click)="onSelect(concept)">
                     <td align="center">
-                      <a class="btn btn-default"><em class="glyphicon glyphicon-pencil"></em></a>
-                      <a class="btn btn-danger"><em class="glyphicon glyphicon-trash"></em></a>
+                      
                     </td>
                     <td hidden>{{concept.id}}</td>
                     <td>{{concept.concept_name}}</td>
