@@ -20,8 +20,11 @@
          <label class="col-md-4 control-label" for="inputType">Tipo de novedad</label>
          <div class="col-md-4">
            <select id="typeNovelty" class="form-control" [(ngModel)]="noveltie.novelty_type" [ngModelOptions]="{standalone: true}">
-            <option>Devengado</option>
-            <option>Deducción</option>
+            <option>Vacaciones</option>
+		    <option>Terminación</option>
+            <option>Inactividad</option>
+            <option>Hora Extra</option>
+            <option>Otros</option>
           </select>
         </div>
       </div>
@@ -29,10 +32,8 @@
        <label class="col-md-4 control-label" for="inputCategory">Categoria de novedad</label>
        <div class="col-md-4">
          <select id="categoryNovelty" class="form-control" [(ngModel)]="noveltie.category" [ngModelOptions]="{standalone: true}">
-          <option>Vacaciones</option>
-          <option>Inactividad</option>
-          <option>Hora Extra</option>
-          <option>Otros</option>
+          <option>Devengado</option>
+          <option>Deducción</option>
         </select>
       </div>
     </div>
@@ -51,7 +52,7 @@
   <div class="form-group">      
    <label class="col-md-4 control-label" for="inputApplied">Aplicadas</label>  
    <div class="col-md-4">
-     <input id="appliedNovelty" type="number" class="form-control input-md" placeholder="Ingrese la cantidad" [(ngModel)]="noveltie.applied" [ngModelOptions]="{standalone: true}">
+     <input disabled id="appliedNovelty" type="number" class="form-control input-md" placeholder="Ingrese la cantidad" [(ngModel)]="noveltie.applied" [ngModelOptions]="{standalone: true}">
    </div>
  </div>
  <div class="form-group">
