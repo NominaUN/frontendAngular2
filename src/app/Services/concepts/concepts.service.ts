@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Rx'
 @Injectable()
 export class ConceptsService {
 
-	private urlget : string = "http://localhost:3000/api/v1/concepts.json";
+	private urlget : string = "http://localhost:3000/api/v1/concepts?sort=concept_name";
 	private urlpost : string = "http://localhost:3000/api/v1/concepts"
 	headers: Headers;
 	options: RequestOptions;
