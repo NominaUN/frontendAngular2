@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Rx';
 export class LiquidationsComponent implements OnInit {
 
 	liquidations: PaydayMaster[];
-	liquidation = new PaydayMaster;
+	liquidation = new PaydayMaster();
 
 	constructor(private liquidationsService: LiquidationsService) { }
   

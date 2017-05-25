@@ -103,7 +103,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">ARL:</label>
             <div class="col-sm-4">
-              <select class="form-control">
+              <select class="form-control" [(ngModel)]="fond_ARL" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let arl of arls" [value]="arl.id">
                   {{arl.business_name}}
                 </option>
@@ -123,7 +123,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">EPS:</label>
             <div class="col-sm-4">
-              <select class="form-control">
+              <select class="form-control" [(ngModel)]="fond_eps" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let eps of epss" [value]="eps.id">
                   {{eps.business_name}}
                 </option>
@@ -131,7 +131,7 @@
             </div>
             <label class="col-sm-2 control-label">Caja de compensación:</label>
             <div class="col-sm-4">
-              <select class="form-control">
+              <select class="form-control" [(ngModel)]="fond_CajaComp" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let caja of cajaComps" [value]="caja.id">
                   {{caja.business_name}}
                 </option>
@@ -141,7 +141,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">Fondo de cesantias:</label>
             <div class="col-sm-4">
-              <select class="form-control">
+              <select class="form-control" [(ngModel)]="fond_Cesantias" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let cesantia of cesantias" [value]="cesantia.id">
                   {{cesantia.business_name}}
                 </option>
@@ -149,7 +149,7 @@
             </div>
             <label class="col-sm-2 control-label">Fondo de pensiones:</label>
             <div class="col-sm-4">
-              <select class="form-control">
+              <select class="form-control" [(ngModel)]="fond_Pensiones" [ngModelOptions]="{standalone: true}">
                 <option *ngFor="let pension of pensiones" [value]="pension.id">
                   {{pension.business_name}}
                 </option>
