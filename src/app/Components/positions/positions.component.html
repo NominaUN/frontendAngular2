@@ -1,3 +1,5 @@
+<body>
+
 <div id="title">
   <br>
   <h1>
@@ -78,10 +80,19 @@
       <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default panel-table">
           <div class="panel-heading">
+             <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">
+              {{ successMessage }}
+             </ngb-alert>
+             <ngb-alert *ngIf="failMessage" type="danger" (close)="failMessage = null">
+              {{ failMessage }}
+             </ngb-alert>
             <div class="row">
               <div class="col col-xs-6">
                 <h3 class="panel-title">
-                  Panel Heading
+                   <button type="button" class="btn btn-default btn-circle" *ngIf="positions">
+                  {{ positions.length }}
+                </button>
+                  Cargos guardados actualmente
                 </h3>
               </div>
               <div class="col col-xs-6 text-right">
@@ -125,3 +136,4 @@
   </div>
 </div>
 <div *ngIf="selectedConcept"></div>
+</body>
