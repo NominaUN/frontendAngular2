@@ -55,15 +55,12 @@ export class InicioComponent implements OnInit {
     }
   ];
 
+  
+
   calendarEvents: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      // end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: colors.red,
-      cssClass: 'my-custom-class'
-    }
   ];
+
+  
 
 
   getDiasQuincena() : number {
