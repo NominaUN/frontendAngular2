@@ -1,63 +1,126 @@
-<div class="container" id="generalPage">
-  <h1> Parámetros Generales de la Empresa </h1>
-  <form (ngSubmit)="updateGeneral(general)" #postForm="ngForm">
-    <div class="form-group">
-      <label for="inputRound"> Redondeo </label>
-      <select id="roundGeneral" class="form-control" #round_type="ngModel" [(ngModel)]="general.round_type" name="roundGeneral">
-        <option value="1"> Unidades </option>
-        <option value="10"> Decenas </option>
-        <option value="100"> Centenas </option>
-        <option value="1000"> Miles </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="inputLaboral"> Dias Laborales </label>
-      <input id="laboralGeneral" class="form-control input-md" required="" type="number" #laboral_days="ngModel" [(ngModel)]="general.laboral_days" name="laboralGeneral">
-    </div>
-    <div class="form-group">
-      <label for="inputPayday"> Tipo de Liquidación </label>
-      <select id="paydayGeneral" class="form-control" #payday="ngModel" [(ngModel)]="general.payday" name="paydayGeneral">
-        <option value="Quincenal"> Quincenal </option>
-        <option value="Mensual"> Mensual </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="inputIntegral"> Base para Salario Integral </label>
-      <select id="integralGeneral" class="form-control" #integral_base="ngModel" [(ngModel)]="general.integral_base" name="integralGeneral">
-        <option value="70"> 70% </option>
-        <option value="1.3"> 1.3 </option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="col-sm-3 control-label" for="inputAuto"> Liquidación automática: </label>
-      <div class="col-sm-1">
-        <input id="autoGeneral" class="form-control" type="checkbox" #auto_liquidation="ngModel" [(ngModel)]="general.auto_liquidation" name="autoGeneral">
+<body>
+  
+  <div id="title">
+    <br>
+    <h1>PARAMETROS GENERALES</h1>
+    <hr id="first">
+    <hr id="second">
+    <br><br>
+  </div>
+
+<div class="container" id="form-title">
+    <h2>Ingrese Parametros</h2>
+    <br>
+  </div>
+  <br>
+ <div class="container" id="general">
+   <br>
+    <div class="row">
+     <form class="form-horizontal" (ngSubmit)="updateGeneral(general)" #postForm="ngForm">
+       <fieldset>
+        <div class="form-group">
+         <label class="col-md-4 control-label" for="inputType">Redondeo</label>
+         <div class="col-md-4">
+           <select id="roundGeneral" class="form-control" #round_type="ngModel" [(ngModel)]="general.round_type" name="roundGeneral">
+            <option value="1"> Unidades </option>
+            <option value="10"> Decenas </option>
+            <option value="100"> Centenas </option>
+            <option value="1000"> Miles </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="inputLaboral"> Dias Laborales </label>  
+        <div class="col-md-4">
+          <input id="laboralGeneral" class="form-control input-md" required="" type="number" #laboral_days="ngModel" [(ngModel)]="general.laboral_days" name="laboralGeneral">  
+        </div>
+      </div>
+      <div class="form-group">
+       <label class="col-md-4 control-label" for="inputPayday">Tipo de Liquidación</label>
+       <div class="col-md-4">
+         <select id="paydayGeneral" class="form-control" #payday="ngModel" [(ngModel)]="general.payday" name="paydayGeneral">
+          <option value="Quincenal"> Quincenal </option>
+          <option value="Mensual"> Mensual </option>
+        </select>
       </div>
     </div>
-    <button type="submit" class="btn btn-primary pull-right" id="setGeneral" (click)="loadGeneral()">
-      Guardar
-    </button>
-  </form>
-</div>
-<div class="panel-body" >
-  <table  class="table table-striped table-bordered table-list">
-    <thead>
-      <tr>
-        <th> ID </th>
-        <th> Redondeo </th>
-        <th> Dias Laborales </th>
-        <th> Tipo de Pago </th>
-        <th> Base Integral </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let general of generalp" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
-        <td> {{general.id}} </td>
-        <td> {{general.round_type}} </td>
-        <td> {{general.laboral_days}} </td>
-        <td> {{general.payday}} </td>
-        <td> {{general.integral_base}} </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+    <div class="form-group">
+       <label class="col-md-4 control-label" for="inputIntegral"> Base para Salario Integral </label>
+       <div class="col-md-4">
+         <select id="integralGeneral" class="form-control" #integral_base="ngModel" [(ngModel)]="general.integral_base" name="integralGeneral">
+          <option value="70"> 70% </option>
+          <option value="1.3"> 1.3 </option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="inputAuto"> Liquidación automática: </label>
+        <label class="custom-control custom-checkbox">
+          <div>
+            <input id="autoGeneral" class="custom-control-input" type="checkbox" #auto_liquidation="ngModel" [(ngModel)]="general.auto_liquidation" hidden>
+            <span class="form-control custom-control-indicator"></span>
+          </div>
+        </label>
+    </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit"></label>
+      <div class="col-md-4">
+        <button type="submit" class="btn btn-success" id="setGeneral" (click)="loadGeneral()">
+          Guardar
+        </button>
+      </div>
+    </div>
+    </fieldset>
+    </form>
+    </div>
+    </div>
+    <br>
+
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="panel panel-default panel-table">
+          <div class="panel-heading">
+             <div class="row">
+              <div class="col col-xs-6">
+                <h3 class="panel-title">
+                  <button type="button" class="btn btn-default btn-circle" *ngIf="generalp">
+                  {{ generalp.length }}
+                  </button>
+                Parametros generales registrados
+                </h3>
+              </div>
+              </div>
+            </div>
+            <div class="panel-body">
+              <table class="table table-striped table-bordered table-list">
+                <thead>
+                 <tr>
+                    <th> ID </th>
+                    <th> Redondeo </th>
+                    <th> Dias Laborales </th>
+                    <th> Tipo de Pago </th>
+                    <th> Base Integral </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colspan="5" *ngIf="generalp.length == 0">No se encontraron parametros registrados</td>
+                  </tr>
+                  <tr *ngFor="let general of generalp" [class.selected]="fond === selectedFond" (click)="onSelect(fond)">
+                    <td> {{general.id}} </td>
+                    <td> {{general.round_type}} </td>
+                    <td> {{general.laboral_days}} </td>
+                    <td> {{general.payday}} </td>
+                    <td> {{general.integral_base}} </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+</body>
